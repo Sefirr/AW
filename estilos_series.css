@@ -17,6 +17,7 @@ nav.menu-cabecera{
 	height:30px;
 	background-color: rgba(51, 51, 51, 1);
 	padding: 5px;
+	margin: 10px 10px auto auto;
 }
 nav.menu-cabecera ul {
 	margin : 0 auto;
@@ -36,12 +37,49 @@ nav.menu-cabecera ul li a{
 	display : block;
 	font-size : 14px;
 	text-align : center;
-	text-decoration : none;
 	color : white;
 
 }
-#contenedor-menu{
-	background-color:red;
+
+
+#contenedor {
+	/*margin:top rightbottomleft;*//*L: Todos los márgenes a la vez*/
+    width: 1200px;
+	position:relative;
+	background-color: #00CED1;
+	margin: 0 auto;
+}
+
+#menus-izq {
+	word-wrap: break-word;
+	clear:both;
+	float: left;
+	width: 15%;
+}
+
+#menu-user {
+	text-align:justify;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin: 10px 10px 10px auto;
+	border: 1px solid blue;
+	background-color: #CBD890;
+}
+
+#recomendaciones {
+	text-align:center;
+	margin: 10px 10px 10px auto;
+	border: 1px solid blue;
+	background-color: #CBD890;
+}
+
+#contenido {
+	text-align:center;
+	float:left;
+	width: 84%;
+	word-wrap: break-word;
+    background-color: OldLace;
+	margin-top: 10px;
 }
 
 nav.menu-desplegable {
@@ -73,46 +111,7 @@ nav.menu-desplegable ul li a{
 
 }
 
-
-#contenedor {
-	/*margin:top rightbottomleft;*//*L: Todos los márgenes a la vez*/
-    background-color: #00CED1;
-	margin-top: 50px;
-
-}
-
-#menus-izq {
-	clear:both;
-	float: left;  
-	width: 15%;
-}
-
-#menu-user {
-	text-align:center;
-	margin: 10px 10px 10px auto;
-	margin-bottom : 10px;
-	border: 1px solid blue;
-	background-color: #CBD890;
-}
-
-#recomendaciones {
-	text-align:center;
-	margin: auto 10px 10px auto;
-	border: 1px solid blue;
-	background-color: #CBD890;
-}
-
-#contenido {
-	text-align:center;
-	float:left;
-	width: 85%;
-    background-color: OldLace;
-	margin-top: 10px;
-}
-#pie {
-	clear: both;
-}
-#detalle{/*etiqueta para los bloques que forman las películas, en pequeño*/
+#detalle{/*etiqueta para los bloques que forman las series, en pequeño*/
 	border: 1px solid blue;
 	display:inline-block;
     background-color: gray;
@@ -123,6 +122,7 @@ nav.menu-desplegable ul li a{
 	margin-top:5px;
 	margin-right:5px;
 }
+
 #caratula{
 	margin: 0 auto;
 	height: 170px;
@@ -136,9 +136,100 @@ nav.menu-desplegable ul li a{
 
 }
 
-#comentario{
+#titulo-serie {
+	margin-top: 10px;
+	font-size: 20px;
+	text-align:center;
+}
 
+#cartel {
+	float:left;
+	padding-right : 10px;
+
+}
+
+#descripcion-basica{
+	padding-right: 5%;
+	text-align : justify;
+
+}
+
+#cartel, #descripcion-basica { 
+	padding-top: 10px;
+	padding-left: 5%;
+}
+
+#val-pagina{
+	clear:both;
+}
+
+#val-usuario, #val-pagina {
+	margin-top:10px;
+	float:left;
+	width: 50%;
+
+}
+
+#titulo{
+	clear:both;
+	padding-top: 60px;
+	text-decoration: underline;
+	font-weight: bold;
+	text-align:center;
+}
+
+#texto {
+	clear:both;
+	padding-left: 5%;
+	padding-right: 5%;
+	display: inline-block;
+	text-align:justify;
+}
+
+#comentarios{
+	clear:both;
+	display: left;
+	padding-left: 5%;
+	padding-right: 5%;
 	font-family: calibri;
 	font-size :10px;
-	color: white;-
+	text-align:justify;
+}
+
+#detalle-merchandising{/*etiqueta para los bloques que forman las series, en pequeño*/
+	border: 1px solid blue;
+	display:inline-block;
+    background-color: gray;
+	height: 125px;
+	width: 125px;
+	padding: 30px;
+	margin-left:10px;
+	margin-top:5px;
+	margin-right:5px;
+}
+
+#foto-merchandising{
+	margin: 0 auto;
+	height: 100px;
+	width: 100px;
+
+}
+
+#pie {
+	clear: both;
+	padding-top: 5%;
+	margin-left:15%;
+	margin-right: 12px;
+	background-color: OldLace;
+	text-align:center;
+}
+
+a{
+	text-decoration : none;
+}
+
+p {
+	color:black;
+}
+	text-de
 }
