@@ -1,0 +1,169 @@
+#logo{
+	position: relative;
+	margin-left: 20%;
+	float:none;
+}
+
+
+body {
+	background-color: #00CED1;
+	font-family: Century Gothic;
+	font-size :10px;
+}
+
+nav{
+	margin-left: 10%;
+	padding: 5px;
+	position : relative;
+}
+nav ul li {
+	float : left;
+	margin-left: 5%;
+	display: inline;
+}
+nav ul li a.menu{
+	display : block;
+	font-size : 20px;
+	font-family: calibri;
+	text-align : center;
+	text-decoration : none;/*L: reservado para el subrayado de la web*/
+	color : blue;
+	border: 2px solid blue;
+
+}
+
+#contenedor {
+	width: 1050px;
+	/*margin:top rightbottomleft;*//*L: Todos los márgenes a la vez*/
+    border: 1px solid yellow;
+    background-color: #00CED1;
+	margin-top: 50px;
+}
+#cabecera {
+    background-color: #8FD8A0;
+	height: 100px;
+	padding: 10px;
+}
+#cabeceraAux {
+    background-color: #87CEEB;
+	padding: 30px;
+	border: 1px solid yellow;
+}
+#sub-menu {
+	border: 1px solid blue;
+    background-color: #CBD890;
+	height: 200px;
+	width: 170px;
+	padding: 20px;
+	float: left;  
+}
+
+#recomendaciones{
+	clear : left;
+	background-color: Lavender;
+	height: 450px;
+	width: 170px;
+	padding: 20px;
+	border: 1px solid red;
+}
+
+#contenido {
+	float: right; 
+    background-color: OldLace;
+	height: 900px;
+	width: 685px;
+	padding: 50px;
+}
+#footer {
+    background-color: #00CED1;
+	padding: 2px;
+	height: 20px;
+	clear: both;
+}
+p {
+	font-family: calibri;
+	font-size :20px;
+	color: blue;
+}
+#tituloC{
+	border: 1px solid black;
+    background-color: #4BB7B3;
+	height: 100px;
+	width: 685px;
+	margin-top: 30px;
+	text-align: center;
+	clear: both;
+}
+#caratula{
+	border: 1px solid black;
+	height: 170px;
+	margin-top: 30px;
+	width: 320px;
+	text-align: center;
+	/*padding: 10px;*/
+	float: left;
+}
+#caratulaAux{
+	margin: 0 auto;
+	height: 170px;
+	width: 150px;
+
+}
+#descripcion_basica{
+	border: 1px solid black;
+    background-color: #4BB7B3;
+	height: 150px;
+	width: 300px;
+	margin-top: 30px;
+	text-align: center;
+	padding: 10px;
+	float: right;
+}
+#val_pagina{
+	border: 1px solid black;
+    background-color: white;
+	height: 50px;
+	width: 320px;
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	float: left;
+}
+#val_usuarios{
+	border: 1px solid black;
+    background-color: black;
+	height: 50px;
+	width: 320px;
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	float: right;
+}
+#sinopsis{
+	border: 1px solid black;
+    background-color: #4BB7B3;
+	height: 200px;
+	width: 685px;
+	text-align: center;
+	clear: both;
+	
+}
+#estrellas{
+	margin-top:5px;
+	float: right;
+	height: 20px;
+	width: 70px;
+
+}
+#merchandisinf_tienda{
+	border: 1px solid black;
+    background-color: #4BB7B3;
+	height: 100px;
+	margin-top: 30px;
+	width: 685px;
+	text-align: center;
+	clear: both;
+}
+em {
+	font-weight: bold; /* Ponemos en énfasis en negrita */
+}
