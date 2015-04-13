@@ -1,41 +1,51 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html>
 	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> <!--ESTABLECEMOS LA CODIFICACION A UTF-8-->
+
 		<link href="estilos_series.css" rel="stylesheet" type="text/css" />
+
 		<title>Series</title>
 	</head>
 	<body>
 		<div id = "contenedor">
-		<img src= "./img/logo.png" id="logo"/>
-		<div id="cabecera">
-		<nav class="menu-cabecera">
-		<ul>
-           <li><a href="index.html">Home</a></li>
-            <li><a href="peliculas.html">Películas</li>  
-            <li><a href="series.html">Series</a></li>
-            <li><a href="videojuegos.html">Videojuegos</a></li>
-        </ul>  
-		</nav>
-		</div>	
+			<div id="cabecera">
+				<img src= "./img/logo.png" id="logo"/>
+				<div id="LoginAndRegister">
+				<a class="boton"href="login.html">Login</a>
+				<a class="boton" href="register.html">Registro</a>
+				</div>
+				<nav class="menu-cabecera">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="peliculas.html">Películas</li>  
+					<li><a href="series.html">Series</a></li>
+					<li><a href="videojuegos.html">Videojuegos</a></li>
+				</ul>  
+				</nav>
+			</div>	
 			<div id = "menus-izq">
 				<div id ="menu-user">
 				<h2>Menú de usuario</h2>
-				<p>(aquí no sé qué poner...)</p>
+				<a href="add-content.html">Añadir serie</a> </br>
+				<a href="list-content.html"> Editar serie</a> </br>
+				<a href="list-content.html"> Eliminar serie</a> </br>
+				<a href="list-content.html"> Listar series </a> </br>
 				</div>
 				<div id ="recomendaciones">
 				<h2>Recomendaciones</h2>
 					<p><em>Título recomendación</em></p>
-					
-					<img src="./img/caratula_buho3.png" id="caratula"/>
 					<div id = "descripcion">
-						<h2><em>"Es una gran película"</em></h2>
+						<a href="descripcion-serie.html"><img src="./img/true-blood.jpeg" id="caratula"/></a>
+						<a href="descripcion-serie.html"><p><em>True Blood</em></p></a>
 						<img src="./img/5estrellas.png" id="estrellas"/>
 					</div>
-					</div>
+				</div>
 			</div>
 			
 			<div id = "contenido">
+				<div class="texto">
 				<div id="titulo-serie"> True Blood </div>
 				<div id="cartel"><img src="./img/true-blood.jpeg" id="caratula"> </div>
 				<div id="descripcion-basica">True Blood (Sangre fresca en España1 y Sangre verdadera en Hispanoamérica),
@@ -103,10 +113,11 @@
 					<p>Que guay!</p>
 					</article>
 				</div>
-			</div>						
-			<div id = "pie">
+				<div id = "footer">
 				Copyright by Watch & Comment 2015
-			</div>
-		</div>		
+				</div>
+			</div>							
+		</div>	
+		
 	</body>
 </html>
