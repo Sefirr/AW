@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> <!--ESTABLECEMOS LA CODIFICACION A UTF-8-->
+	<meta name="author" content="Watchandcoment Team"><!-- AUTORES DE LA PÁGINA -->
+	<link rel="stylesheet" type="text/css" href=""><!-- LINK AL ESTILO DE ESTA PAGINA -->
+
+	<title>Registrarse</title>
+</head>
+
+<body>
+	<div id="contenedor">
+
+	<form action="register.php" method="post">
+		<input type="file" name="imagen" />
+		<br/>
+		<label>Username</label>
+		<input type="text" name="username" value="Username">
+		<br/>
+		<label>Nombre y apellidos:</label>
+		<input type="text" name="firstname" value="Nombre">
+		<br/>
+		<input type="text" name="lastname" value="Apellidos">
+		<br/>
+		<label> Contraseña </label>
+		<input type="password" name="passwd">
+		<br/> 
+		<label>E-mail:</label>
+		<input type="text" name="email" value="E-mail">
+		<br/>
+		<label>Descripcion:</label>
+		<br/>
+		<textarea name="description" rows="6" cols="70">Descripción personal</textarea>
+		<br/>
+		<!--Checkbox para los términos de uso-->
+		<input type="checkbox" name="terms">Marque esta casilla para verificar que ha leído nuestros términos y condiciones del servicio
+		<br/>
+
+		<input type="submit" name="send" value="Enviar" /><!-- boton de enviar -->
+		<input type="reset" name="reset" value="Cancelar" /><!-- boton reset -->
+
+	</form>
+
+	</div>
+	
+</body>
