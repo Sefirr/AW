@@ -128,7 +128,7 @@ nav.menu-desplegable ul li a{
 
 }
 
-input[type="text"] {
+input[type="text"].search {
     width: 50%;
 	margin-top: 5%;
 }
