@@ -5,7 +5,7 @@
 	<meta name="author" content="Watchandcoment Team"><!-- AUTORES DE LA PÁGINA -->
 	<link rel="stylesheet" type="text/css" href="style.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
 
-	<title>Página de contacto</title>
+	<title>Página añadir contenido</title>
 </head>
 
 <body>
@@ -22,7 +22,7 @@
 				<li><a href="peliculas.html">Películas</li>  
 				<li><a href="series.html">Series</a></li>
 				<li><a href="videojuegos.html">Videojuegos</a></li>
-				<li><a href="contact.html">Contacto</a></li>
+				<li><a class="white" href="contact.html">Contacto</a></li>
 			</ul>  
 			</nav>
 		</div>	
@@ -68,54 +68,44 @@
 		<div id="contenido">
 			<div id="centrado">
 				<div id="texto">
-					<form action="mailto:Watchandcoment@gmail.com" method="post">
+					<form action="addcontent.php" method="post">
+						<label>Título : </label>
+						<input type="text" value="Título" name="title"><!--- AGREGAR TITULO PELICULA: agregar titulo de la pelicula.-->
+						<br/>
+						<label>Carátula : </label> 
+						<input type="file" name="imagen"><!-- AGREGAR CARATULA: agregar imagen de la carátula de la pelicula. -->
+						<br/>
+						<label>Sinopsis : </label>
+						<textarea name="sinopsis">Sinopsis de la película.</textarea> <!--AGREGAR SINOPSIS: agregar sinopsis de la película. -->
+						<br/>
 						<fieldset>
-						<legend>Información del contactante </legend>
-								<!-- Introducción del nombre y sus apellidos -->
-								<label>Introduce tu nombre: </label>
-								<input type="text" name="firstname" value="Nombre">
-								<input type="text" name="lastname" value="Apellidos">
-								<br/>
-								<!-- Caja de texto para su correo -->
-								<label>E-mail de contacto:</label>
-								<input type="text" name="email" value="E-mail">
-								<br/>
-						</fieldset><!--FIN area de informacion del cliente -->
-						<fieldset>
-						<legend>Datos de la Consulta</legend>
-								<!-- Motivo de la consulta mediante botones radio -->
-							<label>Motivo de la consulta</label><br/>
-							<input type="radio" name="motive" value="Evaluacion">Evaluación
+						<legend>Descripción básica </legend>
+							<label>Descripción: </label>
+							<textarea name="descripción">Descripción </textarea>
 							<br/>
-							<input type="radio" name="motive" value="Suggestion">Sugerencias
+							<label>Fecha de estreno: </label>
+							<input name="date" type="date">
 							<br/>
-							<input type="radio" name="motive" value="Review">Crítica
+							<label>Director: </label>
+							<input type="text" name="director">
 							<br/>
-							<input type="radio" name="motive" value="Other">Otros
+							<label>Duración: </label>
+							<input type="number" name="duration" value="10"> 
 							<br/>
-							<select name="PageZone"><!-- Seleccionable de la función -->
-								<option value="General" selected >General</option>
-								<option value="Films">Películas</option> 
-								<option value="Series">Series</option>
-								<option value="Games">Juegos</option> 
 
-							</select>Marca la opción de la página de la que nos quieres contactar
-							<br/>
-							<!--Checkbox para los términos de uso-->
-							<input type="checkbox" name="terms">Marque esta casilla para verificar que ha leído nuestros términos y condiciones del servicio
-							<br/>
-							<!--Area de texto para introducir la consulta-->
-							<textarea name="content" rows="6" cols="70">Introduce tu consulta</textarea>
-							<br/>
-							<!--Botones de enviar y reset-->
-							<input type="submit" name="send" value="Enviar" />
-							<input type="reset" name="reset" value="Borrar" />
+						</fieldset>
+						
+						<!--Botones de enviar y reset-->
+						<input type="submit" name="send" value="Enviar" />
+						<input type="reset" name="reset" value="Borrar" />
 
 					</form>
 				</div>
 			</div>
 		</div>
-
+		<div id = "footer">
+			Copyright by Watch & Comment 2015
+		</div>
 	</div>
 	
 </body>
