@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> <!--ESTABLECEMOS LA CODIFICACION A UTF-8-->
+	<meta name="author" content="Watchandcoment Team"><!-- AUTORES DE LA PÁGINA -->
+	<link rel="stylesheet" type="text/css" href=""><!-- LINK AL ESTILO DE ESTA PAGINA -->
+
+	<title>Añadir Merchandising</title>
+</head>
+
+<body>
+	<div id="contenedor">
+
+	<form action="addmercha.php" method="post">
+		<label>Nombre del producto</label>
+		<input type="text" value="Nombre" name="nombre">
+		<br/>
+		<label>Imágenes del producto</label> 
+		<br/>
+		<input type="file" name="imagen">
+		<br/>
+		<input type="file" name="imagen2">
+		<br/>
+		<label>Descripción del producto</label>
+		<br/>
+		<textarea name="description">Descripción del producto</textarea>
+		<br/>
+
+		<label>Número de unidades</label>
+		<input name="number" type="units">
+		<br/>
+		<label>Proveedor</label>
+		<input type="text" name="proveedor">
+		<br/>
+		<label>Productos asociados</label>
+		<input type="checkbox" name="Productos">TrueBlood
+		<input type="checkbox" name="Productos">TrueBlood
+		<input type="checkbox" name="Productos">TrueBlood
+
+
+		<br/>
+		<!--Botones de enviar y reset-->
+		<input type="submit" name="send" value="Enviar" />
+		<input type="reset" name="reset" value="Borrar" />
+
+	</form>
+
+	</div>
+	
+</body>
+
+</html>
