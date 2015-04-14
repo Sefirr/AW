@@ -20,6 +20,7 @@ body {
 a.boton{
 	float:left;
 	color: white;
+	text-align:center;
 	line-height: 35px;
 	margin: auto auto 10px 10px;
     width:110px;
