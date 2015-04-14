@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> <!--ESTABLECEMOS LA CODIFICACION A UTF-8-->
+	<meta name="author" content="Watchandcoment Team"><!-- AUTORES DE LA PÁGINA -->
+	<link rel="stylesheet" type="text/css" href="style.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
+
+	<title>Página añadir contenido</title>
+</head>
+
+<body>
+	<div id="contenedor">
+		<div id="cabecera">
+			<img src= "./img/logo.png" id="logo"/>
+			<div id="LoginAndRegister">
+			<a class="boton"href="login.html">Login</a>
+			<a class="boton" href="register.html">Registro</a>
+			</div>
+			<nav class="menu-cabecera">
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="peliculas.html">Películas</li>  
+				<li><a href="series.html">Series</a></li>
+				<li><a href="videojuegos.html">Videojuegos</a></li>
+				<li><a class="white" href="contact.html">Contacto</a></li>
+			</ul>  
+			</nav>
+		</div>	
+		<div id = "menus-izq">
+			<form action="" method="POST">
+					<input type="text" class="search"> <input type="submit" value="Buscar">
+			</form>
+			<div id ="menu-user">
+				<h2>Menú de usuario</h2>
+				<a href="add-content.html">Añadir serie</a> </br>
+				<a href="list-content.html"> Editar serie</a> </br>
+				<a href="list-content.html"> Eliminar serie</a> </br>
+				<a href="list-content.html"> Listar series </a> </br>
+				</br>
+				<a href="add-content.html">Añadir película</a> </br>
+				<a href="list-content.html"> Editar película</a> </br>
+				<a href="list-content.html"> Eliminar pelicula</a> </br>
+				<a href="list-content.html"> Listar películas </a> </br>
+				</br>
+				<a href="add-content.html">Añadir videojuego</a> </br>
+				<a href="list-content.html"> Editar videojuego</a> </br>
+				<a href="list-content.html"> Eliminar videojuego</a> </br>
+				<a href="list-content.html"> Listar videojuego </a> </br>
+				</br>
+				<a href="addmecha.html"> Añadir merchandising </a> </br>
+				<a href="list-content.html"> Editar merchandising</a> </br>
+				<a href="list-content.html"> Eliminar merchandising</a> </br>
+				<a href="list-content.html"> Listar merchandising </a> </br>
+				</br>
+				<a href="perfil.html"> Perfil de usuario </a> </br>
+				<a href="modifyperfil.html"> Modificar perfil </a> </br>
+				</div>
+			<div id ="recomendaciones">
+			<h2>Recomendaciones</h2>
+				<p><em>Título recomendación</em></p>
+				<div id = "descripcion">
+					<a href="descripcion-serie.html"><img src="./img/true-blood.jpeg" id="caratula-recomendaciones"/></a>
+					<a href="descripcion-serie.html"><p><em>True Blood</em></p></a>
+					<img src="./img/5estrellas.png" id="estrellas"/>
+				</div>
+			</div>
+		</div>
+		<div id="contenido">
+			<div id="centrado">
+				<div id="texto">
+					<form action="addcontent.php" method="post">
+						<label>Título : </label>
+						<input type="text" value="Título" name="title"><!--- AGREGAR TITULO PELICULA: agregar titulo de la pelicula.-->
+						<br/>
+						<label>Carátula : </label> 
+						<input type="file" name="imagen"><!-- AGREGAR CARATULA: agregar imagen de la carátula de la pelicula. -->
+						<br/>
+						<label>Sinopsis : </label>
+						<textarea name="sinopsis">Sinopsis de la película.</textarea> <!--AGREGAR SINOPSIS: agregar sinopsis de la película. -->
+						<br/>
+						<fieldset>
+						<legend>Descripción básica </legend>
+							<label>Descripción: </label>
+							<textarea name="descripción">Descripción </textarea>
+							<br/>
+							<label>Fecha de estreno: </label>
+							<input name="date" type="date">
+							<br/>
+							<label>Director: </label>
+							<input type="text" name="director">
+							<br/>
+							<label>Duración: </label>
+							<input type="number" name="duration" value="10"> 
+							<br/>
+
+						</fieldset>
+						
+						<!--Botones de enviar y reset-->
+						<input type="submit" name="send" value="Enviar" />
+						<input type="reset" name="reset" value="Borrar" />
+
+					</form>
+				</div>
+			</div>
+		</div>
+		<div id = "footer">
+			Copyright by Watch & Comment 2015
+		</div>
+	</div>
+	
+</body>
+
+</html>
