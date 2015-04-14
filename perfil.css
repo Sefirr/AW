@@ -1,0 +1,26 @@
+#imgperfil{
+	padding-left: 5%;
+	float:left;
+	max-width: 25%;
+	min-height: 15%;
+	width: 15%;
+}
+
+#friends{
+	float:left;
+	width: 15%;
+	min-height: 15%;
+}
+#data{
+	text-align: justify;
+	padding-left: 2%;
+	width: 55%;
+	float:left;
+	min-height: 15%;
+	text-align: none;
+
+}
+h1{
+	text-align: center;
+
+}
