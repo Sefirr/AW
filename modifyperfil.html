@@ -1,0 +1,49 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> <!--ESTABLECEMOS LA CODIFICACION A UTF-8-->
+	<meta name="author" content="Watchandcoment Team"><!-- AUTORES DE LA PÁGINA -->
+	<link rel="stylesheet" type="text/css" href=""><!-- LINK AL ESTILO DE ESTA PAGINA -->
+
+	<title>Modificar usuario</title>
+</head>
+
+<body>
+
+<div id="contenedor">
+
+	<form action="register.php" method="post">
+		<input type="file" name="imagen" />
+		<label>Username</label>
+		<input type="text" name="username" value="Username">
+		<br/>
+		<label>Nombre y apellidos:</label>
+		<input type="text" name="firstname" value="Nombre">
+		<br/>
+		<input type="text" name="lastname" value="Apellidos">
+		<br/>
+		<label>E-mail:</label>
+		<input type="text" name="email" value="E-mail">
+		<br/>
+		<label>Descripcion:</label>
+		<br/>
+		<textarea name="description" rows="6" cols="70">Descripción personal</textarea>
+		<br/>
+		<!--Checkbox para los términos de uso-->
+		<select name="rol"> 
+				<option value="Registrado" selected >Registrado</option>
+				<option value="Moderador">Moderador</option> 
+				<option value="Administrador">Administrador</option>
+
+		</select>Rol de la persona
+		<br/>
+
+		<input type="submit" name="send" value="Enviar" /><!-- boton de enviar -->
+		<input type="reset" name="reset" value="Cancelar" /><!-- boton reset -->
+
+	</form>
+
+	</div>
+
+</body>
+
+</html>
