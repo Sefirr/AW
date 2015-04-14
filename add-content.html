@@ -37,6 +37,16 @@
 				<a href="list-content.html"> Eliminar serie</a> </br>
 				<a href="list-content.html"> Listar series </a> </br>
 				</br>
+				<a href="add-content.html">Añadir película</a> </br>
+				<a href="list-content.html"> Editar película</a> </br>
+				<a href="list-content.html"> Eliminar pelicula</a> </br>
+				<a href="list-content.html"> Listar películas </a> </br>
+				</br>
+				<a href="add-content.html">Añadir videojuego</a> </br>
+				<a href="list-content.html"> Editar videojuego</a> </br>
+				<a href="list-content.html"> Eliminar videojuego</a> </br>
+				<a href="list-content.html"> Listar videojuego </a> </br>
+				</br>
 				<a href="addmecha.html"> Añadir merchandising </a> </br>
 				<a href="list-content.html"> Editar merchandising</a> </br>
 				<a href="list-content.html"> Eliminar merchandising</a> </br>
@@ -59,19 +69,19 @@
 			<div id="centrado">
 				<div id="texto">
 					<form action="addcontent.php" method="post">
-						<label>Título de la serie: </label>
+						<label>Título : </label>
 						<input type="text" value="Título" name="title"><!--- AGREGAR TITULO PELICULA: agregar titulo de la pelicula.-->
 						<br/>
-						<label>Carátula de la serie: </label> 
+						<label>Carátula : </label> 
 						<input type="file" name="imagen"><!-- AGREGAR CARATULA: agregar imagen de la carátula de la pelicula. -->
 						<br/>
-						<label>Sinopsis de la serie: </label>
+						<label>Sinopsis : </label>
 						<textarea name="sinopsis">Sinopsis de la película.</textarea> <!--AGREGAR SINOPSIS: agregar sinopsis de la película. -->
 						<br/>
 						<fieldset>
-						<legend>Descripción básica de la película</legend>
+						<legend>Descripción básica </legend>
 							<label>Descripción: </label>
-							<textarea name="descripción">Descripción de la película</textarea>
+							<textarea name="descripción">Descripción </textarea>
 							<br/>
 							<label>Fecha de estreno: </label>
 							<input name="date" type="date">

@@ -129,7 +129,7 @@ nav.menu-desplegable ul li a{
 }
 
 input[type="text"].search {
-    width: 50%;
+    width: 60%;
 	margin-top: 5%;
 }
 
@@ -211,6 +211,7 @@ input[type="text"].search {
 
 #centrado {
 	text-align: center;
+	padding-bottom: 5%;
 }
 
 #texto {
