@@ -20,6 +20,7 @@ body {
 a.boton{
 	float:left;
 	color: white;
+	text-align:center;
 	line-height: 35px;
 	margin: auto auto 10px 10px;
     width:110px;
@@ -163,7 +164,7 @@ input[type="text"].search {
 	width: 70px;
 }
 
-#titulo-serie {
+#titulo-serie, #titulo-mercha {
 	margin-top: 10px;
 	font-size: 20px;
 	text-align:center;
@@ -197,6 +198,12 @@ input[type="text"].search {
 	float:left;
 	width: 50%;
 	text-align:center;
+
+}
+#precio{
+	margin-top: 20px;
+	float:right;
+	width:50%;
 
 }
 
