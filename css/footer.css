@@ -1,0 +1,28 @@
+#footer footer ul {
+	list-style:none;
+
+}
+
+
+#footer footer ul li {
+	float:left;
+	margin-left: 5%;
+	
+}
+
+#footer footer ul li a {
+	text-decoration: none;
+	display: block;
+}
+
+#footer footer #copyright {
+	display:inline-block;
+	float:right;
+}
+
+
+
+img.flecha {
+	width:17px;
+	height:17px;
+}
