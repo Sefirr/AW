@@ -4,7 +4,7 @@ define('BD_NAME', '@@BD_NAME@@');
 define('BD_USER', '@@BD_USER@@');
 define('BD_PASS', '@@BD_PASS@@');
 
-define('RAIZ_APP', 'http://localhost/');
+define('RAIZ_APP', 'http://localhost/app');
 define('INSTALADA', true );
 
 register_shutdown_function('cierraConexion');
