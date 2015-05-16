@@ -4,7 +4,8 @@
 	<head>
 		<link href="style.css" rel="stylesheet" type="text/css" />
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> <!--ESTABLECEMOS LA CODIFICACION A UTF-8-->
-
+		<link href="css/header.css" rel="stylesheet" type="text/css" />
+		<link href="css/footer.css" rel="stylesheet" type="text/css" />
 		<title>Watch & Comment</title>
 	</head>
 	<body>
