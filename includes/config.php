@@ -1,10 +1,10 @@
-<php 
-define('BD_HOST', '@@BD_HOST@@');
-define('BD_NAME', '@@BD_NAME@@');
-define('BD_USER', '@@BD_USER@@');
-define('BD_PASS', '@@BD_PASS@@');
-
-define('RAIZ_APP', 'http://localhost/app');
+<?php
+// Varios defines para los parámetros de configuración de acceso a la BD y la URL desde la que se sirve la aplicación
+define('BD_HOST', 'localhost');
+define('BD_NAME', 'aw_bd');
+define('BD_USER', 'root');
+define('BD_PASS', '12345');
+define('RAIZ_APP', 'http://localhost/AW');
 define('INSTALADA', true );
 
 register_shutdown_function('cierraConexion');
@@ -15,7 +15,7 @@ if ( $BD->connect_errno ) {
   exit();
 }
 
-if ( ! $BD->set_charset("utf8mb4")) {
+if ( ! $BD->set_charset("utf8")) {
   echo "Error al configurar la codificación de la BD: (" . $BD->errno . ") " . utf8_encode($BD->error);
   exit();
 }

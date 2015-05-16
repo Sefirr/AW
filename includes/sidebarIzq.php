@@ -1,7 +1,7 @@
 <html>
 	<head>
-		<link href="css/style.css" rel="stylesheet" type="text/css" />
-		<link href="css/menu.css" rel="stylesheet" type="text/css" />
+		<link href="style.css" rel="stylesheet" type="text/css" />
+		<link href="menu.css" rel="stylesheet" type="text/css" />
 		<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 		<script src="js/sidebarIzq.js" type="text/javascript"></script>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> <!--ESTABLECEMOS LA CODIFICACION A UTF-8-->
@@ -50,4 +50,15 @@
 					<li><a href="modifyperfil.php"> Modificar perfil </a> </li>
 				</ul>
 			</div>
-		</div></body></html>
+			<div id ="recomendaciones">
+			<h2>Recomendaciones</h2>
+				<p><em>Título recomendación</em></p>
+				<div id = "descripcion">
+					<a href="descripcion-videojuego.html"><img src="./img/dragon_age_3.jpg" id="caratula-recomendaciones"/></a>
+					<a href="descripcion-videojuego.html"><p><em>Dragon Age Inquisition</em></p></a>
+					<img src="./img/5estrellas.png" id="estrellas"/>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
