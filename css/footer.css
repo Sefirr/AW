@@ -1,0 +1,36 @@
+#footer footer ul {
+	padding: 15px 15px 0 15px;
+	list-style:none;
+
+}
+
+
+#footer footer ul li {
+	float:left;
+	margin-left: 5%;
+	text-align:center;
+	
+}
+
+#footer footer ul li:last-child {
+	float:right;
+	
+}
+
+#footer footer ul li a {
+	text-decoration: none;
+	display: block;
+	color:black;
+}
+
+#footer footer #copyright {
+	display:inline-block;
+	float:right;
+}
+
+
+
+img.flecha {
+	width:17px;
+	height:17px;
+}
