@@ -14,7 +14,7 @@
 
 
 			<!-- Menu izq -->
-			<?php include'sidebarIzq.php'; ?>
+			<?php include'includes/sidebarIzq.php'; ?>
 			<!-- CONTENIDO -->
 			<div id = "contenido">
 

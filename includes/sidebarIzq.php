@@ -1,7 +1,7 @@
 <html>
 	<head>
-		<link href="style.css" rel="stylesheet" type="text/css" />
-		<link href="menu.css" rel="stylesheet" type="text/css" />
+		<link href="css/style.css" rel="stylesheet" type="text/css" />
+		<link href="css/menu.css" rel="stylesheet" type="text/css" />
 		<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 		<script src="js/sidebarIzq.js" type="text/javascript"></script>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> <!--ESTABLECEMOS LA CODIFICACION A UTF-8-->
