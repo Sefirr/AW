@@ -29,7 +29,7 @@ if ($resultado = $BD->query($query)) {
 	$exito = true;
 	$BD->close();}
 
-return exito;
+return $exito;
 
 }
 
@@ -45,7 +45,7 @@ if ($resultado = $BD->query($query)) {
 	$exito = true;
 	$BD->close();}
 
-return exito;
+return $exito;
 
 }
 
@@ -61,7 +61,7 @@ if ($resultado = $BD->query($query)) {
 	$exito = true;
 	$BD->close();}
 
-return exito;
+return $exito;
 
 }
 
@@ -76,7 +76,7 @@ if ($resultado = $BD->query($query)) {
 	$exito = true;
 	$BD->close();}
 
-return exito;
+return $exito;
 }
 
 function modificaremail($username, $newemail){
@@ -90,7 +90,7 @@ if ($resultado = $BD->query($query)) {
 	$exito = true;
 	$BD->close();}
 
-return exito;
+return $exito;
 }
 
 function eliminausuario($username){
@@ -103,7 +103,7 @@ if ($resultado = $BD->query($query)) {
 	$exito = true;
 	$BD->close();}
 
-return exito;
+return $exito;
 
 }
 
@@ -118,7 +118,7 @@ if ($resultado = $BD->query($query)) {
 	$exito = true;
 	$BD->close();}
 
-return exito;
+return $exito;
 
 }
 
