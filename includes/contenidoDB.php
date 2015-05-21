@@ -62,6 +62,22 @@
 
 	}
 
+	function dameContent($id_content){
+
+		global $BD;	
+		
+		$query = "SELECT * FROM content WHERE id_content=$id_content";
+
+		$content = false;
+
+		if ($resultado = $BD->query($query)) {
+			$content = $resultado->fetch_assoc();
+			$resultado->close();
+		}
+		  
+		return $content;
+	}
+
 
 	function modifyContenttitulo($id_content, $newtitulo){
 	global $BD;	
@@ -201,5 +217,20 @@
 
 
 	}
+	function modifyContenttipo($id_content, $newtipo){
+	global $BD;	
 
+	$query = "UPDATE content 
+			set tipo = $newtipo 
+			where id_content =$id_content";
+
+	$exito = false;
+
+	if ($resultado = $BD->query($query)) {
+		$exito = true;
+		$resultado->close();}
+
+	return $exito;
+
+	}
 ?>
