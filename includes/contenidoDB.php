@@ -49,7 +49,7 @@
 	  			$exito =false;
 
 	  		else
-	  			$exito = $resultado->fetch_assoc()['id_user'];
+	  			$exito = $resultado->fetch_assoc()['id_content'];
 
 	  			
 	  		$resultado->close();
