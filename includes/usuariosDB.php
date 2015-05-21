@@ -27,7 +27,7 @@ $exito = false;
 
 if ($resultado = $BD->query($query)) {
 	$exito = true;
-	$BD->close();}
+	$resultado->close();}
 
 return $exito;
 
@@ -43,7 +43,7 @@ $exito = false;
 
 if ($resultado = $BD->query($query)) {
 	$exito = true;
-	$BD->close();}
+	$resultado->close();}
 
 return $exito;
 
@@ -59,7 +59,7 @@ $exito = false;
 
 if ($resultado = $BD->query($query)) {
 	$exito = true;
-	$BD->close();}
+	$resultado->close();}
 
 return $exito;
 
@@ -75,7 +75,7 @@ $exito = false;
 
 if ($resultado = $BD->query($query)) {
 	$exito = true;
-	$BD->close();}
+	$resultado->close();}
 
 return $exito;
 }
@@ -90,7 +90,7 @@ $exito = false;
 
 if ($resultado = $BD->query($query)) {
 	$exito = true;
-	$BD->close();}
+	$resultado->close();}
 
 return $exito;
 }
@@ -104,7 +104,7 @@ $exito = false;
 
 if ($resultado = $BD->query($query)) {
 	$exito = true;
-	$BD->close();}
+	$resultado->close();}
 
 return $exito;
 
@@ -119,7 +119,7 @@ $exito = false;
 
 if ($resultado = $BD->query($query)) {
 	$exito = true;
-	$BD->close();}
+	$resultado->close();}
 
 return $exito;
 

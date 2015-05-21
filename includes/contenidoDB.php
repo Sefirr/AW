@@ -8,7 +8,7 @@
 		
 		if ($resultado = $BD->query($query)) {
 			$exito = true;
-			$BD->close();
+			$resultado->close();
 		}
 		
 		return $exito;
@@ -25,7 +25,7 @@
 
 	if ($resultado = $BD->query($query)) {
 			$exito = true;
-			$BD->close();
+			$resultado->close();
 		}
 		
 		return $exito;
@@ -42,14 +42,23 @@
 	$exito = false;
 
 
-	if ($resultado = $BD->query($query)) {
-			$exito = true;
-			$BD->close();
+		if ($resultado = $BD->query($query)) {
+		
+		
+			 if($resultado->num_rows ==0)
+	  			$exito =false;
+
+	  		else
+	  			$exito = $resultado->fetch_assoc()['id_user'];
+
+	  			
+	  		$resultado->close();
 		}
 		
 		return $exito;
 
-
+	
+	return $usuario;
 
 	}
 
@@ -65,7 +74,7 @@
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		$BD->close();}
+		$resultado->close();}
 
 	return $exito;
 
@@ -81,7 +90,7 @@
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		$BD->close();}
+		$resultado->close();}
 
 	return $exito;
 
@@ -97,7 +106,7 @@
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		$BD->close();}
+		$resultado->close();}
 
 	return $exito;
 
@@ -115,7 +124,7 @@
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		$BD->close();}
+		$resultado->close();}
 
 	return $exito;
 
@@ -132,7 +141,7 @@
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		$BD->close();}
+		$resultado->close();}
 
 	return $exito;
 
@@ -150,7 +159,7 @@
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		$BD->close();}
+		$resultado->close();}
 
 	return $exito;
 
@@ -167,7 +176,7 @@
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		$BD->close();}
+		$resultado->close();}
 
 	return $exito;
 
@@ -185,7 +194,7 @@
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		$BD->close();}
+		$resultado->close();}
 
 	return $exito;
 
