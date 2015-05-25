@@ -54,7 +54,7 @@ nav.menu-cabecera ul li a{
 	width: 69%;
 	word-wrap: break-word;
     background-color: OldLace;
-	margin-top: 1%;
+	margin: 1% 0 1% 0;
 	padding: 5%;
 }
 
@@ -77,5 +77,80 @@ input[type="submit"].search {
 
 #footer footer {
 	clear:both;
-	height:40px; border-radius: 5px; background:url(../img/login/bar.png) repeat-x;
+	height:40px; 
+	border-radius: 5px; 
+	background:url(../img/login/bar.png) repeat-x;
 }
+
+ul.col { 
+	float:left;
+	width: 100%; 
+	list-style: none;
+	margin: 0 auto;
+} 
+
+ul.col li { 
+	float:left;
+	display: inline;
+	width: 30%;
+	border: 1px solid black;
+}
+
+/* FORMS */
+
+ fieldset {
+  margin-bottom: 1%;
+}
+
+ label {
+  display: inline-block;
+  line-height: 1.8;
+  margin-bottom: 10px;
+  width: 120px; /* Width of labels */
+}
+
+input.addcontent, textarea.addcontent {
+	width: 80%;
+}
+
+input.contact1 {
+	width: 40%;
+}
+
+input.contact2 {
+	width: 80%;
+}
+
+textarea.contact {
+	width: 95%;
+}
+
+textarea.register, input.register1 {
+	margin: 4px;
+	width: 100%;
+}
+
+
+textarea {
+	height: 100px;
+	resize: none;
+}
+
+.error {
+	border: 1px solid;
+	margin: 10px 0px;
+	padding:15px;
+	background-repeat: no-repeat;
+	background-position: 10px center;
+	color: #D8000C;
+	background-color: #FFBABA;
+	background-image: url('../img/error.png');
+}
+
+.error ul {
+	list-style:none;
+}
+
+ #loginBox {
+	clear:both;
+ }

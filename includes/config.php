@@ -4,7 +4,8 @@ define('BD_HOST', 'localhost');
 define('BD_NAME', 'aw_bd');
 define('BD_USER', 'root');
 define('BD_PASS', '12345');
-define('RAIZ_APP', 'http://localhost/AW');
+define('RAIZ_APP', 'http://localhost/AW/app/');
+define('RAIZ_APP_IMAGES', 'http://localhost/AW/app/img/');
 define('INSTALADA', true );
 
 register_shutdown_function('cierraConexion');
@@ -29,4 +30,5 @@ function cierraConexion() {
 }
 
 session_start();
+
 ?>

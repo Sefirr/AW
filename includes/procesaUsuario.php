@@ -1,6 +1,30 @@
 <?php
-require_once __DIR__.'/config.php';
-require_once __DIR__.'/usuariosBD.php';
+require_once __DIR__.'/usuariosDB.php';
+require_once __DIR__.'/formlib.php';
+
+function gestionarFormularioLogin() {
+  formulario('loginForm', 'generaFormularioLogin', 'procesaFormularioLogin');
+}
+
+function generaFormularioLogin($datos) { 
+  $html = <<<EOS
+	<fieldset id="body">
+		<fieldset>
+			<label for="email">Usuario</label>
+			<input type="text" name="email" id="email" />
+		</fieldset>
+		<fieldset>
+			<label for="password">Contraseña</label>
+			<input type="password" name="password" id="password" />
+		</fieldset>
+		<input type="submit" id="login" name ="loginForm" value="Enviar" />
+		<label for="checkbox"><input type="checkbox" id="checkbox" />Recuérdame</label>
+	</fieldset>
+	<span><a href="#">¿Has olvidado tu contraseña?</a></span>
+EOS;
+
+  return $html;
+}
 
 define('HTML5_EMAIL_REGEXP', '/^[a-zA-Z0-9.!#$%&\'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/');
 
@@ -8,8 +32,8 @@ function procesaFormularioLogin($params) {
   $result = array();
   $okValidacion = TRUE;
 
-  $user = isset($params['email']) ? $params['email'] : null ;
-  if ( !$user || ! preg_match(HTML5_EMAIL_REGEXP, $user) ) {
+  $email = isset($params['email']) ? $params['email'] : null ;
+  if ( !$email || ! preg_match(HTML5_EMAIL_REGEXP, $email) ) {
     $result[] = 'El nombre de usuario no es válido';
     $okValidacion = FALSE;
   }
@@ -22,7 +46,7 @@ function procesaFormularioLogin($params) {
 
   // Validamos que los datos del formulario tienen el "aspecto" que queremos
   if ( $okValidacion ) {
-    $result = login($params['email'], $params['password']);
+    $result = login($email, $pass);
   }
   return $result;
 }
@@ -36,9 +60,10 @@ function login($nombreUsuario, $password) {
     $ok = $usuario['password'] === $password;
     if ($ok) {
       // El usuario existe y la contraseña coincide ... lo guardamos en la sesión
-      $_SESSION['usuario'] = $nombreUsuario;
-      // También podemos guardar en la sesión si el usuario es ADMIN, un usuario registrado, etc.
-      $_SESSION['rol'] = $usuario['rol'];
+      $_SESSION['usuario'] = $usuario['username'];
+      // También podemos guardar en la sesión el rol del usuario 
+	  $_SESSION['rol'] = $usuario['rol'];
+	  $result = "${_SERVER['PHP_SELF']}";
     } else {
       $result[] = "Usuario o contraseña no válidos";
     }
@@ -145,6 +170,7 @@ function modifyImage($params) {
 	$result = array();
 	$okValidacion = true;
 	$user = isset($params['user']) ? $params['user'] : null;
+	$user2 = dameID($user);
 	
 	if(!$user || empty($user)) {
 		$result[] = 'El usuario no es válido.';
@@ -153,14 +179,14 @@ function modifyImage($params) {
 	
 	$imagen = isset($params['imagen']) ? $params['imagen'] : null;
 	
-	$rutaDestino="../img/";
+	$rutaDestino="../img/users/";
 	if(!empty($_FILES["imagen"]["name"])) {
 			$rutaTemporal=$_FILES["imagen"]["tmp_name"];
-			$nombreImagen=$_FILES["imagen"]["name"];
+			$nombreImagen= $_FILES["imagen"]["name"];
 			
-			$rutaDestino.= $user."/".$nombreImagen;
-			if (!file_exists("../img/"$user."/")) 
-				mkdir("../img/"$user."/", 0777, true);
+			$rutaDestino.= $nombreImagen;
+			if (!file_exists("../img/users/")) 
+				mkdir("../img/users/", 0777, true);
 			
 			move_uploaded_file($rutaTemporal,$rutaDestino);
 	} 
@@ -172,13 +198,55 @@ function modifyImage($params) {
 	return $result;
 }
 
+function gestionarFormularioRegistro() {
+  formulario('registro', 'generaFormularioRegistro', 'addUser', null, null, 'multipart/form-data');
+}
+
+function generaFormularioRegistro($datos) {
+
+	$html = <<<EOS
+			<input type="file" name="imagen" />
+			<br/>
+			<label>Username</label>
+			<input type="text" class="register1" name="user" placeholder="Username">
+			<br/>
+			<label>Nombre y apellidos:</label>
+			<br/>
+			<input type="text" class="register1" name="nombre" placeholder="Nombre">
+			<br/>
+			<input type="text" class="register1" name="apellidos" placeholder="Apellidos">
+			</br>
+			<label> Contraseña </label>
+			<input type="password" class="register1" name="password" placeholder="Contraseña">
+			<br/> 
+			<label>E-mail:</label>
+			<input type="text" class="register1" name="email" placeholder="E-mail">
+			<br/>
+			<label>Descripcion:</label>
+			<br/>
+			<textarea class="register" name="descripcion" rows="6" cols="70" placeholder="Descripción del usuario"></textarea>
+			<br/>
+			<!--Checkbox para los términos de uso-->
+			<input type="checkbox" name="terms" value="1">Marque esta casilla para verificar que ha leído nuestros <a href="info-privacy.php">términos y condiciones del servicio</a>
+			<br/>
+
+			<input type="submit" name="registro" value="Enviar" /><!-- boton de enviar -->
+			<input type="reset" name="reset" value="Cancelar" /><!-- boton reset -->
+EOS;
+
+  return $html;
+
+
+}
+
 function addUser($params) {
 	$result = array();
 	$okValidacion = true;
 	
 	$user = isset($params['user']) ? strtolower($params['user']) : null;
-	$id_user = dameID($user);
-	if(!$user || empty($user) || $id_user == false ) {
+	$user2 = dameID($user);
+	
+	if(!$user || empty($user) || $user2 == true ) {
 		$result[] = 'El usuario no es válido.';
 		$okValidacion = false;
 	}
@@ -215,20 +283,32 @@ function addUser($params) {
 	
 	$imagen = isset($params['imagen']) ? $params['imagen'] : null;
 	
-	$rutaDestino="../img/";
+	$rutaDestino="img/users/";
 	if(!empty($_FILES["imagen"]["name"])) {
 		$rutaTemporal=$_FILES["imagen"]["tmp_name"];
 		$nombreImagen=$_FILES["imagen"]["name"];
 		
-		$rutaDestino.= $user."/".$nombreImagen;
-		if (!file_exists("../img/"$user."/")) 
-			mkdir("../img/"$user."/", 0777, true);
+		$rutaDestino.= $nombreImagen;
+		if (!file_exists("../img/users/".$user2."/")) 
+			mkdir("../img/users/", 0777, true);
 		
-		move_uploaded_file($rutaTemporal,$rutaDestino);
-	} 
+		move_uploaded_file($rutaTemporal,"../".$rutaDestino);
+	} else {
+		$result[] = 'Debe subirse una imagen.';
+		$okValidacion = false;
+	}
+	
+	$terms = isset($params['terms']) ?  $params['terms']  : null ;
+	
+	if(!$terms || $terms != "1") {
+		$result[] = 'Deben cumplirse los términos y condiciones de uso para registrarse.';
+		$okValidacion = false;
+	}
+	
 	
 	if($okValidacion) {
 		$result = addusers($user, $pass, $nombre, $apellidos, $email, $descripcion, $rutaDestino);
+		$result="${_SERVER['PHP_SELF']}";
 	}
 	
 	return $result;
