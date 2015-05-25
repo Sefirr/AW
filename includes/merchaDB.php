@@ -177,7 +177,7 @@ function modifyMerchaprecio($id_merchandising, $newprecio){
 
 }
 
-function modifyMerchavaloracion($id_merchandising, $newvaloracion´){
+function modifyMerchavaloracion($id_merchandising, $newvaloracion){
 	global $DB;
 
 	$query="UPDATE merchandising
