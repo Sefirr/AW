@@ -2,17 +2,6 @@
 	require_once __DIR__.'/config.php';
 	require_once __DIR__.'/procesaUsuario.php';
 ?>
-<!DOCTYPE HTML>
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> <!--ESTABLECEMOS LA CODIFICACION A UTF-8-->
-	<meta name="author" content="Watchandcoment Team"><!-- AUTORES DE LA PÁGINA -->
-	<link rel="stylesheet" type="text/css" href="<?php echo RAIZ_APP; ?>css/login.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
-	<link rel="stylesheet" type="text/css" href="<?php echo RAIZ_APP; ?>css/header.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
-	<link rel="stylesheet" type="text/css" href="<?php echo RAIZ_APP; ?>css/style.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
-
-</head>
-<body>
 <div id="cabecera">
 	<a href ="<?php echo RAIZ_APP; ?>index.php"><img src= "<?php echo RAIZ_APP; ?>/img/logo.png" id="logo"/></a>
 	<div id="LoginAndRegister">
@@ -43,5 +32,3 @@
 	</nav>
 
 </div> 
-</body>
-</html>
