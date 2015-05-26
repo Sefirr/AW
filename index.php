@@ -6,6 +6,7 @@
 		<link href="css/header.css" rel="stylesheet" type="text/css" />
 		<link href="css/menu.css" rel="stylesheet" type="text/css" />
 		<link href="css/footer.css" rel="stylesheet" type="text/css" />
+		<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> <!--ESTABLECEMOS LA CODIFICACION A UTF-8-->
 
 		<title>Watch & Comment</title>
