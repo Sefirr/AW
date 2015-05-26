@@ -22,7 +22,7 @@
 	<?php
 		} else {
 	?>
-		<a href="#" id="loginButton" class ="boton">Login</a>
+		<a id="loginButton" class ="boton">Login</a>
 	<?php } ?>
 		<div id="loginButton">
 		<a class="boton" href="<?php echo RAIZ_APP; ?>includes/register.php">Registro</a></div>
