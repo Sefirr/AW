@@ -24,12 +24,12 @@ a.boton, #loginButton {
 #loginForm {
 	float:right;
 	text-align: center;
-	position: relative;
+	position: absolute;
     width:248px; 
     border:1px solid #899caa;
-    margin-top:-1px;
     background:#d2e0ea;
     padding:6px;
+	right:0%;
 }
 
 #loginForm fieldset {
