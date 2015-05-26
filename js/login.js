@@ -4,9 +4,9 @@ $(function() {
     var button = $('#loginButton');
     var box = $('#loginBox');
     var form = $('#loginForm');
-	box.hide();
+	form.hide();
     button.mouseup(function(login) {
-        box.toggle();
+        form.toggle();
         button.toggleClass('active');
     });
     
