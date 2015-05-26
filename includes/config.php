@@ -2,8 +2,8 @@
 // Varios defines para los parámetros de configuración de acceso a la BD y la URL desde la que se sirve la aplicación
 define('BD_HOST', 'localhost');
 define('BD_NAME', 'aw_bd');
-define('BD_USER', 'root');
-define('BD_PASS', '12345');
+define('BD_USER', 'aw_root');
+define('BD_PASS', 'aplicacionesweb');
 define('RAIZ_APP', 'http://localhost/AW/app/');
 define('RAIZ_APP_IMAGES', 'http://localhost/AW/app/img/');
 define('INSTALADA', true );
