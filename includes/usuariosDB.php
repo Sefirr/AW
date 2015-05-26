@@ -65,7 +65,7 @@ return $exito;
 
 }
 
-function modificardescripcion($username, $newdescription)
+function modificardescripcion($username, $newdescription){
 global $BD;	
 $query = "UPDATE users 
 		set descripcion = $newdescription 
