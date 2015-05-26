@@ -2,12 +2,26 @@
 
 <html>
 	<head>
-		<link href="css/style.css" rel="stylesheet" type="text/css" />
-		<link href="css/header.css" rel="stylesheet" type="text/css" />
-		<link href="css/menu.css" rel="stylesheet" type="text/css" />
-		<link href="css/footer.css" rel="stylesheet" type="text/css" />
-		<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+	<?php	require_once __DIR__.'/includes/config.php'; ?>
+		
+	<!-- -----------------------------META REGION------------------------------ -->
+
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> <!--ESTABLECEMOS LA CODIFICACION A UTF-8-->
+		<meta name="author" content="Watchandcoment Team"><!-- AUTORES DE LA PÁGINA -->
+
+	<!-- ----------------------------- END META REGION------------------------------ -->
+
+
+	<!-- -----------------------------LINKS REGION------------------------------ -->
+		<link rel="shortcut icon" type="image/x-icon" href="<?php echo RAIZ_APP; ?>img/favicon.ico"> <!-- ESTABLECIMIENTO DEL FAVICON -->
+
+		<link rel="stylesheet" type="text/css" href="<?php echo RAIZ_APP; ?>css/login.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
+		<link rel="stylesheet" type="text/css" href="<?php echo RAIZ_APP; ?>css/header.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
+		<link rel="stylesheet" type="text/css" href="<?php echo RAIZ_APP; ?>css/style.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
+		<link rel="stylesheet" type="text/css" href="<?php echo RAIZ_APP; ?>css/menu.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
+		<link rel="stylesheet" type="text/css" href="<?php echo RAIZ_APP; ?>css/footer.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
+
+	<!-- -----------------------------END LINKS REGION------------------------------ -->
 
 		<title>Watch & Comment</title>
 	</head>
