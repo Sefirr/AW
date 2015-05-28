@@ -21,7 +21,7 @@
 			require_once 'login.php';
 		}			
 	?>
-	<nav class="menu-cabecera">
+	<nav id="menu-cabecera">
 		<ul>
 			<li><a href="<?php echo RAIZ_APP; ?>index.php">Home</a></li>
 			<li><a href="<?php echo RAIZ_APP; ?>includes/peliculas.php">Películas</li>

@@ -23,3 +23,49 @@ a.boton{
 	background-image: url("../img/boton.png");
 	text-decoration:none;
 }
+
+#cabecera {
+}
+
+#menu-cabecera{
+	clear:both;
+	height:30px;
+	background-color: rgba(51, 51, 51, 1);
+	padding: 5px;
+	margin: 10px auto auto auto;
+	text-align: center;
+
+}
+
+#menu-cabecera ul {
+	margin : 0 auto;
+	width : 100%;
+	list-style : none;
+}
+
+#menu-cabecera ul li {
+	float : left;
+	margin-left: 5%;
+}
+
+
+
+#menu-cabecera ul li a{
+
+	display : block;
+	color : white;
+	text-decoration:none;
+	padding: 4px;
+
+}
+
+#menu-cabecera ul li:hover a{
+
+
+	background-color: red;
+	color:white;
+	border-radius: 2px;
+	border-color: yellow;
+
+
+}
