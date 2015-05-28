@@ -13,8 +13,8 @@
 	?>
 		<a id="loginButton" class ="boton">Login</a>
 	<?php } ?>
-		<div id="loginButton">
-		<a class="boton" href="<?php echo RAIZ_APP; ?>includes/register.php">Registro</a></div>
+		
+		<a class="boton" href="<?php echo RAIZ_APP; ?>includes/register.php">Registro</a>
 	</div>
 	<?php 
 		if(!isset($_SESSION['usuario'])) {
