@@ -5,7 +5,6 @@ define('BD_NAME', 'aw_bd');
 define('BD_USER', 'aw_root');
 define('BD_PASS', 'aplicacionesweb');
 define('RAIZ_APP', 'http://localhost/app/');
-define('RAIZ_APP_IMAGES', 'http://localhost/AW/app/img/');
 define('INSTALADA', true );
 
 register_shutdown_function('cierraConexion');

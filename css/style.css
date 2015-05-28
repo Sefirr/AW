@@ -11,7 +11,8 @@ body {
 	position:relative;
 }
 
-
+#cabecera {
+}
 
 #menus-izq {
 	word-wrap: break-word;
@@ -82,17 +83,17 @@ ul.col li {
 input.addcontent, textarea.addcontent {
 	width: 80%;
 }
-
+/**/
 input.contact1 {
-	width: 40%;
+	width: 35%;
 }
 
 input.contact2 {
-	width: 80%;
+	width: 71%;
 }
-
+/**/
 textarea.contact {
-	width: 95%;
+	width: 85%;
 }
 
 textarea.register, input.register1 {
@@ -120,3 +121,15 @@ textarea {
 .error ul {
 	list-style:none;
 }
+/**/
+h2{
+	font-size : 30px;
+	padding : 40px;
+}
+
+#icono{
+	float:right;
+	width:20%;
+	height:20%;
+}
+/**/
