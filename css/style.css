@@ -46,12 +46,6 @@ input[type="submit"].search {
 }
 
 
-#footer footer {
-	clear:both;
-	height:40px; 
-	border-radius: 5px; 
-	background:url(../img/login/bar.png) repeat-x;
-}
 
 ul.col { 
 	float:left;
