@@ -5,7 +5,7 @@ function dameUsuario($nombreUsuario) {
 	// Usar global UNICAMENTE para esta variable
 	global $BD;
 
-	$query = "SELECT * FROM Users WHERE email='".$BD->real_escape_string($nombreUsuario)."'";
+	$query = "SELECT * FROM users WHERE email='".$BD->real_escape_string($nombreUsuario)."'";
 	$usuario = false;
 	if ($resultado = $BD->query($query)) {
 		$usuario = $resultado->fetch_assoc();
