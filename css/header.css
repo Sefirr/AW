@@ -12,7 +12,6 @@ position: relative;
 }
 
 a.boton{
-/*float:left;*/
 	float:right;
 	color: white;
 	text-align:center;
@@ -30,25 +29,27 @@ a.boton{
 #menu-cabecera{
 	clear:both;
 	height:30px;
-	background-color: rgba(51, 51, 51, 1);
+	/*background-color: rgba(51, 51, 51, 1);*/
 	padding: 5px;
 	margin: 10px auto auto auto;
 	text-align: center;
+	background:url(../img/login/bar.png) repeat-x;
+
 
 }
+
+
 
 #menu-cabecera ul li:first-child{
 	list-style: none;
 	background: transparent;
-
-
 }
 
 
 #menu-cabecera ul {
 	margin : 0 auto;
 	width : 100%;
-	list-style : url("../img/error.png");
+	list-style : square url("../img/error.png");
 }
 
 #menu-cabecera ul li {
@@ -61,9 +62,10 @@ a.boton{
 #menu-cabecera ul li a{
 
 	display : block;
-	color : white;
+	color: black;
 	text-decoration:none;
 	padding: 4px;
+	text-transform: uppercase;
 
 }
 
