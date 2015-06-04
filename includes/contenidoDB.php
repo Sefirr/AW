@@ -77,6 +77,21 @@
 		  
 		return $content;
 	}
+function dameContenttipo($tipo){
+
+		global $BD;	
+		
+		$query = "SELECT * FROM content WHERE tipo=$tipo";
+
+		$content = false;
+
+		if ($resultado = $BD->query($query)) {
+			$content = $resultado->fetch_assoc();
+			$resultado->close();
+		}
+		  
+		return $content;
+	}
 
 
 	function modifyContenttitulo($id_content, $newtitulo){
