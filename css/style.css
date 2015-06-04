@@ -4,6 +4,9 @@ body {
 	font-size :62.5%;
 	margin:1%;
 	background:url("../img/fondo.jpg");
+	background:url("../img/fondo.jpg");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
 }
 
 #contenedor {
