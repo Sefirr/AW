@@ -48,7 +48,7 @@
 							<br/>
 							<!-- Caja de texto para su correo -->
 							<label>E-mail de contacto:</label>
-							<input type="text" class="contact2" name="email" value="E-mail" id="email"/> <img src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgemail"/>  
+							<input type="text" class="contact2" name="email" value="E-mail" id="email2"/> <img src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgemail"/>  
 							<br/>
 					</fieldset><!--FIN area de informacion del cliente -->
 					<fieldset>

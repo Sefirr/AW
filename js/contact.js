@@ -1,6 +1,6 @@
 $(document).ready(function(){
-	$("#email").change(function(){
-	if ( correoValido($("#email").val() ) ) {
+	$("#email2").change(function(){
+	if ( correoValido($("#email2").val() ) ) {
 	// Ocultar icono rojo
 	$("#imgemail").hide();
 	$("#imgemail")[0].src="./img/form/ok.png";
@@ -80,7 +80,7 @@ $(document).ready(function(){
 	});
 
 	$("#terms").click(function(){
-	if (textovalido($("#lastname").val()) && textovalido($("#name").val() ) && correoValido($("#email").val() )){
+	if (textovalido($("#lastname").val()) && textovalido($("#name").val() ) && correoValido($("#email2").val() )){
 
 		$("#enviar").show();
 
