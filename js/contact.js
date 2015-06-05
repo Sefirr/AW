@@ -75,21 +75,19 @@ $(document).ready(function(){
 
 	});
 	$("#borrar").click(function(){
-		$("imglastname").hide();
-		$("imglastname")[0].src="./img/form/no.png";
-		$("imglastname").show();
-		$("imgname").hide();
-		$("imgname")[0].src="./img/form/no.png";
-		$("imglastname").show();
-		$("#imgemail").hide();
-		$("#imgemail")[0].src="./img/form/no.png";
-		$("#imgemail").show();
-
 		$("#enviar").hide();
 
 	});
 	
-	enviando("#email", "#name", "#lastname");
+	if (textovalido($("#lastname").val()) && textovalido($("#name").val() ) && correoValido($("#email").val() )){
+
+		$("#enviar").show();
+
+	}else{
+
+		$("#enviar").hide();
+
+}
 
 });
 
@@ -110,22 +108,5 @@ expr = /^([a-z ñáéíóú]{2,60})$/i;
         return false;
     else
     	return true;
-
-}
-
-function enviando(email, nombre, apellido){
-
-
-if (textovalido(nombre) && textovalido(apellido) && correoValido(email)){
-
-	$("#enviar").show();
-
-}else{
-
-	$("#enviar").hide();
-
-}
-
-
 
 }
