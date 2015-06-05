@@ -21,7 +21,7 @@ $(document).ready(function(){
 	////////////////////////// Verificacion del nombre //////////////////////////
 	$("#name").change(function(){ 
 
-		if(textovalido($("#name"))){
+		if ( textovalido($("#name").val() ) ) {
 		//Ocultar iconos
 		$("#imgname").hide();
 		$("#imgname")[0].src="./img/form/ok.png";
@@ -49,17 +49,17 @@ $(document).ready(function(){
 
 	////////////////////////// Verificacion del apellido //////////////////////////
 	$("#lastname").change(function(){
-		if(textovalido($("#lastname"))){
+		if(textovalido($("#lastname").val() ) ){
 		//Ocultar iconos
 		$("#imglastname").hide();
-		$("#imglastname")[0].src="../img/form/ok.png";
+		$("#imglastname")[0].src="./img/form/ok.png";
 
 		//Mostrar Icono verde
 		$("#imglastname").show();
 		}else{
 		//Ocultar icono verde
 		$("imglastname").hide();
-		$("imglastname")[0].src="../img/form/no.png";
+		$("imglastname")[0].src="./img/form/no.png";
 
 
 
@@ -78,6 +78,7 @@ $(document).ready(function(){
 
 });
 
+
 function correoValido(id){
 
 expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -89,8 +90,8 @@ expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
 function textovalido(id){
 
-expr= /^[A-Z]{1,2}\s\d{4}\s([B-D]|[F-H]|[J-N]|[P-T]|[V-Z]){3}$/;
-	if ( !expr.test(id) )
+expr = /^([a-z ñáéíóú]{2,60})$/i;
+    if ( !expr.test(id) )
         return false;
     else
     	return true;
