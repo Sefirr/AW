@@ -77,12 +77,8 @@ $(document).ready(function(){
 	});
 
 	$("#terms").click(function(){
-	if (textovalido($("#lastname").val()) && textovalido($("#name").val() ) && correoValido($("#email2").val())){
-		if($("#terms").is(":checked"))
-			$("#enviar").show();
-		else {
-			$("#enviar").hide();
-		}
+	if (textovalido($("#lastname").val()) && textovalido($("#name").val() ) && correoValido($("#email2").val()) && ($("#terms").is(":checked"))){
+		$("#enviar").show();
 	}else{
 		$("#terms").prop("checked",false);
 		$("#enviar").hide();
