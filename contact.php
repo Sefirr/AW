@@ -2,7 +2,7 @@
 
 <html>
 	<head>
-		<?php	require_once __DIR__.'/config.php'; ?>
+		<?php	require_once __DIR__.'/includes/config.php'; ?>
 		
 	<!-- -----------------------------META REGION------------------------------ -->
 
@@ -20,9 +20,9 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo RAIZ_APP; ?>css/style.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
 		<link rel="stylesheet" type="text/css" href="<?php echo RAIZ_APP; ?>css/menu.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
 		<link rel="stylesheet" type="text/css" href="<?php echo RAIZ_APP; ?>css/footer.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
-		<script src="<?php echo RAIZ_APP; ?>includes/jquery-1.9.1.min.js" type="text/javascript"></script>
+		<script src="<?php echo RAIZ_APP; ?>js/jquery-1.9.1.min.js" type="text/javascript"></script>
 		<script src="<?php echo RAIZ_APP; ?>js/sidebarIzq.js" type="text/javascript"></script>
-		<script src="<?php echo RAIZ_APP; ?>includes/contact.js" type="text/javascript"></script>
+		<script src="<?php echo RAIZ_APP; ?>js/contact.js" type="text/javascript"></script>
 
 
 	<!-- -----------------------------END LINKS REGION------------------------------ -->
