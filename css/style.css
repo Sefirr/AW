@@ -129,4 +129,57 @@ h2{
 	width:20%;
 	height:20%;
 }
+#centrado {
+	text-align: center;
+	padding-bottom: 5%;
+}
+#detalle{/*etiqueta para los bloques que forman las series, en pequeño*/
+	border: 1px solid blue;
+	display:inline-block;
+	padding: 30px;
+	text-align:center;
+	margin-top: 2%;
+	margin-right: 2%;
+	border-radius: 5px;
+	background-color: #405656;
+	-moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+	-webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+	border-radius:5px;
+}
+
+nav.menu-desplegable{
+	clear:both;
+	height:30px;
+	/*background-color: rgba(51, 51, 51, 1);*/
+	background-color: #405656;
+	padding: 5px;
+	/*margin: 10px auto auto auto;*/
+	margin-top: -2%;
+}
+nav.menu-desplegable ul {
+	margin : 0 auto;
+	width : 100%;
+	list-style : none;
+}
+
+nav.menu-desplegable ul li {
+	float : left;
+	margin-left: 5%;
+}
+
+nav.menu-desplegable ul li a{
+
+	display : block;
+	font-size : 14px;
+	text-align : center;
+	color : white;
+
+}
+#caratula{
+	margin: 0 auto;
+	height: 170px;
+	width: 150px;
+
+}
 /**/

@@ -29,6 +29,68 @@
 					}
 				
 				?>
+				
+				<div id ="centrado">
+					<nav class="menu-desplegable">
+					<ul>
+						<li><a href="#">ÚLTIMAS</a></li>
+						<li><a href="#">MÁS VALORADAS</a></li>
+						<li><a href="#">ALFABETICAMENTE</a></li>
+					</ul>
+					</nav>
+					<div id = "detalle">		
+						<a href="peliculas.php"><img src="../img/peliculas/laIslaMinima.png" id="caratula"/></a>
+						<a href="peliculas.php"><p><em>La isla mínima</em></p></a>
+						<img src="../img/3estrellas.png" id="estrellas"/>
+					</div>
+					
+					<div id = "detalle">		
+						<a href="peliculas.php"><img src="../img/peliculas/boyhood.png" id="caratula"/></a>
+						<a href="peliculas.php"><p><em>Boyhood</em></p></a>
+						<img src="../img/2estrellas.png" id="estrellas"/>
+					</div>
+
+					<div id = "detalle">		
+						<a href="peliculas.php"><img src="../img/peliculas/malefica.png" id="caratula"/></a>
+						<a href="peliculas.php"><p><em>Maléfica</em></p></a>
+						<img src="../img/5estrellas.png" id="estrellas"/>
+					</div>
+				
+					<div id = "detalle">		
+						<a href="peliculas.php"><img src="../img/peliculas/laTeoriaDelTodo.png" id="caratula"/></a>
+						<a href="peliculas.php"><p><em>La teoría del todo</em></p></a>
+						<img src="../img/4estrellas.png" id="estrellas"/>
+					</div>
+			
+					<div id = "detalle">		
+						<a href="peliculas.php"><img src="../img/peliculas/musarañas.png" id="caratula"/></a>
+						<a href="peliculas.php"><p><em>Musarañas</em></p></a>
+						<img src="../img/2estrellas.png" id="estrellas"/>
+					</div>
+				
+					<div id = "detalle">		
+						<a href="peliculas.php"><img src="../img/peliculas/dejameEntrar.png" id="caratula"/></a>
+						<a href="peliculas.php"><p><em>Déjame entrar</em></p></a>
+						<img src="../img/5estrellas.png" id="estrellas"/>
+					</div>
+				
+					<div id = "detalle">		
+						<a href="peliculas.php"><img src="../img/peliculas/noe.png" id="caratula"/></a>
+						<a href="peliculas.php"><p><em>Noe</em></p></a>
+						<img src="../img/2estrellas.png" id="estrellas"/>
+					</div>
+					
+					<div id = "detalle">		
+						<a href="peliculas.php"><img src="../img/peliculas/rec4.png" id="caratula"/></a>
+						<a href="peliculas.php"><p><em>Rec 4</em></p></a>
+						<img src="../img/4estrellas.png" id="estrellas"/>
+					</div>
+					<div id = "detalle">		
+						<a href="peliculas.php"><img src="../img/peliculas/rec4.png" id="caratula"/></a>
+						<a href="peliculas.php"><p><em>Rec 4</em></p></a>
+						<img src="../img/4estrellas.png" id="estrellas"/>
+					</div>
+				</div>		
 			</div>	
 			<!-- INCLUDE FOOTER -->
 			<?php include __DIR__ .'/footer.php'; ?>
