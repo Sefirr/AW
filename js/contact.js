@@ -74,10 +74,17 @@ $(document).ready(function(){
 
 
 	});
-	$("#borrar").onclick(function(){
+	$("#borrar").click(function(){
 		$("imglastname").hide();
+		$("imglastname")[0].src="./img/form/no.png";
+		$("imglastname").show();
 		$("imgname").hide();
+		$("imgname")[0].src="./img/form/no.png";
+		$("imglastname").show();
 		$("#imgemail").hide();
+		$("#imgemail")[0].src="./img/form/no.png";
+		$("#imgemail").show();
+
 		$("#enviar").hide();
 
 	});
