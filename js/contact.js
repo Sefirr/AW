@@ -1,22 +1,22 @@
 $(document).ready(function(){
 	$("#email2").change(function(){
-	if ( correoValido($("#email2").val() ) ) {
-	// Ocultar icono rojo
-	$("#imgemail").hide();
-	$("#imgemail")[0].src="./img/form/ok.png";
-	// Mostrar icono verde
-	$("#imgemail").show();
-	} else {
-	// Ocultar icono verde
+		if ( correoValido($("#email2").val() ) ) {
+		// Ocultar icono rojo
+		$("#imgemail").hide();
+		$("#imgemail")[0].src="./img/form/ok.png";
+		// Mostrar icono verde
+		$("#imgemail").show();
+		} else {
+		// Ocultar icono verde
 
-	$("#imgemail").hide();
+		$("#imgemail").hide();
 
-	$("#imgemail")[0].src="./img/form/no.png";
+		$("#imgemail")[0].src="./img/form/no.png";
 
-	// Mostrar icono rojo
+		// Mostrar icono rojo
 
-	$("#imgemail").show();
-	}
+		$("#imgemail").show();
+		}
 	});
 	////////////////////////// Verificacion del nombre //////////////////////////
 	$("#name").change(function(){ 
@@ -66,12 +66,9 @@ $(document).ready(function(){
 		//Mostrar icono rojo
 
 		$("#imglastname").show();
+		
 
-		}
-
-
-			
-
+		} 
 
 	});
 	$("#borrar").click(function(){
@@ -80,19 +77,20 @@ $(document).ready(function(){
 	});
 
 	$("#terms").click(function(){
-	if (textovalido($("#lastname").val()) && textovalido($("#name").val() ) && correoValido($("#email2").val() )){
-
-		$("#enviar").show();
-
+	if (textovalido($("#lastname").val()) && textovalido($("#name").val() ) && correoValido($("#email2").val())){
+		if($("#terms").is(":checked"))
+			$("#enviar").show();
+		else {
+			$("#enviar").hide();
+		}
 	}else{
-		$("#terms").prop("checked", false);
+		$("#terms").prop("checked",false);
 		$("#enviar").hide();
 
 	}
 	});
 
 });
-
 
 function correoValido(id){
 
