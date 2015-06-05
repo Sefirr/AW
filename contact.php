@@ -43,12 +43,12 @@
 					<legend>Información del contactante </legend>
 							<!-- Introducción del nombre y sus apellidos -->
 							<label>Introduce tu nombre: </label>
-							<input type="text" class="contact1" name="firstname" value="Nombre" id="name"/> <img src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgname"/>
-							<input type="text" class="contact1" name="lastname" value="Apellidos" id="lastname"/> <img src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imglastname"/>
+							<input type="text" class="contact1" name="firstname" placeholder="Nombre" id="name"/> <img src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgname"/>
+							<input type="text" class="contact1" name="lastname" placeholder="Apellidos" id="lastname"/> <img src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imglastname"/>
 							<br/>
 							<!-- Caja de texto para su correo -->
 							<label>E-mail de contacto:</label>
-							<input type="text" class="contact2" name="email" value="E-mail" id="email2"/> <img src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgemail"/>  
+							<input type="text" class="contact2" name="email" placeholder="E-mail" id="email2"/> <img src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgemail"/>  
 							<br/>
 					</fieldset><!--FIN area de informacion del cliente -->
 					<fieldset>
