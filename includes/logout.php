@@ -1,5 +1,5 @@
 <?php
-  require_once __DIR__.'\config.php';
+  require_once __DIR__.'/config.php';
   
   // Tenemos que asegurarnos de participar en la sessión actual
   session_start();
