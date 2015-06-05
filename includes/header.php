@@ -14,7 +14,7 @@
 		<a id="loginButton" class ="boton">Login</a>
 	<?php } ?>
 		
-		<a class="boton" href="<?php echo RAIZ_APP; ?>includes/register.php">Registro</a>
+		<a class="boton" href="<?php echo RAIZ_APP; ?>register.php">Registro</a>
 	</div>
 	<?php 
 		if(!isset($_SESSION['usuario'])) {
@@ -24,10 +24,10 @@
 	<nav id="menu-cabecera">
 		<ul>
 			<li><a href="<?php echo RAIZ_APP; ?>index.php">Home</a></li>
-			<li><a href="<?php echo RAIZ_APP; ?>includes/peliculas.php">Películas</a></li>
-			<li><a href="<?php echo RAIZ_APP; ?>includes/series.php">Series</a></li>
-			<li><a href="<?php echo RAIZ_APP; ?>includes/videojuegos.php">Videojuegos</a></li>
-			<li><a href="<?php echo RAIZ_APP; ?>includes/contact.php">Contacto</a></li>
+			<li><a href="<?php echo RAIZ_APP; ?>peliculas.php">Películas</a></li>
+			<li><a href="<?php echo RAIZ_APP; ?>series.php">Series</a></li>
+			<li><a href="<?php echo RAIZ_APP; ?>videojuegos.php">Videojuegos</a></li>
+			<li><a href="<?php echo RAIZ_APP; ?>contact.php">Contacto</a></li>
 		</ul>
 	</nav>
 
