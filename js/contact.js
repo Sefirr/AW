@@ -30,14 +30,14 @@ $(document).ready(function(){
 		$("#imgname").show();
 		}else{
 		//Ocultar icono verde
-		$("imgname").hide();
-		$("imgname")[0].src="./img/form/no.png";
+		$("#imgname").hide();
+		$("#imgname")[0].src="./img/form/no.png";
 
 
 
 		//Mostrar icono rojo
 
-		$("imgname").show();
+		$("#imgname").show();
 
 		}
 
@@ -58,14 +58,14 @@ $(document).ready(function(){
 		$("#imglastname").show();
 		}else{
 		//Ocultar icono verde
-		$("imglastname").hide();
-		$("imglastname")[0].src="./img/form/no.png";
+		$("#imglastname").hide();
+		$("#imglastname")[0].src="./img/form/no.png";
 
 
 
 		//Mostrar icono rojo
 
-		$("imglastname").show();
+		$("#imglastname").show();
 
 		}
 
@@ -78,16 +78,18 @@ $(document).ready(function(){
 		$("#enviar").hide();
 
 	});
-	
+
+	$("#terms").click(function(){
 	if (textovalido($("#lastname").val()) && textovalido($("#name").val() ) && correoValido($("#email").val() )){
 
 		$("#enviar").show();
 
 	}else{
-
+		$("#terms").prop("checked", false);
 		$("#enviar").hide();
 
-}
+	}
+	});
 
 });
 

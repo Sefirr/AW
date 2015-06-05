@@ -74,7 +74,7 @@
 						<!-- Enlace para el documento con los términos de uso -->
 						<a href="info-privacy.php">Términos de uso</a>
 						<!--Checkbox para los términos de uso-->
-						<input type="checkbox" name="terms">Marque esta casilla para verificar que ha leído nuestros términos y condiciones del servicio
+						<input type="checkbox" name="terms" id="terms">Marque esta casilla para verificar que ha leído nuestros términos y condiciones del servicio
 						<br/>
 						<!--Area de texto para introducir la consulta-->
 						<textarea class="contact" name="content" rows="6" cols="70">Introduce tu consulta</textarea>
