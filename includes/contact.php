@@ -20,8 +20,9 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo RAIZ_APP; ?>css/style.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
 		<link rel="stylesheet" type="text/css" href="<?php echo RAIZ_APP; ?>css/menu.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
 		<link rel="stylesheet" type="text/css" href="<?php echo RAIZ_APP; ?>css/footer.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
-		<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+		<script src="<?php echo RAIZ_APP; ?>includes/jquery-1.9.1.min.js" type="text/javascript"></script>
 		<script src="<?php echo RAIZ_APP; ?>js/sidebarIzq.js" type="text/javascript"></script>
+		<script src="<?php echo RAIZ_APP; ?>includes/contact.js" type="text/javascript"></script>
 
 
 	<!-- -----------------------------END LINKS REGION------------------------------ -->
@@ -42,12 +43,12 @@
 					<legend>Información del contactante </legend>
 							<!-- Introducción del nombre y sus apellidos -->
 							<label>Introduce tu nombre: </label>
-							<input type="text" class="contact1" name="firstname" value="Nombre">
-							<input type="text" class="contact1" name="lastname" value="Apellidos">
+							<input type="text" class="contact1" name="firstname" value="Nombre" id="name"> <img src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgname"/>
+							<input type="text" class="contact1" name="lastname" value="Apellidos" id="lastname"> <img src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imglastname"/>
 							<br/>
 							<!-- Caja de texto para su correo -->
 							<label>E-mail de contacto:</label>
-							<input type="text" class="contact2" name="email" value="E-mail">
+							<input type="text" class="contact2" name="email" value="E-mail" id="email"/> <img src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgemail"/>  
 							<br/>
 					</fieldset><!--FIN area de informacion del cliente -->
 					<fieldset>
