@@ -74,7 +74,15 @@ $(document).ready(function(){
 
 
 	});
+	$("#borrar").onclick(function(){
+		$("imglastname").hide();
+		$("imgname").hide();
+		$("#imgemail").hide();
+		$("#enviar").hide();
+
+	});
 	
+	enviando("#email", "#name", "#lastname");
 
 });
 
@@ -95,5 +103,22 @@ expr = /^([a-z ñáéíóú]{2,60})$/i;
         return false;
     else
     	return true;
+
+}
+
+function enviando(email, nombre, apellido){
+
+
+if (textovalido(nombre) && textovalido(apellido) && correoValido(email)){
+
+	$("#enviar").show();
+
+}else{
+
+	$("#enviar").hide();
+
+}
+
+
 
 }

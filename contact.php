@@ -80,8 +80,8 @@
 						<textarea class="contact" name="content" rows="6" cols="70">Introduce tu consulta</textarea>
 						<br/>
 						<!--Botones de enviar y reset-->
-						<input type="submit" name="send" value="Enviar" />
-						<input type="reset" name="reset" value="Borrar" />
+						<input type="submit" name="send" value="Enviar" id="enviar" />
+						<input type="reset" name="reset" value="Borrar" id="borrar"/>
 
 				</form>
 			</div>	
