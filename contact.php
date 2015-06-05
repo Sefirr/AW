@@ -30,10 +30,10 @@
 	<body>
 		<div id = "contenedor">
 			<!-- INCLUDE CABECERA -->
-			<?php include_once(__DIR__ .'/header.php'); ?>					
+			<?php include_once(__DIR__ .'/includes/header.php'); ?>					
 	
 			<!-- Menu izq -->
-			<?php include_once(__DIR__ .'/sidebarIzq.php'); ?>
+			<?php include_once(__DIR__ .'/includes/sidebarIzq.php'); ?>
 			<!-- CONTENIDO -->
 			<div id = "contenido">
 			<img src= "../img/interrogacion.jpg" id="icono"/>
@@ -43,8 +43,8 @@
 					<legend>Información del contactante </legend>
 							<!-- Introducción del nombre y sus apellidos -->
 							<label>Introduce tu nombre: </label>
-							<input type="text" class="contact1" name="firstname" value="Nombre" id="name"> <img src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgname"/>
-							<input type="text" class="contact1" name="lastname" value="Apellidos" id="lastname"> <img src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imglastname"/>
+							<input type="text" class="contact1" name="firstname" value="Nombre" id="name"/> <img src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgname"/>
+							<input type="text" class="contact1" name="lastname" value="Apellidos" id="lastname"/> <img src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imglastname"/>
 							<br/>
 							<!-- Caja de texto para su correo -->
 							<label>E-mail de contacto:</label>
@@ -86,7 +86,7 @@
 				</form>
 			</div>	
 			<!-- INCLUDE FOOTER -->
-			<?php include_once(__DIR__ .'/footer.php'); ?>
+			<?php include_once(__DIR__ .'/includes/footer.php'); ?>
 </div>
 		</div>		
 	</body>
