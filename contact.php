@@ -2,7 +2,7 @@
 
 <html>
 	<head>
-		<?php	require_once __DIR__.'/config.php'; ?>
+		<?php	require_once __DIR__.'/includes/config.php'; ?>
 		
 	<!-- -----------------------------META REGION------------------------------ -->
 
@@ -20,9 +20,9 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo RAIZ_APP; ?>css/style.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
 		<link rel="stylesheet" type="text/css" href="<?php echo RAIZ_APP; ?>css/menu.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
 		<link rel="stylesheet" type="text/css" href="<?php echo RAIZ_APP; ?>css/footer.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
-		<script src="<?php echo RAIZ_APP; ?>includes/jquery-1.9.1.min.js" type="text/javascript"></script>
+		<script src="<?php echo RAIZ_APP; ?>js/jquery-1.9.1.min.js" type="text/javascript"></script>
 		<script src="<?php echo RAIZ_APP; ?>js/sidebarIzq.js" type="text/javascript"></script>
-		<script src="<?php echo RAIZ_APP; ?>includes/contact.js" type="text/javascript"></script>
+		<script src="<?php echo RAIZ_APP; ?>js/contact.js" type="text/javascript"></script>
 
 
 	<!-- -----------------------------END LINKS REGION------------------------------ -->
@@ -30,10 +30,10 @@
 	<body>
 		<div id = "contenedor">
 			<!-- INCLUDE CABECERA -->
-			<?php include_once(__DIR__ .'/header.php'); ?>					
+			<?php include_once(__DIR__ .'/includes/header.php'); ?>					
 	
 			<!-- Menu izq -->
-			<?php include_once(__DIR__ .'/sidebarIzq.php'); ?>
+			<?php include_once(__DIR__ .'/includes/sidebarIzq.php'); ?>
 			<!-- CONTENIDO -->
 			<div id = "contenido">
 			<img src= "../img/interrogacion.jpg" id="icono"/>
@@ -43,8 +43,8 @@
 					<legend>Información del contactante </legend>
 							<!-- Introducción del nombre y sus apellidos -->
 							<label>Introduce tu nombre: </label>
-							<input type="text" class="contact1" name="firstname" value="Nombre" id="name"> <img src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgname"/>
-							<input type="text" class="contact1" name="lastname" value="Apellidos" id="lastname"> <img src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imglastname"/>
+							<input type="text" class="contact1" name="firstname" value="Nombre" id="name"/> <img src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgname"/>
+							<input type="text" class="contact1" name="lastname" value="Apellidos" id="lastname"/> <img src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imglastname"/>
 							<br/>
 							<!-- Caja de texto para su correo -->
 							<label>E-mail de contacto:</label>
@@ -86,7 +86,7 @@
 				</form>
 			</div>	
 			<!-- INCLUDE FOOTER -->
-			<?php include_once(__DIR__ .'/footer.php'); ?>
+			<?php include_once(__DIR__ .'/includes/footer.php'); ?>
 </div>
 		</div>		
 	</body>

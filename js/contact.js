@@ -3,7 +3,7 @@ $(document).ready(function(){
 	if ( correoValido($("#email").val() ) ) {
 	// Ocultar icono rojo
 	$("#imgemail").hide();
-	$("#imgemail")[0].src="../img/form/ok.png";
+	$("#imgemail")[0].src="./img/form/ok.png";
 	// Mostrar icono verde
 	$("#imgemail").show();
 	} else {
@@ -11,7 +11,7 @@ $(document).ready(function(){
 
 	$("#imgemail").hide();
 
-	$("#imgemail")[0].src="../img/form/no.png";
+	$("#imgemail")[0].src="./img/form/no.png";
 
 	// Mostrar icono rojo
 
@@ -24,14 +24,14 @@ $(document).ready(function(){
 		if(textovalido($("#name"))){
 		//Ocultar iconos
 		$("#imgname").hide();
-		$("#imgname")[0].src="../img/form/ok.png";
+		$("#imgname")[0].src="./img/form/ok.png";
 
 		//Mostrar Icono verde
 		$("#imgname").show();
 		}else{
 		//Ocultar icono verde
 		$("imgname").hide();
-		$("imgname")[0].src="../img/form/no.png";
+		$("imgname")[0].src="./img/form/no.png";
 
 
 
@@ -89,7 +89,7 @@ expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
 function textovalido(id){
 
-expr= /^[A-Za-záéíóúñ]{2,}+$/;
+expr= /^[A-Z]{1,2}\s\d{4}\s([B-D]|[F-H]|[J-N]|[P-T]|[V-Z]){3}$/;
 	if ( !expr.test(id) )
         return false;
     else
