@@ -1,4 +1,10 @@
-#menu-user {
+#menus-izq {
+	word-wrap: break-word;
+	float: left;
+	width:21%;
+}
+
+#menu-user, #recomendaciones {
 	text-align:center;
 	width: 95%;
 	padding: 0;
@@ -17,13 +23,16 @@
 
 #menu-user ul,
 #menu-user ul li,
-#menu-user ul ul {
+#menu-user ul ul, 
+#recomendaciones ul,
+#recomendaciones ul li,
+#recomendaciones ul ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
 
-#menu-user a, #menu-user > ul > li:first-child {
+#menu-user a, #menu-user > ul > li:first-child, #recomendaciones a, #recomendaciones > ul > li:first-child {
 	display: block;
 	padding: 15px 20px;
 	color: black;
@@ -43,12 +52,20 @@
 
 }
 
- #menu-user > ul > li:first-child > a {
+#recomendaciones > ul > li > a, #recomendaciones > ul > li:first-child {
+	font-size: 120%;	
+	color: inherit;
+	background: inherit;
+	border: inherit;
+
+}
+
+ #menu-user > ul > li:first-child > a, #recomendaciones > ul > li:first-child > a {
 	border-top-left-radius:5px;
 	border-top-right-radius:5px;
  }
 
-#menu-user > ul > li:last-child > a {
+#menu-user > ul > li:last-child > a, #recomendaciones > ul > li:last-child > a {
 	border-bottom-left-radius: 4px;
 	border-bottom-right-radius: 4px;
 }
@@ -71,26 +88,14 @@
   /*font-weight: bold;*/
 }
 
-#recomendaciones {
-	text-align:center;
+input[type="text"].search {
+    width: 57%;
 	margin-top: 5%;
-	margin-right: 5%;
-	margin-bottom: 5%;
-	margin-left:0;
-	padding-bottom: 10%;
-	padding-top: 1%;
-	padding-left: 5%;
-	padding-right: 5%;
-	border-radius: 5px;
-	background-color: #405656;
-	-moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
-	-webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
-	box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
-	border-radius:5px;
 }
 
-#recomendaciones h2 {
-	font-size:1.1em;
+input[type="submit"].search {
+    width: 34%;
+	margin-top: 5%;
 }
 
 #recomendaciones a {

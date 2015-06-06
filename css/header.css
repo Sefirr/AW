@@ -26,47 +26,35 @@ a.boton{
 #cabecera {
 }
 
-#menu-cabecera{
+#menu-cabecera {
 	clear:both;
-	height:30px;
-	/*background-color: rgba(51, 51, 51, 1);*/
-	padding: 5px;
-	margin: 10px auto auto auto;
-	text-align: center;
-	background:url(../img/login/bar.png) repeat-x;
-
-
+	height:40px; 
+	border-radius: 5px; 
+	background:url("../img/login/bar.png") repeat-x;
 }
 
 
+#menu-cabecera ul {
+	padding: 15px 15px 0 15px;
+	list-style : url("../img/barra.jpg");
+}
 
 #menu-cabecera ul li:first-child{
 	list-style: none;
 	background: transparent;
 }
 
-
-#menu-cabecera ul {
-	margin : 0 auto;
-	width : 100%;
-	list-style : square url("../img/error.png");
-}
-
 #menu-cabecera ul li {
-	float : left;
+	float:left;
 	margin-left: 5%;
+	text-align:center;
 }
 
-
-
-#menu-cabecera ul li a{
-
-	display : block;
-	color: black;
-	text-decoration:none;
-	padding: 4px;
+#menu-cabecera ul li a {
+	text-decoration: none;
+	display: block;
+	color:black;
 	text-transform: uppercase;
-
 }
 
 #menu-cabecera ul li:hover a{
@@ -79,3 +67,5 @@ a.boton{
 
 
 }
+
+

@@ -42,12 +42,12 @@
 		</ul>
 	</div>
 	<div id ="recomendaciones">
-	<h2>Recomendaciones</h2>
-		<p><em>Título recomendación</em></p>
-		<div id = "descripcion">
-			<a href="descripcion-videojuego.html"><img src="./img/dragon_age_3.jpg" id="caratula-recomendaciones"/></a>
+	<ul> <li><em>Recomendaciones</em></li>
+		<li><h3><em>Título recomendación</em></h3></li>
+		<li><div id = "descripcion">
+			<a href="descripcion-videojuego.html"><img src="<?php echo RAIZ_APP; ?>img/videojuegos/dragonAge3.jpg" id="caratula-recomendaciones"/></a>
 			<a href="descripcion-videojuego.html"><p><em>Dragon Age Inquisition</em></p></a>
 			<img src="./img/5estrellas.png" id="estrellas"/>
-		</div>
+		</div></li></ul>
 	</div>
 </div>

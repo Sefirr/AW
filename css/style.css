@@ -3,10 +3,8 @@ body {
 	font-family: Century Gothic;
 	font-size :62.5%;
 	margin:1%;
-	background:url("../img/fondo.jpg");
-	background:url("../img/fondo.jpg");
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
+	background:url("../img/fondo.jpg") 50% 50% no-repeat;
+	background-size: cover;
 }
 
 #contenedor {
@@ -14,14 +12,6 @@ body {
 	position:relative;
 }
 
-#cabecera {
-}
-
-#menus-izq {
-	word-wrap: break-word;
-	float: left;
-	width:21%;
-}
 
 #contenido {
 	float:left;
@@ -30,16 +20,6 @@ body {
     background-color: OldLace;
 	margin: 1% 0 1% 0;
 	padding: 5%;
-}
-
-input[type="text"].search {
-    width: 57%;
-	margin-top: 5%;
-}
-
-input[type="submit"].search {
-    width: 34%;
-	margin-top: 5%;
 }
 
 #estrellas{
@@ -82,11 +62,11 @@ input.addcontent, textarea.addcontent {
 }
 /**/
 input.contact1 {
-	width: 35%;
+	width: 30%;
 }
 
 input.contact2 {
-	width: 71%;
+	width: 65.4%;
 }
 /**/
 textarea.contact {
@@ -129,10 +109,7 @@ h2{
 	width:20%;
 	height:20%;
 }
-#centrado {
-	text-align: center;
-	padding-bottom: 5%;
-}
+
 #detalle{/*etiqueta para los bloques que forman las series, en pequeño*/
 	border: 1px solid blue;
 	display:inline-block;

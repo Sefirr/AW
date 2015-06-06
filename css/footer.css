@@ -2,7 +2,7 @@
 	clear:both;
 	height:40px; 
 	border-radius: 5px; 
-	background:url(../img/login/bar.png) repeat-x;
+	background:url("../img/login/bar.png") repeat-x;
 }
 
 
@@ -29,9 +29,25 @@
 	text-decoration: none;
 	display: block;
 	color:black;
+	text-transform: uppercase;
 }
 
-#footer footer #copyright {
+#footer footer ul li:hover a{
+
+
+	background-color: red;
+	color:white;
+	border-radius: 2px;
+	border-color: yellow;
+
+
+}
+
+#footer footer ul li:hover a#flecha {
+	background-color: inherit;
+}
+
+#footer footer#copyright {
 	display:inline-block;
 	float:right;
 }
