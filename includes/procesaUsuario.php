@@ -212,15 +212,15 @@ function generaFormularioRegistro($datos) {
 			<br/>
 			<label>Nombre y apellidos:</label>
 			<br/>
-			<input type="text" class="register1" name="nombre" placeholder="Nombre">
+			<input type="text" class="register1" name="nombre" placeholder="Nombre" id="name"> <img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgname"/> 
 			<br/>
-			<input type="text" class="register1" name="apellidos" placeholder="Apellidos">
+			<input type="text" class="register1" name="apellidos" placeholder="Apellidos" id="lastname"> <img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imglastname"/> 
 			</br>
 			<label> Contraseña </label>
-			<input type="password" class="register1" name="password" placeholder="Contraseña">
+			<input type="password" class="register1" name="password" placeholder="Contraseña" id="password"> <img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgpassword"/> 
 			<br/> 
 			<label>E-mail:</label>
-			<input type="text" class="register1" name="email" placeholder="E-mail">
+			<input type="text" class="register1" name="email" placeholder="E-mail" id="email2"> <img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgemail"/>  
 			<br/>
 			<label>Descripcion:</label>
 			<br/>
@@ -253,7 +253,7 @@ function addUser($params) {
 	
 	$pass = isset($params['password']) ? $params['password'] : null ;
 	if ( ! $pass ||  strlen($pass) < 4 ) {
-		$result[] = 'La contraseña no es válida';
+		$result[] = 'La contraseña no es válida, debe contener numeros, y letras mayusculas y minusculas';
 		$okValidacion = false;
 	}
 	
