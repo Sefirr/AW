@@ -123,6 +123,13 @@ h2{
 	-webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
 	border-radius:5px;
+	text-align:center;
+}
+
+#detalle a img{/*etiqueta para los bloques que forman las series, en pequeño*/
+	margin: 0 auto;
+	height: 100px;
+	width: 75px;
 }
 
 nav.menu-desplegable{
@@ -171,4 +178,28 @@ display: none;
 
 display: none;
 
+}
+
+#titulo-serie, #titulo-mercha {
+	margin-top: 10px;
+	font-size: 20px;
+	text-align:center;
+}
+
+#cartel {
+	float:left;
+	padding-right : 10px;
+
+}
+
+#descripcion-basica{
+	padding-right: 5%;
+	font-size:13px;
+	text-align : justify;
+
+}
+
+#cartel, #descripcion-basica { 
+	padding-top: 10px;
+	padding-left: 5%;
 }

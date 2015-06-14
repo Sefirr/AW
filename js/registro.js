@@ -1,5 +1,8 @@
 $(document).ready(function(){
-
+	$("#nick").change(function(){
+		var nombre = $("#nick").val();
+		$.post('includes/check_usuario.php', {'nombre': nombre}, usuarioExiste);
+	});
 	$("#email2").change(function(){
 		if ( correoValido($("#email2").val() ) ) {
 		// Ocultar icono rojo
@@ -21,7 +24,6 @@ $(document).ready(function(){
 	});
 
 	$("#name").change(function(){ 
-
 		if ( textovalido($("#name").val() ) ) {
 		//Ocultar iconos
 		$("#imgname").hide();
@@ -41,7 +43,6 @@ $(document).ready(function(){
 		$("#imgname").show();
 
 		}
-
 
 	});
 
@@ -136,5 +137,30 @@ expr = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/;
     else
     	return true;
 
+
+}
+
+function usuarioExiste(data, status) {
+	if ( data == true ) {
+		$("#imgnick").hide();
+		$("#imgnick")[0].src="./img/form/no.png";
+
+
+
+		//Mostrar icono rojo
+
+		$("#imgnick").show();
+	
+	}else{
+		//Ocultar icono verde
+	
+		//Ocultar iconos
+		$("#imgnick").hide();
+		$("#imgnick")[0].src="./img/form/ok.png";
+
+		//Mostrar Icono verde
+		$("#imgnick").show();
+
+	}
 
 }

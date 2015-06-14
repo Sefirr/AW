@@ -208,7 +208,7 @@ function generaFormularioRegistro($datos) {
 			<input type="file" name="imagen" />
 			<br/>
 			<label>Username</label>
-			<input type="text" class="register1" name="user" placeholder="Username">
+			<input type="text" class="register1" name="user" placeholder="Username" id="nick"/><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgnick"/>
 			<br/>
 			<label>Nombre y apellidos:</label>
 			<br/>
@@ -245,7 +245,6 @@ function addUser($params) {
 	
 	$user = isset($params['user']) ? strtolower($params['user']) : null;
 	$user2 = dameID($user);
-	
 	if(!$user || empty($user) || $user2 == true ) {
 		$result[] = 'El usuario no es válido.';
 		$okValidacion = false;

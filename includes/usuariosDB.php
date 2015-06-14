@@ -133,18 +133,18 @@ function addusers($username, $password, $nombre, $apellidos, $email, $descripcio
 function dameID($username){
 	global $BD;	
 	$usuario =false;	
-	$query = "SELECT id_user FROM users WHERE username=".$BD->real_escape_string($username);
-
+	$query = "SELECT id_user FROM users WHERE username='".$BD->real_escape_string($username)."'";	
 	if ($resultado = $BD->query($query)) {
-		if($resultado->num_rows ==0)
+		if($resultado->num_rows ==0){
 			$usuario =false;
-		else
+		}else{
 			$usuario = $resultado->fetch_assoc()['id_user'];
-			
+		}	
 		$resultado->close();
 	}
-	
 	return $usuario;
 }
+
+
 
 ?>
