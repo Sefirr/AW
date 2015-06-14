@@ -1,46 +1,46 @@
-<?php
-	require_once __DIR__.'/contenidoDB.php';
-	require_once __DIR__.'/formlib.php';
+<?php	
+require_once __DIR__.'/contenidoDB.php';
+require_once __DIR__.'/formlib.php';
 	
 function gestionarFormularioAddContent() {
-	formulario('addContent', 'generaFormularioAddContent', 'addContent', null, null, 'multipart/form-data');
+   formulario('addContent', 'generaFormularioAddContent', 'addContent', null, null, 'multipart/form-data');
 }
 
 function generaFormularioAddContent($datos) { 
 	$html = <<<EOS
-				<input type="hidden" name="tipo" value="1" />
-				<label>Título : </label>
-				<input type="text" class="addcontent" placeholder="Título" name="titulo"><!--- AGREGAR TITULO PELICULA: agregar titulo de la pelicula.-->
+			<input type="hidden" name="tipo" value="1" />
+			<label>Título : </label>
+			<input type="text" class="addcontent" placeholder="Título" name="titulo"/><!--- AGREGAR TITULO PELICULA: agregar titulo de la pelicula.-->
+			<br/>
+			<label>Carátula : </label> 
+			<input type="file" name="imagen"/><!-- AGREGAR CARATULA: agregar imagen de la carátula de la pelicula. -->
+			<br/>
+			<label>Sinopsis : </label>
+			<textarea class="addcontent" name="sinopsis" placeholder="Sinopsis de la serie..."></textarea> <!--AGREGAR SINOPSIS: agregar sinopsis de la película. -->
+			<br/>
+			<fieldset>
+			<legend>Descripción básica </legend>
+				<label>Descripción: </label>
+				<textarea class="addcontent" name="descripcion" placeholder="Descripción"></textarea>
 				<br/>
-				<label>Carátula : </label> 
-				<input type="file" name="imagen"><!-- AGREGAR CARATULA: agregar imagen de la carátula de la pelicula. -->
+				<label>Fecha de estreno: </label>
+				<input name="fecha" type="date">
 				<br/>
-				<label>Sinopsis : </label>
-				<textarea class="addcontent" name="sinopsis" placeholder="Sinopsis de la serie..."></textarea> <!--AGREGAR SINOPSIS: agregar sinopsis de la película. -->
+				<label>Director: </label>
+				<input class="addcontent" type="text" name="director">
 				<br/>
-				<fieldset>
-				<legend>Descripción básica </legend>
-					<label>Descripción: </label>
-					<textarea class="addcontent" name="descripcion" placeholder="Descripción"></textarea>
-					<br/>
-					<label>Fecha de estreno: </label>
-					<input name="fecha" type="date">
-					<br/>
-					<label>Director: </label>
-					<input class="addcontent" type="text" name="director">
-					<br/>
-					<label>Duración: </label>
-					<input type="number" name="duracion" value="10"> 
-					<br/>
-					<label>Valoración de la página: </label>
-					<input type="number" name="val_pagina" value="1" min="1" max="5" > 
-					<br/>
+				<label>Duración: </label>
+				<input type="number" name="duracion" value="10"> 
+				<br/>
+				<label>Valoración de la página: </label>
+				<input type="number" name="val_pagina" value="1" min="1" max="5" > 
+				<br/>
 
-				</fieldset>
-				
-				<!--Botones de enviar y reset-->
-				<input type="submit" name="addContent" value="Enviar" />
-				<input type="reset" name="reset" value="Borrar" />
+			</fieldset>
+			
+			<!--Botones de enviar y reset-->
+			<input type="submit" name="addContent" value="Enviar" />
+			<input type="reset" name="reset" value="Borrar" />
 EOS;
 
 
@@ -103,7 +103,7 @@ function addContent($params) {
 		 $okValidacionContenido = false;
 	}
 	
-	$rutaDestino="../img/";
+	$rutaDestino= __DIR__."/../img/";
 	
 	if(!empty($_FILES["imagen"]["name"])) {
 		$rutaTemporal=$_FILES["imagen"]["tmp_name"];
@@ -143,49 +143,54 @@ function generaFormularioEditContent($datos) {
 
 	// Consulta de base datos para sacar los datos
 	$titulo = isset($datos['titulo']) ? $datos['titulo'] : null ;
+	$sinopsis = isset($datos['sinopsis']) ? $datos['sinopsis'] : null ;
+	$descripcion = isset($datos['descripcion']) ? $datos['descripcion'] : null ;
+	$fechaestreno = isset($datos['fechaestreno']) ? $datos['fechaestreno'] : null ;
+	$director = isset($datos['director']) ? $datos['director'] : null ;
+	$duracion = isset($datos['duracion']) ? $datos['duracion'] : null ;
+	$valoracionpagina = isset($datos['valoracionpagina']) ? $datos['valoracionpagina'] : null ;
 	$id_content = dameIDContent($titulo);
 	$content = dameContent($id_content);
 
 	$html = <<<EOS
-				<input type="hidden" name="tipo" value="1" />
-				<label>Título : </label>
-				<input type="text" class="addcontent" placeholder="Título" name="titulo" value ="$titulo"><!--- AGREGAR TITULO PELICULA: agregar titulo de la pelicula.-->
+			<input type="hidden" name="tipo" value="1" />
+			<label>Título : </label>
+			<input type="text" class="addcontent" placeholder="Título" name="titulo" value ="$titulo"><!--- AGREGAR TITULO PELICULA: agregar titulo de la pelicula.-->
+			<br/>
+			<label>Carátula : </label> 
+			<input type="file" name="imagen"><!-- AGREGAR CARATULA: agregar imagen de la carátula de la pelicula. -->
+			<br/>
+			<label>Sinopsis : </label>
+			<textarea class="addcontent" name="sinopsis" placeholder="Sinopsis de la serie..." value="$sinopsis"></textarea> <!--AGREGAR SINOPSIS: agregar sinopsis de la película. -->
+			<br/>
+			<fieldset>
+			<legend>Descripción básica </legend>
+				<label>Descripción: </label>
+				<textarea class="addcontent" name="descripcion" placeholder="Descripción" value="$descripcion"></textarea>
 				<br/>
-				<label>Carátula : </label> 
-				<input type="file" name="imagen"><!-- AGREGAR CARATULA: agregar imagen de la carátula de la pelicula. -->
+				<label>Fecha de estreno: </label>
+				<input name="fecha" type="date" value="$fechaestreno">
 				<br/>
-				<label>Sinopsis : </label>
-				<textarea class="addcontent" name="sinopsis" placeholder="Sinopsis de la serie..." value="$content['sinopsis']"></textarea> <!--AGREGAR SINOPSIS: agregar sinopsis de la película. -->
+				<label>Director: </label>
+				<input class="addcontent" type="text" name="director" value value="$director">
 				<br/>
-				<fieldset>
-				<legend>Descripción básica </legend>
-					<label>Descripción: </label>
-					<textarea class="addcontent" name="descripcion" placeholder="Descripción" value="$content['descripcion']"></textarea>
-					<br/>
-					<label>Fecha de estreno: </label>
-					<input name="fecha" type="date" value="$content['fechaestreno']">
-					<br/>
-					<label>Director: </label>
-					<input class="addcontent" type="text" name="director" value value="$content['director']">
-					<br/>
-					<label>Duración: </label>
-					<input type="number" name="duracion" value="$content['duracion']"> 
-					<br/>
-					<label>Valoración de la página: </label>
-					<input type="number" name="val_pagina" value="$content['valoracionpagina']" min="1" max="5" > 
-					<br/>
+				<label>Duración: </label>
+				<input type="number" name="duracion" value="$duracion"> 
+				<br/>
+				<label>Valoración de la página: </label>
+				<input type="number" name="val_pagina" value="$valoracionpagina" min="1" max="5" > 
+				<br/>
 
-				</fieldset>
-				
-				<!--Botones de enviar y reset-->
-				<input type="submit" name="addContent" value="Enviar" />
-				<input type="reset" name="reset" value="Borrar" />
+			</fieldset>
+
+			<!--Botones de enviar y reset-->
+			<input type="submit" name="addContent" value="Enviar" />
+			<input type="reset" name="reset" value="Borrar" />
 EOS;
 
 
 	return $html;
 }
-
 	
 function editContent($params) {	
 	$result = array();
@@ -281,7 +286,9 @@ function editContent($params) {
 }
 
 function deleteContent($params) {
+	$result = array();
 	$okValidacion = true;
+
 	$titulo = isset($params['titulo']) ? $params['titulo'] : null;
 	
 	$id_content = dameIDContent($titulo);
@@ -292,7 +299,8 @@ function deleteContent($params) {
 	}
 	
 	if($okValidacion) {
-		$result = deleteContentDB($id_content);
+		deleteContentDB($id_content);
+		$result = "${_SERVER['PHP_SELF']}";
 	}
 	
 	return $result;
