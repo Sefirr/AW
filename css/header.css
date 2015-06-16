@@ -28,6 +28,7 @@ a.boton{
 
 #menu-cabecera {
 	clear:both;
+	font-size:1.15em;
 	height:40px; 
 	border-radius: 5px; 
 	background:url("../img/login/bar2.png") repeat-x;
@@ -35,8 +36,10 @@ a.boton{
 
 
 #menu-cabecera ul {
-	padding: 15px 15px 0 15px;
-	list-style : url("../img/barra.jpg");
+	/*padding: 15px 15px 0 15px;*/
+
+	/*list-style : url("../img/barra.jpg");*/
+	line-height: 1em;
 }
 
 #menu-cabecera ul li:first-child{
@@ -48,6 +51,10 @@ a.boton{
 	float:left;
 	margin-left: 5%;
 	text-align:center;
+
+	min-width:10%;
+	min-height: 10px;
+	padding:15px;
 }
 
 #menu-cabecera ul li a {
@@ -57,13 +64,25 @@ a.boton{
 	text-transform: uppercase;
 }
 
-#menu-cabecera ul li:hover a{
+#menu-cabecera ul li:hover{
 
 
-	background-color: red;
+
 	color:white;
-	border-radius: 2px;
 	border-color: yellow;
+
+	background-color:red;
+	-moz-border-radius:20px;
+	-webkit-border-radius:20px;
+	border-radius:20px;
+	-webkit-transition: all 300ms ease-in;
+	-moz-transition: all 300ms ease-in;
+	-o-transition: all 300ms ease-in;
+	transition: all 300ms ease-in;
+  	-webkit-transition: all 100ms ease-in;
+  	-moz-transition: all 100ms ease-in;
+  	-o-transition: all 100ms ease-in;
+ 	 transition: all 100ms ease-in;
 
 
 }
