@@ -10,7 +10,7 @@ function generaFormularioAddContent($datos) {
 	$html = <<<EOS
 			<input type="hidden" name="tipo" value="1" />
 			<label>Título : </label>
-			<input type="text" class="addcontent" placeholder="Título" name="titulo"/><!--- AGREGAR TITULO PELICULA: agregar titulo de la pelicula.-->
+			<input type="text" class="addcontent" placeholder="Título" name="titulo" id ="tittle"/><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgtittle"/><!--- AGREGAR TITULO PELICULA: agregar titulo de la pelicula.-->
 			<br/>
 			<label>Carátula : </label> 
 			<input type="file" name="imagen"/><!-- AGREGAR CARATULA: agregar imagen de la carátula de la pelicula. -->
@@ -24,10 +24,10 @@ function generaFormularioAddContent($datos) {
 				<textarea class="addcontent" name="descripcion" placeholder="Descripción"></textarea>
 				<br/>
 				<label>Fecha de estreno: </label>
-				<input name="fecha" type="date">
+				<input name="fecha" type="date" id="fecha"/><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgfecha"/>
 				<br/>
 				<label>Director: </label>
-				<input class="addcontent" type="text" name="director">
+				<input class="addcontent" type="text" name="director" id="director"/><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgdirect"/>
 				<br/>
 				<label>Duración: </label>
 				<input type="number" name="duracion" value="10"> 
