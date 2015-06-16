@@ -36,10 +36,11 @@ a.boton{
 
 
 #menu-cabecera ul {
-	/*padding: 15px 15px 0 15px;*/
 
 	/*list-style : url("../img/barra.jpg");*/
+	list-style-position: outside;
 	line-height: 1em;
+	list-style: none;
 }
 
 #menu-cabecera ul li:first-child{
@@ -51,6 +52,7 @@ a.boton{
 	float:left;
 	margin-left: 5%;
 	text-align:center;
+
 
 	min-width:10%;
 	min-height: 10px;
