@@ -19,6 +19,7 @@
 	border-radius:5px;
 	font-size: 0.8em;
 	background-color: #405656;
+	color:white;
 }
 
 #menu-user ul,
@@ -38,6 +39,7 @@
 	color: black;
 	text-decoration: none;
 	text-transform: uppercase;
+	color:white;
 }
 
 #menu-user > ul > li > a, #menu-user > ul > li:first-child {
