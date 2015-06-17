@@ -1,9 +1,9 @@
 $(document).ready(function(){
 	$("#tittle").change(function(){
-		if ( textovalido($("#email2").val() ) ) {
+		if ( textovalido($("#tittle").val() ) ) {
 		// Ocultar icono rojo
 		$("#imgtittle").hide();
-		$("#imgtittle")[0].src="./img/form/ok.png";
+		$("#imgtittle")[0].src="../img/form/ok.png";
 		// Mostrar icono verde
 		$("#imgtittle").show();
 		} else {
@@ -11,27 +11,69 @@ $(document).ready(function(){
 
 		$("#imgtittle").hide();
 
-		$("#imgtittle")[0].src="./img/form/no.png";
+		$("#imgtittle")[0].src="../img/form/no.png";
 
 		// Mostrar icono rojo
 
 		$("#imgtittle").show();
 		}
 	});
+	
+	$("#sinopsis").change(function(){
+		if ( textovalido($("#sinopsis").val() ) ) {
+		// Ocultar icono rojo
+		$("#imgsinopsis").hide();
+		$("#imgsinopsis")[0].src="../img/form/ok.png";
+		// Mostrar icono verde
+		$("#imgsinopsis").show();
+		} else {
+		// Ocultar icono verde
+
+		$("#imgsinopsis").hide();
+
+		$("#imgsinopsis")[0].src="../img/form/no.png";
+
+		// Mostrar icono rojo
+
+		$("#imgsinopsis").show();
+		}
+	});
+	
+	$("#descripciones").change(function(){
+		if ( textovalido($("#descripciones").val() ) ) {
+		// Ocultar icono rojo
+		$("#imgdescripcion").hide();
+		$("#imgdescripcion")[0].src="../img/form/ok.png";
+		// Mostrar icono verde
+		$("#imgdescripcion").show();
+		} else {
+		// Ocultar icono verde
+
+		$("#imgdescripcion").hide();
+
+		$("#imgdescripcion")[0].src="../img/form/no.png";
+
+		// Mostrar icono rojo
+
+		$("#imgdescripcion").show();
+		}
+	});
+	
+	
 	////////////////////////// Verificacion del nombre  del director//////////////////////////
 	$("#director").change(function(){ 
 
 		if ( textovalido($("#director").val() ) ) {
 		//Ocultar iconos
 		$("#imgdirect").hide();
-		$("#imgdirect")[0].src="./img/form/ok.png";
+		$("#imgdirect")[0].src="../img/form/ok.png";
 
 		//Mostrar Icono verde
 		$("#imgdirect").show();
 		}else{
 		//Ocultar icono verde
 		$("#imgdirect").hide();
-		$("#imgdirect")[0].src="./img/form/no.png";
+		$("#imgdirect")[0].src="../img/form/no.png";
 
 
 
@@ -52,14 +94,14 @@ $(document).ready(function(){
 		if(fechavalido($("#fecha").val() ) ){
 		//Ocultar iconos
 		$("#imgfecha").hide();
-		$("#imgfecha")[0].src="./img/form/ok.png";
+		$("#imgfecha")[0].src="../img/form/ok.png";
 
 		//Mostrar Icono verde
 		$("#imgfecha").show();
 		}else{
 		//Ocultar icono verde
 		$("#imgfecha").hide();
-		$("#imgfecha")[0].src="./img/form/no.png";
+		$("#imgfecha")[0].src="../img/form/no.png";
 
 
 

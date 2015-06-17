@@ -3,6 +3,7 @@ $(document).ready(function(){
 		var nombre = $("#nick").val();
 		$.post('includes/check_usuario.php', {'nombre': nombre}, usuarioExiste);
 	});
+	
 	$("#email2").change(function(){
 		if ( correoValido($("#email2").val() ) ) {
 		// Ocultar icono rojo
@@ -20,6 +21,26 @@ $(document).ready(function(){
 		// Mostrar icono rojo
 
 		$("#imgemail").show();
+		}
+	});
+	
+	$("#descripcion2").change(function(){
+		if ( textovalido($("#descripcion2").val() ) ) {
+		// Ocultar icono rojo
+		$("#imgdescripcion2").hide();
+		$("#imgdescripcion2")[0].src="./img/form/ok.png";
+		// Mostrar icono verde
+		$("#imgdescripcion2").show();
+		} else {
+		// Ocultar icono verde
+
+		$("#imgdescripcion2").hide();
+
+		$("#imgdescripcion2")[0].src="./img/form/no.png";
+
+		// Mostrar icono rojo
+
+		$("#imgdescripcion2").show();
 		}
 	});
 

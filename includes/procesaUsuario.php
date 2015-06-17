@@ -1,4 +1,6 @@
 <?php
+
+require_once __DIR__.'/config.php';
 require_once __DIR__.'/usuariosDB.php';
 require_once __DIR__.'/formlib.php';
 
@@ -55,9 +57,10 @@ function login($nombreUsuario, $password) {
   $ok = false;
   $result = false;
   $usuario = dameUsuario($nombreUsuario);
+
   // Si existe el usuario
   if ( $usuario ) {
-    $ok = $usuario['password'] === $password;
+    $ok = password_verify($password,$usuario['password']);
     if ($ok) {
       // El usuario existe y la contraseña coincide ... lo guardamos en la sesión
       $_SESSION['usuario'] = $usuario['username'];
@@ -224,7 +227,7 @@ function generaFormularioRegistro($datos) {
 			<br/>
 			<label>Descripcion:</label>
 			<br/>
-			<textarea class="register" name="descripcion" rows="6" cols="70" placeholder="Descripción del usuario"></textarea>
+			<textarea class="register" name="descripcion" rows="6" cols="70" placeholder="Descripción del usuario" id="descripcion2"></textarea><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgdescripcion2"/> 
 			<br/>
 			<!--Checkbox para los términos de uso-->
 			<input type="checkbox" name="terms" value="1">Marque esta casilla para verificar que ha leído nuestros <a href="info-privacy.php">términos y condiciones del servicio</a>
@@ -255,6 +258,7 @@ function addUser($params) {
 		$result[] = 'La contraseña no es válida, debe contener numeros, y letras mayusculas y minusculas';
 		$okValidacion = false;
 	}
+	$hash = password_hash($pass, PASSWORD_BCRYPT); 
 	
 	$nombre = isset($params['nombre']) ? $params['nombre'] : null ;
 	if(!$nombre || empty($nombre)) {
@@ -282,16 +286,16 @@ function addUser($params) {
 	
 	$imagen = isset($params['imagen']) ? $params['imagen'] : null;
 	
-	$rutaDestino="img/users/";
+	$rutaDestino="img/";
 	if(!empty($_FILES["imagen"]["name"])) {
 		$rutaTemporal=$_FILES["imagen"]["tmp_name"];
 		$nombreImagen=$_FILES["imagen"]["name"];
 		
-		$rutaDestino.= $nombreImagen;
-		if (!file_exists("../img/users/".$user2."/")) 
+		$rutaDestino.= "users/".$user.".".end(explode(".", $nombreImagen));
+		if (!file_exists("../img/users/")) 
 			mkdir("../img/users/", 0777, true);
-		
-		move_uploaded_file($rutaTemporal,"../".$rutaDestino);
+		$rutaUpload = "../".$rutaDestino;
+		move_uploaded_file($rutaTemporal,$rutaUpload);
 	} else {
 		$result[] = 'Debe subirse una imagen.';
 		$okValidacion = false;
@@ -306,7 +310,7 @@ function addUser($params) {
 	
 	
 	if($okValidacion) {
-		$result = addusers($user, $pass, $nombre, $apellidos, $email, $descripcion, $rutaDestino);
+		addusers($user, $hash, $nombre, $apellidos, $email, $descripcion, $rutaDestino);
 		$result="${_SERVER['PHP_SELF']}";
 	}
 	

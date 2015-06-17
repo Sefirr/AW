@@ -154,7 +154,6 @@ function csrfguard_ValidateToken($formId, $tokenRecibido) {
   }
   
   $result = TRUE;
-  
   if ( isset($_SESSION[$formId.'_'.CSRF_PARAM]) ) {
     if ( $_SESSION[$formId.'_'.CSRF_PARAM] !== $tokenRecibido ) {
       $result = array();

@@ -1,9 +1,7 @@
+<?php	require_once __DIR__.'/includes/config.php'; ?>
 <!DOCTYPE html>
-
 <html>
 	<head>
-	<?php	require_once __DIR__.'/includes/config.php'; ?>
-		
 	<!-- -----------------------------META REGION------------------------------ -->
 
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> <!--ESTABLECEMOS LA CODIFICACION A UTF-8-->
@@ -20,8 +18,9 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo RAIZ_APP; ?>css/style.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
 		<link rel="stylesheet" type="text/css" href="<?php echo RAIZ_APP; ?>css/menu.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
 		<link rel="stylesheet" type="text/css" href="<?php echo RAIZ_APP; ?>css/footer.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
-		<script src="<?php echo RAIZ_APP; ?>includes/jquery-1.9.1.min.js" type="text/javascript"></script>
+		<script src="<?php echo RAIZ_APP; ?>js/jquery-1.9.1.min.js" type="text/javascript"></script>
 		<script src="<?php echo RAIZ_APP; ?>js/sidebarIzq.js" type="text/javascript"></script>
+		<script src="<?php echo RAIZ_APP; ?>js/index.js" type="text/javascript"></script>
 
 
 	<!-- -----------------------------END LINKS REGION------------------------------ -->
@@ -31,17 +30,17 @@
 	<body>
 		<div id = "contenedor">
 			<!-- INCLUDE CABECERA -->
-			<?php include'includes/header.php'; ?>
+			<?php include_once	__DIR__.'/includes/header.php'; ?>
 
 
 			<!-- Menu izq -->
-			<?php include'includes/sidebarIzq.php'; ?>
+			<?php include_once __DIR__.'/includes/sidebarIzq.php'; ?>
 			<!-- CONTENIDO -->
 			<div id = "contenido">
 
 			</div>	
 			<!-- INCLUDE FOOTER -->
-			<?php include'includes/footer.php'; ?>
+			<?php include_once __DIR__.'/includes/footer.php'; ?>
 		</div>		
 	</body>
 </html>

@@ -14,7 +14,7 @@
 		return $exito;
 	}
 
-	function deleteContent($id_content){
+	function deleteContentDB($id_content){
 	global $BD;	
 	$query = "DELETE FROM content
 				WHERE id_content = $id_content";
@@ -25,8 +25,8 @@
 
 	if ($resultado = $BD->query($query)) {
 			$exito = true;
-			$resultado->close();
-		}
+			//$resultado->close();
+	}
 		
 		return $exito;
 
@@ -37,7 +37,7 @@
 	global $BD;	
 	$query = "SELECT id_content
 				FROM content
-				WHERE titulo =".$BD->real_escape_string($titulo);
+				WHERE titulo ='".$BD->real_escape_string($titulo)."'";
 
 	$exito = false;
 
@@ -105,7 +105,8 @@ function dameContenttipo($tipo){
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		$resultado->close();}
+		//$resultado->close();
+	}
 
 	return $exito;
 
@@ -121,7 +122,8 @@ function dameContenttipo($tipo){
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		$resultado->close();}
+		//$resultado->close();
+	}
 
 	return $exito;
 
@@ -137,7 +139,8 @@ function dameContenttipo($tipo){
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		$resultado->close();}
+		//$resultado->close();
+	}
 
 	return $exito;
 
@@ -155,7 +158,8 @@ function dameContenttipo($tipo){
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		$resultado->close();}
+		//$resultado->close();
+	}
 
 	return $exito;
 
@@ -172,7 +176,8 @@ function dameContenttipo($tipo){
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		$resultado->close();}
+		//$resultado->close();
+	}
 
 	return $exito;
 
@@ -190,7 +195,8 @@ function dameContenttipo($tipo){
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		$resultado->close();}
+		//$resultado->close();
+	}
 
 	return $exito;
 
@@ -207,7 +213,8 @@ function dameContenttipo($tipo){
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		$resultado->close();}
+		//$resultado->close();
+	}
 
 	return $exito;
 
@@ -225,7 +232,8 @@ function dameContenttipo($tipo){
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		$resultado->close();}
+		//$resultado->close();
+	}
 
 	return $exito;
 

@@ -1,12 +1,14 @@
 <?php 
 
+require_once __DIR__.'/config.php';
+
 function addCommentContent($id_user, $mensaje, $id_content){
 	global $BD;
 
 
-	$query="INSERT INTO comments (id_user, texto)VALUES ('$id_user','$mensaje')";
+	$query="INSERT INTO comments (id_user, texto) VALUES ('".$BD->real_escape_string($id_user)."','".$BD->real_escape_string($mensaje)."')";
 	$id_comment = $BD->insert_id();
-	$query2="INSERT INTO comments_content (id_content, id_comment)VALUES ('$id_content','$id_comment')";
+	$query2="INSERT INTO comments_content (id_content, id_comment) VALUES ('".$BD->real_escape_string($id_content)."','".$BD->real_escape_string($id_comment)."')";
 
 	$exito = false;
 
@@ -26,9 +28,9 @@ function addCommentMercha($id_user, $mensaje, $id_merchansing){
 	global $BD;
 
 
-	$query="INSERT INTO comments (id_user, texto)VALUES ('$id_user','$mensaje')";
+	$query="INSERT INTO comments (id_user, texto) VALUES ('".$BD->real_escape_string($id_user)."','".$BD->real_escape_string($mensaje)."')";
 	$id_comment = $BD->insert_id();
-	$query2="INSERT INTO comments_merchandising (id_merchansing, id_comment)VALUES ('$id_merchansing','$id_comment')";
+	$query2="INSERT INTO comments_merchandising (id_merchansing, id_comment) VALUES ('".$BD->real_escape_string($id_merchansing)."','".$BD->real_escape_string($id_comment)."')";
 
 	$exito = false;
 
@@ -48,7 +50,7 @@ function delComment($id_comment){
 	global $BD;
 
 
-	$query="DELETE FROM comments WHERE id='$id_comment'";
+	$query="DELETE FROM comments WHERE id_comment='".$BD->real_escape_string($id_comment)."'";
 
 	$exito = false;
 
@@ -65,7 +67,7 @@ function editComment($id_comment, $mensaje){
 	global $BD;
 
 
-	$query="UPDATE comments set texto = '$mensaje' WHERE comment='$id_comment'";
+	$query="UPDATE comments set texto='".$BD->real_escape_string($mensaje)."' WHERE id_comment='".$BD->real_escape_string($id_comment)."'";
 	
 	$exito = false;
 
@@ -80,7 +82,7 @@ function editComment($id_comment, $mensaje){
 function dameComment($id_comment){
 
   global $BD;	
-  $query = "SELECT * FROM comments WHERE id_comment=$id_comment";
+  $query = "SELECT * FROM comments WHERE id_comment='".$BD->real_escape_string($id_comment)."'";
   $mercha = false;
   if ($resultado = $BD->query($query)) {
     $mercha = $resultado->fetch_assoc();
@@ -89,11 +91,5 @@ function dameComment($id_comment){
   
   return $mercha;
 }
-
-
-
-}
-
-
 
 ?>

@@ -1,7 +1,3 @@
-<?php
-	require_once __DIR__.'/config.php';
-	require_once __DIR__.'/procesaUsuario.php';
-?>
 <div id="cabecera">
 	<a href ="<?php echo RAIZ_APP; ?>index.php"><img src= "<?php echo RAIZ_APP; ?>/img/logo.png" id="logo"/></a>
 	<div id="LoginAndRegister">
@@ -12,15 +8,10 @@
 		} else {
 	?>
 		<a id="loginButton" class ="boton">Login</a>
-	<?php } ?>
-		
 		<a class="boton" href="<?php echo RAIZ_APP; ?>register.php">Registro</a>
+	<?php } ?>
 	</div>
-	<?php 
-		if(!isset($_SESSION['usuario'])) {
-			require_once 'login.php';
-		}			
-	?>
+	<?php require_once 'login.php';	 ?>
 	<nav id="menu-cabecera">
 		<ul>
 			<li><a href="<?php echo RAIZ_APP; ?>index.php">Home</a></li>

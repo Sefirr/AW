@@ -1,6 +1,7 @@
 <?php	
 require_once __DIR__.'/contenidoDB.php';
 require_once __DIR__.'/formlib.php';
+require_once __DIR__.'/config.php';
 	
 function gestionarFormularioAddContent() {
    formulario('addContent', 'generaFormularioAddContent', 'addContent', null, null, 'multipart/form-data');
@@ -8,26 +9,32 @@ function gestionarFormularioAddContent() {
 
 function generaFormularioAddContent($datos) { 
 	$html = <<<EOS
-			<input type="hidden" name="tipo" value="1" />
+			<label> Tipo : </label>	
+			<select name="tipo"> 
+				<option value="1" selected="selected">Serie</option>
+				<option value="2">Película</option>
+				<option value="3">Videojuego</option>   
+			</select>
+			<br/>
 			<label>Título : </label>
-			<input type="text" class="addcontent" placeholder="Título" name="titulo" id ="tittle"/><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgtittle"/><!--- AGREGAR TITULO PELICULA: agregar titulo de la pelicula.-->
+			<input type="text" class="addcontent" placeholder="Título" name="titulo" id="tittle" /><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgtittle"/><!--- AGREGAR TITULO PELICULA: agregar titulo de la pelicula.-->
 			<br/>
 			<label>Carátula : </label> 
 			<input type="file" name="imagen"/><!-- AGREGAR CARATULA: agregar imagen de la carátula de la pelicula. -->
 			<br/>
 			<label>Sinopsis : </label>
-			<textarea class="addcontent" name="sinopsis" placeholder="Sinopsis de la serie..."></textarea> <!--AGREGAR SINOPSIS: agregar sinopsis de la película. -->
+			<textarea class="addcontent" name="sinopsis" placeholder="Sinopsis de la serie..." id="sinopsis"></textarea><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgsinopsis"/> <!--AGREGAR SINOPSIS: agregar sinopsis de la película. -->
 			<br/>
 			<fieldset>
 			<legend>Descripción básica </legend>
 				<label>Descripción: </label>
-				<textarea class="addcontent" name="descripcion" placeholder="Descripción"></textarea>
+				<textarea class="addcontent" name="descripcion" placeholder="Descripción" id="descripciones"></textarea><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgdescripcion"/>
 				<br/>
 				<label>Fecha de estreno: </label>
-				<input name="fecha" type="date" id="fecha"/><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgfecha"/>
+				<input name="fecha" type="date" placeholder="DD-MM-YY" id="fecha" /><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgfecha"/>
 				<br/>
 				<label>Director: </label>
-				<input class="addcontent" type="text" name="director" id="director"/><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgdirect"/>
+				<input class="addcontent" type="text" name="director" id="director" /><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgdirect"/>
 				<br/>
 				<label>Duración: </label>
 				<input type="number" name="duracion" value="10"> 
@@ -103,25 +110,27 @@ function addContent($params) {
 		 $okValidacionContenido = false;
 	}
 	
-	$rutaDestino= __DIR__."/../img/";
+	$rutaDestino= "img/";
 	
 	if(!empty($_FILES["imagen"]["name"])) {
 		$rutaTemporal=$_FILES["imagen"]["tmp_name"];
 		$nombreImagen=$_FILES["imagen"]["name"];
 		if($tipo == 1) {
-			$rutaDestino.="series/".$nombreImagen;
 			if (!file_exists("../img/series/")) 
 				mkdir("../img/series/", 0777, true);
+			$rutaDestino.="series/".$titulo.".".end(explode(".", $nombreImagen));
 		}else if($tipo == 2) {
-			$rutaDestino.="peliculas/".$nombreImagen;
 			if (!file_exists("../img/peliculas/")) 
 				mkdir("../img/peliculas/", 0777, true);
+			$rutaDestino.="peliculas/".$titulo.".".end(explode(".", $nombreImagen));
 		}else {
-			$rutaDestino.="videojuegos/".$nombreImagen;
 			if (!file_exists("../img/videojuegos/")) 
 				mkdir("../img/videojuegos/", 0777, true);
+			$rutaDestino.="videojuegos/".$titulo.".".end(explode(".", $nombreImagen));
 		}
-		move_uploaded_file($rutaTemporal,$rutaDestino);
+		
+		$rutaUpload = '../'.$rutaDestino;
+		move_uploaded_file($rutaTemporal,$rutaUpload);
 	} else {
 		$result[] = "Debes añadir una imagen al contenido";
 		$okValidacionContenido = false;
@@ -142,18 +151,17 @@ function gestionarFormularioEditContent() {
 function generaFormularioEditContent($datos) { 
 
 	// Consulta de base datos para sacar los datos
-	$titulo = isset($datos['titulo']) ? $datos['titulo'] : null ;
-	$sinopsis = isset($datos['sinopsis']) ? $datos['sinopsis'] : null ;
-	$descripcion = isset($datos['descripcion']) ? $datos['descripcion'] : null ;
-	$fechaestreno = isset($datos['fechaestreno']) ? $datos['fechaestreno'] : null ;
-	$director = isset($datos['director']) ? $datos['director'] : null ;
-	$duracion = isset($datos['duracion']) ? $datos['duracion'] : null ;
-	$valoracionpagina = isset($datos['valoracionpagina']) ? $datos['valoracionpagina'] : null ;
-	$id_content = dameIDContent($titulo);
+	$id_content = dameIDContent($_GET['title']);
 	$content = dameContent($id_content);
+	$titulo = isset($content['titulo']) ? $content['titulo'] : null ;
+	$sinopsis = isset($content['sinopsis']) ? $content['sinopsis'] : null ;
+	$descripcion = isset($content['descripcion']) ? $content['descripcion'] : null ;
+	$fechaestreno = isset($content['fechaestreno']) ? $content['fechaestreno'] : null ;
+	$director = isset($content['director']) ? $content['director'] : null ;
+	$duracion = isset($content['duracion']) ? $content['duracion'] : null ;
+	$valoracionpagina = isset($content['valoracionpagina']) ? $content['valoracionpagina'] : null ;
 
 	$html = <<<EOS
-			<input type="hidden" name="tipo" value="1" />
 			<label>Título : </label>
 			<input type="text" class="addcontent" placeholder="Título" name="titulo" value ="$titulo"><!--- AGREGAR TITULO PELICULA: agregar titulo de la pelicula.-->
 			<br/>
@@ -161,18 +169,18 @@ function generaFormularioEditContent($datos) {
 			<input type="file" name="imagen"><!-- AGREGAR CARATULA: agregar imagen de la carátula de la pelicula. -->
 			<br/>
 			<label>Sinopsis : </label>
-			<textarea class="addcontent" name="sinopsis" placeholder="Sinopsis de la serie..." value="$sinopsis"></textarea> <!--AGREGAR SINOPSIS: agregar sinopsis de la película. -->
+			<textarea class="addcontent" name="sinopsis" placeholder="Sinopsis de la serie...">$sinopsis</textarea> <!--AGREGAR SINOPSIS: agregar sinopsis de la película. -->
 			<br/>
 			<fieldset>
 			<legend>Descripción básica </legend>
 				<label>Descripción: </label>
-				<textarea class="addcontent" name="descripcion" placeholder="Descripción" value="$descripcion"></textarea>
+				<textarea class="addcontent" name="descripcion" placeholder="Descripción">$descripcion</textarea>
 				<br/>
 				<label>Fecha de estreno: </label>
 				<input name="fecha" type="date" value="$fechaestreno">
 				<br/>
 				<label>Director: </label>
-				<input class="addcontent" type="text" name="director" value value="$director">
+				<input class="addcontent" type="text" name="director" value="$director">
 				<br/>
 				<label>Duración: </label>
 				<input type="number" name="duracion" value="$duracion"> 
@@ -184,7 +192,7 @@ function generaFormularioEditContent($datos) {
 			</fieldset>
 
 			<!--Botones de enviar y reset-->
-			<input type="submit" name="addContent" value="Enviar" />
+			<input type="submit" name="editContent" value="Enviar" />
 			<input type="reset" name="reset" value="Borrar" />
 EOS;
 
@@ -277,9 +285,8 @@ function editContent($params) {
 		modifyContentdescripcion($id_content, $descripcion);
 		modifyContentfechaestreno($id_content, $fecha);
 		modifyContentdirector($id_content, $director);
-		//modifyContentduracion($id_content, $duracion);
 		modifyContentvaloracion($id_content, $val_pagina);
-		$result = "${_SERVER['PHP_SELF']}";
+		$result = RAIZ_APP."includes/gestion-series.php";
 	}
 	
 	return $result;
@@ -289,7 +296,7 @@ function deleteContent($params) {
 	$result = array();
 	$okValidacion = true;
 
-	$titulo = isset($params['titulo']) ? $params['titulo'] : null;
+	$titulo = isset($params) ? $params : null;
 	
 	$id_content = dameIDContent($titulo);
 	
@@ -309,12 +316,13 @@ function deleteContent($params) {
 
 function getContent($params) {
 	$okValidacion = true;
-	$titulo = isset($params['titulo']) ? $params['titulo'] : null;
+	$titulo = isset($params) ? $params : null;
 	
 	$id_content = dameIDContent($titulo);
 	
 	if(!$titulo || empty($titulo) || $id_content == false ) {
 		$result[] = 'El contenido no existe.';
+		$result[] = $params['titulo'];
 		$okValidacion = false;
 	}
 	

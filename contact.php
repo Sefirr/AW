@@ -1,9 +1,7 @@
+<?php	require_once __DIR__.'/includes/config.php'; ?>
 <!DOCTYPE html>
-
 <html>
-	<head>
-		<?php	require_once __DIR__.'/includes/config.php'; ?>
-		
+	<head>		
 	<!-- -----------------------------META REGION------------------------------ -->
 
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> <!--ESTABLECEMOS LA CODIFICACION A UTF-8-->
@@ -36,7 +34,7 @@
 			<?php include_once(__DIR__ .'/includes/sidebarIzq.php'); ?>
 			<!-- CONTENIDO -->
 			<div id = "contenido">
-			<img src= "../img/interrogacion.jpg" id="icono"/>
+			<img src= "<?php echo RAIZ_APP; ?>img/interrogacion.jpg" id="icono"/>
 				<h2>¿Alguna sugerencia? ¡Ponte en contacto con nosotros!</h2>
 				<form action="mailto:Watchandcoment@gmail.com" method="post">
 					<fieldset>
