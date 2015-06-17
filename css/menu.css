@@ -1,5 +1,4 @@
 #menus-izq {
-	clear:both;
 	word-wrap: break-word;
 	float: left;
 	width:21%;
@@ -20,6 +19,7 @@
 	border-radius:5px;
 	font-size: 0.8em;
 	background-color: #405656;
+	color:white;
 }
 
 #menu-user ul,
@@ -39,6 +39,7 @@
 	color: black;
 	text-decoration: none;
 	text-transform: uppercase;
+	color:white;
 }
 
 #menu-user > ul > li > a, #menu-user > ul > li:first-child {
@@ -106,7 +107,7 @@ input[type="submit"].search {
 
 #caratula-recomendaciones{
 	margin: 0 auto;
-	height: 175px;
+	height: 100%;
 	width: 60%;
 
 }
