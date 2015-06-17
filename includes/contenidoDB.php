@@ -57,9 +57,6 @@
 		
 		return $exito;
 
-	
-	return $usuario;
-
 	}
 
 	function dameContent($id_content){
@@ -256,4 +253,43 @@ function dameContenttipo($tipo){
 	return $exito;
 
 	}
+
+	function dameFilas(){
+
+	global $BD;	
+
+	$query = "SELECT *
+			from content
+			ORDER BY id_content";
+
+	$exito = false;
+
+		if ($resultado = $BD->query($query)) {
+			$exito = $resultado->fetch_assoc();
+			$resultado->close();
+		}
+		  
+		return $exito->num_rows;
+	}
+
+	function damePaginacion($start_with, $rows_for_page){
+
+	global $BD;	
+
+	$query = "SELECT *
+			from content
+			ORDER BY id_content
+			ASC LIMIT ".$start_with.",".$rows_for_page;
+
+	$exito = false;
+
+		if ($resultado = $BD->query($query)) {
+			$exito = $resultado->fetch_assoc();
+			$resultado->close();
+		}
+		  
+		return $exitoç;
+
+	}
+
 ?>
