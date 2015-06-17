@@ -34,11 +34,7 @@
 
 #footer footer ul li:hover a{
 
-
-	background-color: red;
-	color:white;
-	border-radius: 2px;
-	border-color: yellow;
+	font-weight: bold;
 
 
 }
