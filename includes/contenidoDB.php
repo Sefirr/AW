@@ -1,4 +1,5 @@
 <?php
+	require_once __DIR__.'/config.php';
 
 	function addContentDB($tipo, $titulo, $rutaDestino, $sinopsis, $descripcion, $fecha, $director, $duracion, $val_pagina ) {
 	global $BD;	
@@ -8,7 +9,7 @@
 		
 		if ($resultado = $BD->query($query)) {
 			$exito = true;
-			$resultado->close();
+			//$resultado->close();
 		}
 		
 		return $exito;
@@ -264,31 +265,32 @@ function dameContenttipo($tipo){
 
 	$exito = false;
 
-		if ($resultado = $BD->query($query)) {
-			$exito = $resultado->fetch_assoc();
-			$resultado->close();
-		}
+	$exito = $BD->query($query);
 		  
-		return $exito->num_rows;
+	return $exito->num_rows;
 	}
 
 	function damePaginacion($start_with, $rows_for_page){
 
 	global $BD;	
 
-	$query = "SELECT *
-			from content
+	$query = "SELECT * from content 
 			ORDER BY id_content
 			ASC LIMIT ".$start_with.",".$rows_for_page;
-
+	
 	$exito = false;
 
-		if ($resultado = $BD->query($query)) {
-			$exito = $resultado->fetch_assoc();
-			$resultado->close();
+	$contenido = array();
+	$i = 0;
+	if($resultado = $BD->query($query)) {
+		while($content = $resultado->fetch_assoc()) {
+			$contenido[$i] = array();
+			$contenido[$i++]= $content;
+			//$resultado->close();	
 		}
+	}
 		  
-		return $exitoç;
+	return	$contenido;
 
 	}
 

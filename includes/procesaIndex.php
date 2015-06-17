@@ -1,12 +1,11 @@
 <?php
 	
-	require_once __DIR__.'/config.php'; 
+	require_once __DIR__.'/config.php';
+	require_once __DIR__.'/contenidoDB.php'; 
 	
 	$rows_for_page= 10;
-	$sql = "SELECT * FROM content";
-	$result = $BD->query($sql);
 	
-	$total_records = $result->num_rows;
+	$total_records = dameFilas();
 	$pages= ceil($total_records/$rows_for_page);
 
 	if($total_records == 0) {
@@ -18,10 +17,9 @@
 			$page = 0;
 
 		$start_with = $page * $rows_for_page;
-		$sql= "SELECT * from content ORDER BY id_content ASC LIMIT ".$start_with.",".$rows_for_page;
-		$result = $BD->query($sql);
-		
-		while($content = $result->fetch_assoc()) {	
+		$contenido = damePaginacion($start_with, $rows_for_page);
+
+		foreach($contenido as $content) {		
 			$imagen = RAIZ_APP;
 			if(empty($content["caratula"])) {
 				$imagen .= "img/no_photo_available.png";

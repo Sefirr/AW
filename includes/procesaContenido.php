@@ -138,7 +138,7 @@ function addContent($params) {
 	
 	if($okValidacionContenido) {
 		addContentDB($tipo, $titulo, $rutaDestino, $sinopsis, $descripcion, $fecha, $director, $duracion, $val_pagina);
-		$result = "${_SERVER['PHP_SELF']}";
+		$result = "descripcion.php?title=".$titulo;
 	}
 	
 	return $result;
