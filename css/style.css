@@ -3,8 +3,8 @@ body {
 	font-family: Century Gothic;
 	font-size :62.5%;
 	margin:1%;
-	background:url("../img/fondo.jpg") 50% 50% no-repeat;
-	background-size: cover;
+	background:url("../img/fondo.jpg") no-repeat fixed center;
+	background-size: 100% 100%; 
 }
 
 #contenedor {
