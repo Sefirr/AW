@@ -1,7 +1,7 @@
 body {
 	min-width: 800px;
 	font-family: Century Gothic;
-	font-size :62.5%;
+	font-size : 62%;
 	margin:1%;
 	background:url("../img/fondo.jpg") no-repeat fixed center;
 	background-size: 100% 100%; 
@@ -17,9 +17,10 @@ body {
 	float:left;
 	width: 69%;
 	word-wrap: break-word;
-    background-color: OldLace;
+    background-color: rgba(216,169,77, 0.9);
 	margin: 1% 0 1% 0;
 	padding: 5%;
+	border-radius: 3px;
 }
 
 #estrellas{
