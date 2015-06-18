@@ -57,7 +57,18 @@ function formulario($formId, $generaCamposFormulario, $procesaFormulario, $actio
         // Error al procesar el formulario, volvemos a mostrarlo
         echo generaFormulario($formId, $generaCamposFormulario, $action, $class, $enctype, $result, $_POST);
       } else {
-        header('Location: '.$result);
+        if (!headers_sent()) {    
+			header('Location: '.$result);
+			exit;
+        } else { 
+			//Elimina el problema de header already sent
+			echo '<script type="text/javascript">';
+			echo 'window.location.href="'.$result.'";';
+			echo '</script>';
+			echo '<noscript>';
+			echo '<meta http-equiv="refresh" content="0;url='.$result.'" />';
+			echo '</noscript>'; exit;
+		}
       }
     }
   }  

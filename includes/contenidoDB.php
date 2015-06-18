@@ -269,6 +269,19 @@ function dameContenttipo($tipo){
 		  
 	return $exito->num_rows;
 	}
+	
+	function dameFilasByType($tipo){
+
+	global $BD;	
+
+	$query = "SELECT * FROM content where tipo='".$tipo."'";
+
+	$exito = false;
+
+	$exito = $BD->query($query);
+		  
+	return $exito->num_rows;
+	}
 
 	function damePaginacion($start_with, $rows_for_page){
 
@@ -277,6 +290,30 @@ function dameContenttipo($tipo){
 	$query = "SELECT * from content 
 			ORDER BY id_content
 			ASC LIMIT ".$start_with.",".$rows_for_page;
+	
+	$exito = false;
+
+	$contenido = array();
+	$i = 0;
+	if($resultado = $BD->query($query)) {
+		while($content = $resultado->fetch_assoc()) {
+			$contenido[$i] = array();
+			$contenido[$i++]= $content;
+			//$resultado->close();	
+		}
+	}
+		  
+	return	$contenido;
+
+	}
+	
+	function damePaginacionByType($start_with, $rows_for_page, $tipo){
+
+	global $BD;	
+
+	$query = "SELECT * from content WHERE tipo='".$tipo."' 
+				ORDER BY id_content 
+				ASC LIMIT ".$start_with.",".$rows_for_page;
 	
 	$exito = false;
 

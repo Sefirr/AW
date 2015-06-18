@@ -1,13 +1,10 @@
 <?php 
-	require_once __DIR__.'/config.php'; 
+	require_once __DIR__.'/config.php';
+	require_once __DIR__.'/procesaContenido.php'; 
 
-	global $BD;
-	
 	$rows_for_page= 10;
-	$sql = "SELECT * FROM content where tipo='1'";
-	$result = $BD->query($sql);
 	
-	$total_records = $result->num_rows;
+	$total_records = getRowsByType(1);
 	$pages= ceil($total_records/$rows_for_page);
 
 	if($total_records == 0) {
@@ -19,12 +16,9 @@
 			$page = 0;
 
 		$start_with = $page * $rows_for_page;
-		$sql= "SELECT * from content WHERE tipo='1' ORDER BY id_content ASC LIMIT ".$start_with.",".$rows_for_page;
-		$result = $BD->query($sql);
+		$contenido = getPaginationByType($start_with, $rows_for_page,1);
 		
-		echo '<div style="text-align:center;">';	
-		
-		while($content = $result->fetch_assoc()) {	
+		foreach($contenido as $content) {		
 			$imagen = RAIZ_APP;
 			if(empty($content["caratula"])) {
 				$imagen .= "img/no_photo_available.png";
@@ -35,6 +29,7 @@
 			echo '<a href="includes/descripcion.php?title='.$content["titulo"].'"><div id="cartel"><img src="'.$imagen.'" id="caratula"> </div></a>';
 			echo  '<a href="includes/descripcion.php?title='.$content["titulo"].'"><p><em>'.$content["titulo"].'</em></p></a>';
 			echo  '</div>';
+			
 		}
 
 		$html="</div>";

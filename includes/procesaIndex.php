@@ -1,11 +1,11 @@
 <?php
 	
 	require_once __DIR__.'/config.php';
-	require_once __DIR__.'/contenidoDB.php'; 
+	require_once __DIR__.'/procesaContenido.php'; 
 	
 	$rows_for_page= 10;
 	
-	$total_records = dameFilas();
+	$total_records = getRows();
 	$pages= ceil($total_records/$rows_for_page);
 
 	if($total_records == 0) {
@@ -17,7 +17,7 @@
 			$page = 0;
 
 		$start_with = $page * $rows_for_page;
-		$contenido = damePaginacion($start_with, $rows_for_page);
+		$contenido = getPagination($start_with, $rows_for_page);
 
 		foreach($contenido as $content) {		
 			$imagen = RAIZ_APP;
