@@ -1,7 +1,8 @@
 <?php	
 	require_once __DIR__.'/config.php'; 
 	require_once __DIR__.'/procesaContenido.php'; 
-	require_once __DIR__.'/comentarios.php'; 
+	require_once __DIR__.'/comentarios.php';
+	require_once __DIR__.'/comentarioDB.php'; 
 
 	$titulo = $_GET['title'];
 	$content = getContent($titulo);
@@ -43,12 +44,41 @@
 			<!-- CONTENIDO -->
 			<div id = "contenido">
 				<div id="titulo-serie"> <?php echo $content["titulo"]; ?> </div>
-				<div id="cartel"><img src="<?php echo $content["caratula"]; ?>" id="caratula"> </div>
+				<?php 	$imagen = RAIZ_APP;
+						if(empty($content["caratula"])) {
+							$imagen .= "img/no_photo_available.png";
+						} else {
+							$imagen .= $content["caratula"];
+						}
+				?>
+				<div id="cartel"><img src="<?php echo $imagen ?>" id="caratula"> </div>
 				<div id="descripcion-basica"><?php echo $content["descripcion"]; ?></div>
 				<div id="val-pagina">Valoración de la página:</div>
 				<div id="val-usuario">Valoración de los usuarios:</div>
-				<div id="val-pagina"><!--<img src="./img/5estrellas.png" id="estrellas"/>--><?php echo $content["valoracionpagina"]; ?></div>
-				<div id="val-usuario"><img src="./img/5estrellas.png" id="estrellas"/></div>
+				<div id="val-pagina"><!--<img src="./img/5estrellas.png" id="estrellas"/>-->
+					<?php $valoracion = $content["valoracionpagina"]; 
+							$html = "";
+						if($valoracion == 0) {
+							$html = '<img src="'.RAIZ_APP.'img/0estrellas.png" id="estrellas" />';
+						}
+						else if($valoracion == 1) {
+							$html = '<img src="'.RAIZ_APP.'img/1estrellas.png" id="estrellas" />';
+						} else if($valoracion == 2) {
+							$html = '<img src="'.RAIZ_APP.'img/2estrellas.png" id="estrellas" />';
+						} else if($valoracion == 3) {
+							$html = '<img src="'.RAIZ_APP.'img/3estrellas.png" id="estrellas" />';
+						} else if($valoracion == 4) {
+							$html = '<img src="'.RAIZ_APP.'img/4estrellas.png" id="estrellas" />';
+						} else {
+							$html = '<img src="'.RAIZ_APP.'img/5estrellas.png" id="estrellas" />';
+						}
+						echo $html;
+					?>
+				</div>
+				<div id="val-usuario">
+					<?php	$html = '<img src="'.RAIZ_APP.'img/0estrellas.png" id="estrellas" /></div>';
+							echo $html;
+					?>
 				<div id="titulo"> SINOPSIS</div>
 				<div id="texto"><?php echo $content["sinopsis"]; ?></div>
 				<div id="titulo"> MERCHANDISING</div>
@@ -87,13 +117,17 @@
 					</div>
 				</div>
 				<div id="comentarios">
-					<div id="titulo"> COMENTARIOS </div>
-					<article>Javier Villarreal Rodríguez el 12-04-2015
-					<p>Tirate el pisto.</p>
-					</article>
-					<article>Javier Villarreal Rodríguez el 12-04-2015
-					<p>Que guay!</p>
-					</article>
+					<h2> Comentarios</h2>
+					<?php $comments = dameComments($content['id_content']);
+				foreach($comments as $comment) {
+					echo $comment['texto'].'</br>';
+				} ?>
+					<form action="add-comment.php" method="post">
+						<input type="hidden" name="id_content" value="<?php echo $content['id_content']; ?>">
+						<div id="textarea"><textarea id="textarea" rows="7" name="message" placeholder="Deja tu comentario.." ></textarea></div>
+						<input type="submit" class="button" name="send-comment" value="Enviar comentario"> </input>
+					</form>
+					
 				</div>
 			</div>
 			<!-- INCLUDE FOOTER -->

@@ -7,16 +7,16 @@ function addCommentContent($id_user, $mensaje, $id_content){
 
 
 	$query="INSERT INTO comments (id_user, texto) VALUES ('".$BD->real_escape_string($id_user)."','".$BD->real_escape_string($mensaje)."')";
-	$id_comment = $BD->insert_id();
-	$query2="INSERT INTO comments_content (id_content, id_comment) VALUES ('".$BD->real_escape_string($id_content)."','".$BD->real_escape_string($id_comment)."')";
 
 	$exito = false;
 
 	if ($resultado = $BD->query($query)) {
-		$resultado->close();
+		//$resultado->close();
+		$id_comment = $BD->insert_id;
+		$query2="INSERT INTO comments_content (id_content, id_comment) VALUES ('".$BD->real_escape_string($id_content)."','".$BD->real_escape_string($id_comment)."')";
 		if($resultado = $BD->query($query2)) {
 			$exito = true;
-			$resultado->close();			
+			//$resultado->close();			
 		}
 	}
 
@@ -90,6 +90,31 @@ function dameComment($id_comment){
   }
   
   return $mercha;
+}
+
+function dameComments($id_content){
+
+  global $BD;	
+  $query = "SELECT id_comment FROM comments_content WHERE id_content='".$BD->real_escape_string($id_content)."'";
+	
+  $array = array();
+  $arr = false;
+  if ($resultado = $BD->query($query)) {
+    $arr = $resultado->fetch_array();
+    $h = 0;
+
+    foreach($arr as $id_comment) {
+	$query2 = "SELECT * FROM comments WHERE id_comment='".$BD->real_escape_string($id_comment)."'";
+	$result2 = $BD->query($query2);
+
+	while($comentarios = $result2->fetch_assoc()) {
+		$array[$h++] = $comentarios;
+	}
+    }
+    //$resultado->close();
+  }
+  
+  return $array;
 }
 
 ?>
