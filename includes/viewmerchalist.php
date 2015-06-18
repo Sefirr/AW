@@ -1,5 +1,4 @@
 <?php require_once __DIR__.'/config.php'; ?>
-<?php require_once __DIR__.'/contenidoDB.php'; ?>
 
 <!DOCTYPE html>
 <html>
@@ -39,24 +38,27 @@
 				<table id="tabla-contenido">
 				<thead>
 					<tr>
-							<th> Título </th>
-							<th> Director </th>
-							<th> Fecha de estreno </th>
-							<th> Duración </th>
+							<th> Nombre </th>
+							<th> Descripcion </th>
+							<th> Proveedor </th>
+							<th> Unidades </th>
+							<th> Precio <th>
+
 							<th> Opciones </th>
 					</tr>
 				</thead>
 			<?php
 			
-		
+			/*QUITAR SELECt*/
 				$html = "";
-				while($content = dameContenttipo(1);) {	
+				while($content = $result->fetch_assoc()) {	
 					$html = '	<tr>
-								<td>'.$content["titulo"].'</td>
-								<td>'.$content["director"].'</td>
-								<td>'.$content["fechaestreno"].'</td>
-								<td>'.$content["duracion"].'</td>
-								<td><a href="descripcion.php?title='.$content["titulo"].'">Ver</a>
+								<td>'.$content["nombre"].'</td>
+								<td>'.$content["descripcion"].'</td>
+								<td>'.$content["proveedor"].'</td>
+								<td>'.$content["unidades"].'</td>								
+								<td>'.$content["precio"].'</td>
+								<td><a href="mechandising.php?title='.$content["nombre"].'">Ver</a>
 							</tr>';
 					echo $html;
 				}
