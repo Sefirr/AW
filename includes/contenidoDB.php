@@ -75,17 +75,20 @@
 		  
 		return $content;
 	}
-function dameContenttipo($tipo){
+	
+	function dameContents(){
 
 		global $BD;	
 		
-		$query = "SELECT * FROM content WHERE tipo=$tipo";
+		$query = "SELECT * from content";
 
 		$content = false;
-
+		$i = 0;
 		if ($resultado = $BD->query($query)) {
-			$content = $resultado->fetch_assoc();
-			$resultado->close();
+			while($array = $resultado->fetch_assoc()) {
+				$content[$i++] = $array;
+			}
+			//$resultado->close();
 		}
 		  
 		return $content;
