@@ -230,7 +230,7 @@ function generaFormularioRegistro($datos) {
 			<textarea class="register" name="descripcion" rows="6" cols="70" placeholder="Descripción del usuario" id="descripcion2"></textarea><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgdescripcion2"/> 
 			<br/>
 			<!--Checkbox para los términos de uso-->
-			<input type="checkbox" name="terms" value="1">Marque esta casilla para verificar que ha leído nuestros <a href="info-privacy.php">términos y condiciones del servicio</a>
+			<input type="checkbox" name="terms" value="1">Marque esta casilla para verificar que ha leído nuestros <a href="includes/info-privacy.php">términos y condiciones del servicio</a>
 			<br/>
 
 			<input type="submit" name="registro" value="Enviar" /><!-- boton de enviar -->

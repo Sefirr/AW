@@ -25,10 +25,9 @@
 		<?php include_once __DIR__ .'/includes/sidebarIzq.php'; ?>
 		<!-- CONTENIDO -->
 		<div id = "contenido">
-		<div id = "titulo">
-			¿Eres nuevo? Regístrate y pertenece a la comunidad Whatch & Comment 
-			</br>
-		</div>
+			<h2>
+				¿Eres nuevo? Regístrate y pertenece a la comunidad Watch & Comment 
+			</h2>
 		<?php gestionarFormularioRegistro(); ?>
 		</div>
 		<!-- INCLUDE FOOTER -->

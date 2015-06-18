@@ -70,7 +70,7 @@
 						</select>Marca la opción de la página de la que nos quieres contactar
 						<br/>
 						<!-- Enlace para el documento con los términos de uso -->
-						<a href="info-privacy.php">Términos de uso</a>
+						<a href="includes/info-privacy.php">Términos de uso</a>
 						<!--Checkbox para los términos de uso-->
 						<input type="checkbox" name="terms" id="terms">Marque esta casilla para verificar que ha leído nuestros términos y condiciones del servicio
 						<br/>

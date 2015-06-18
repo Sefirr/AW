@@ -6,6 +6,7 @@ require_once __DIR__.'/config.php';
 function gestionarFormularioAddContent() {
    formulario('addContent', 'generaFormularioAddContent', 'addContent', null, null, 'multipart/form-data');
 }
+
 function generaFormularioAddContent($datos) { 
 	$html = <<<EOS
 			<label> Tipo : </label>	
@@ -22,7 +23,7 @@ function generaFormularioAddContent($datos) {
 			<input type="file" name="imagen"/><!-- AGREGAR CARATULA: agregar imagen de la carátula de la pelicula. -->
 			<br/>
 			<label>Sinopsis : </label>
-			<textarea class="addcontent" name="sinopsis" placeholder="Sinopsis de la serie..." id="sinopsis"></textarea><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgsinopsis"/> <!--AGREGAR SINOPSIS: agregar sinopsis de la película. -->
+			<textarea class="addcontent" name="sinopsis" placeholder="Sinopsis" id="sinopsis"></textarea><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgsinopsis"/> <!--AGREGAR SINOPSIS: agregar sinopsis de la película. -->
 			<br/>
 			<fieldset>
 			<legend>Descripción básica </legend>
@@ -41,14 +42,18 @@ function generaFormularioAddContent($datos) {
 				<label>Valoración de la página: </label>
 				<input type="number" name="val_pagina" value="1" min="1" max="5" > 
 				<br/>
+
 			</fieldset>
 			
 			<!--Botones de enviar y reset-->
 			<input type="submit" name="addContent" value="Enviar" />
 			<input type="reset" name="reset" value="Borrar" />
 EOS;
+
+
 	return $html;
 }
+
 	
 function addContent($params) {	
 	$result = array();
@@ -133,12 +138,11 @@ function addContent($params) {
 	
 	if($okValidacionContenido) {
 		addContentDB($tipo, $titulo, $rutaDestino, $sinopsis, $descripcion, $fecha, $director, $duracion, $val_pagina);
-		$result = "descripcion.php?title=".$titulo;
+		$result = "${_SERVER['PHP_SELF']}";
 	}
 	
 	return $result;
 }
-
 
 function gestionarFormularioEditContent() {
 	formulario('editContent', 'generaFormularioEditContent', 'editContent', null, null, 'multipart/form-data');
@@ -318,6 +322,7 @@ function getContent($params) {
 	
 	if(!$titulo || empty($titulo) || $id_content == false ) {
 		$result[] = 'El contenido no existe.';
+		$result[] = $params['titulo'];
 		$okValidacion = false;
 	}
 	
@@ -327,22 +332,6 @@ function getContent($params) {
 	
 	return $result;
 
-}
-
-function getRows() {
-	return dameFilas();
-}
-
-function getRowsByType($tipo) {
-	return dameFilasByType($tipo);
-}
-
-function getPagination($start_with, $rows_for_page) {
-	return damePaginacion($start_with, $rows_for_page);
-}
-
-function getPaginationByType($start_with, $rows_for_page, $tipo){
-	return damePaginacionByType($start_with, $rows_for_page, $tipo);
 }
 
 ?>
