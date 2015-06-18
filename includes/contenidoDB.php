@@ -331,4 +331,27 @@ function dameContenttipo($tipo){
 
 	}
 
+	function ordenar($start_with, $rows_for_page, $ordenado){
+
+	global $BD;	
+
+	$query = "SELECT * from content 
+			ORDER BY $ordenado
+			ASC LIMIT ".$start_with.",".$rows_for_page;
+	
+	$exito = false;
+
+	$contenido = array();
+	$i = 0;
+	if($resultado = $BD->query($query)) {
+		while($content = $resultado->fetch_assoc()) {
+			$contenido[$i] = array();
+			$contenido[$i++]= $content;
+			//$resultado->close();	
+		}
+	}
+		  
+	return	$contenido;
+	}
+
 ?>
