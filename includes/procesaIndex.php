@@ -19,6 +19,15 @@
 		$start_with = $page * $rows_for_page;
 		$contenido = getPagination($start_with, $rows_for_page);
 
+
+		echo '<div id="menu-ordenar">
+					<ul>
+						<li>Alfabeticamente</li>
+						<li>&Uacute;ltimas</li>
+						<li>M&aacute;s valoradas</li>
+					</ul>
+				</div>';
+
 		foreach($contenido as $content) {		
 			$imagen = RAIZ_APP;
 			if(empty($content["caratula"])) {
