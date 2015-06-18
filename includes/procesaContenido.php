@@ -334,4 +334,20 @@ function getContent($params) {
 
 }
 
+function getRows() {
+    return dameFilas();
+}
+
+function getRowsByType($tipo) {
+    return dameFilasByType($tipo);
+}
+
+function getPagination($start_with, $rows_for_page) {
+    return damePaginacion($start_with, $rows_for_page);
+}
+
+function getPaginationByType($start_with, $rows_for_page, $tipo){
+    return damePaginacionByType($start_with, $rows_for_page, $tipo);
+}
+
 ?>
