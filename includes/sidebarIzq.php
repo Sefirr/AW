@@ -8,8 +8,10 @@
 			<li>Menú de usuario</li>
 			<li><a>Contenido</a>
 				<ul>
+					<li><a href="<?php echo RAIZ_APP; ?>includes/viewcontent.php">Lista de contenido</a></li>
 					<li><a href="<?php echo RAIZ_APP; ?>includes/add-content.php">Añadir contenido</a></li>
 					<li><a href="<?php echo RAIZ_APP; ?>includes/manage-content.php">Gestionar contenido</a></li>
+
 				</ul>
 			</li>
 			<li><a>Merchandising</a>
