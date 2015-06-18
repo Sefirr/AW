@@ -334,4 +334,8 @@ function deleteUser($params) {
 
 }
 
+function getUser($id) {
+	return dameUsuarioById($id);
+}
+
 ?>

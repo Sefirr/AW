@@ -18,7 +18,7 @@
 		
 		$message = isset($params['message']) ? $params['message'] : null;
 		
-		if(!$message || empty(message)) {
+		if(!$message || empty($message)) {
 			$result[] = "El comentario no puede ser vacio.";
 			$okValidacionComentario = false;
 		}
@@ -128,6 +128,10 @@
 		if($okValidacionComentario) {
 			$result = dameComment($id_comment);
 		}
+	}
+	
+	function getCommentsContent($id_content) {
+		return dameComments($id_content);
 	}
 
 ?>

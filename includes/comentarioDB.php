@@ -97,24 +97,27 @@ function dameComments($id_content){
   global $BD;	
   $query = "SELECT id_comment FROM comments_content WHERE id_content='".$BD->real_escape_string($id_content)."'";
 	
-  $array = array();
-  $arr = false;
+  $array1 = array();
+  $array2 = array();
   if ($resultado = $BD->query($query)) {
-    $arr = $resultado->fetch_array();
+    
     $h = 0;
-
-    foreach($arr as $id_comment) {
+	
+    while($arr = $resultado->fetch_array()) {
+		$array1[$h++] = $arr["id_comment"];
+	}
+	$h = 0;
+	foreach($array1 as $id_comment) {
 	$query2 = "SELECT * FROM comments WHERE id_comment='".$BD->real_escape_string($id_comment)."'";
 	$result2 = $BD->query($query2);
-
-	while($comentarios = $result2->fetch_assoc()) {
-		$array[$h++] = $comentarios;
+		while($comentarios = $result2->fetch_assoc()) {
+			$array2[$h++] = $comentarios;
+		}
 	}
-    }
     //$resultado->close();
   }
   
-  return $array;
+  return $array2;
 }
 
 ?>

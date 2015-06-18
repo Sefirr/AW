@@ -1,8 +1,8 @@
 <?php	
 	require_once __DIR__.'/config.php'; 
 	require_once __DIR__.'/procesaContenido.php'; 
-	require_once __DIR__.'/comentarios.php';
-	require_once __DIR__.'/comentarioDB.php'; 
+	require_once __DIR__.'/comentarios.php'; 
+	require_once __DIR__.'/procesaUsuario.php'; 
 
 	$titulo = $_GET['title'];
 	$content = getContent($titulo);
@@ -120,7 +120,10 @@
 					<h2> Comentarios</h2>
 					<?php $comments = dameComments($content['id_content']);
 				foreach($comments as $comment) {
-					echo $comment['texto'].'</br>';
+				?>
+					<a href="#"><?php echo getUser($comment["id_user"])["username"]; ?></a> el <?php echo $comment["fecha"]; ?>
+					<p><?php echo $comment["texto"]; ?></p>
+				<?php
 				} ?>
 					<form action="add-comment.php" method="post">
 						<input type="hidden" name="id_content" value="<?php echo $content['id_content']; ?>">

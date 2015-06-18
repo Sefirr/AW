@@ -16,6 +16,20 @@ function dameUsuario($nombreUsuario) {
 	return $usuario;
 }
 
+function dameUsuarioById($id) {
+	// Usar global UNICAMENTE para esta variable
+	global $BD;
+
+	$query = "SELECT * FROM users WHERE id_user='".$BD->real_escape_string($id)."'";
+	$usuario = false;
+	if ($resultado = $BD->query($query)) {
+		$usuario = $resultado->fetch_assoc();
+		$resultado->close();
+	}
+
+	return $usuario;
+}
+
 function modificaRol($username, $rol){
 	global $BD;	
 	$query = "UPDATE users 
