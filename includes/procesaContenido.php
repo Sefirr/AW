@@ -334,6 +334,10 @@ function getContent($params) {
 
 }
 
+function dameAllContent() {
+	return dameContents();
+}
+
 function getRows() {
     return dameFilas();
 }

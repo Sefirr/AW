@@ -1,5 +1,5 @@
 <?php require_once __DIR__.'/config.php'; ?>
-<?php require_once __DIR__.'/contenidoDB.php'; ?>
+<?php require_once __DIR__.'/procesaContenido.php'; ?>
 
 <!DOCTYPE html>
 <html>
@@ -50,7 +50,8 @@
 			
 		
 				$html = "";
-				while($content = dameContenttipo(1);) {	
+				$contents = dameAllContent();
+				foreach($contents as $content) {	
 					$html = '	<tr>
 								<td>'.$content["titulo"].'</td>
 								<td>'.$content["director"].'</td>

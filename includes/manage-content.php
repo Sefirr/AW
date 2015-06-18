@@ -1,4 +1,7 @@
-<?php require_once __DIR__.'/config.php'; ?>
+<?php
+	require_once __DIR__.'/config.php'; 
+	require_once __DIR__.'/procesaContenido.php';
+?>
 
 <!DOCTYPE html>
 <html>
@@ -45,10 +48,9 @@
 				</thead>
 			<?php
 			
-				$sql= "SELECT * from content WHERE tipo='1'";
-				$result = $BD->query($sql);
 				$html = "";
-				while($content = $result->fetch_assoc()) {	
+				$contents = dameAllContent();
+				foreach($contents as $content) {	
 					$html = '	<tr>
 								<td>'.$content["id_content"].'</td>
 								<td>'.$content["titulo"].'</td>
