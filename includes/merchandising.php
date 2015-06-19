@@ -85,6 +85,59 @@
 			$result = addMercha($nombre, $rutaDestino, $rutaDestino2, $descripcion, $unidades, $proveedor, $precio, $valoracion);
 		}
 	}
+
+	unction generaFormularioEditMercha($datos) { 
+
+	// Consulta de base datos para sacar los datos
+	$id_content = dameIDMercha($_GET['nombre']);
+	$content = dameMercha($id_mercha);
+	$nombre = isset($content['nombre']) ? $content['nombre'] : null ;
+	$unidades = isset($content['unidades']) ? $content['unidades'] : null ;
+	$descripcion = isset($content['descripcion']) ? $content['descripcion'] : null ;
+	$proveedor = isset($content['proveedor']) ? $content['proveedor'] : null ;
+	$precio = isset($content['precio']) ? $content['precio'] : null ;
+	$valoracion = isset($content['valoracion']) ? $content['valoracion'] : null ;
+
+	$html = <<<EOS
+			<input type="hidden" name="old-titulo" value="$nombre">
+			<input type="hidden" name="unidades" value="$unidades">
+			<label>Título : </label>
+			<input type="text" class="addmercha" placeholder="Nombre" name="nombre" value ="$nombre"><!--- AGREGAR TITULO PELICULA: agregar titulo de la pelicula.-->
+			<br/>
+			<label>Foto 1 : </label> 
+			<input type="file" name="foto1"><!-- AGREGAR CARATULA: agregar imagen de la carátula de la pelicula. -->
+			<br/>
+			<label>Foto 2 : </label> 
+			<input type="file" name="foto2"><!-- AGREGAR CARATULA: agregar imagen de la carátula de la pelicula. -->
+			<br/>
+			<fieldset>
+			<legend>Descripción básica </legend>
+				<label>Descripción: </label>
+				<textarea class="addmercha" name="descripcion" placeholder="Descripción">$descripcion</textarea>
+				<br/>
+				<label>Unidades</label>
+				<input type="number" placeholder="unidades" name="unidades" value ="$unidades">
+				<br/>
+				<label>Precio</label>
+				<input type="number" placeholder="precio" name="precio" value ="$precio">
+				<br/>
+				<label>Proveedor</label>
+				<input type="text" placeholder="proveedor" name="proveedor" value ="$proveedor">
+				<br/>				
+				<label>Valoración de la página: </label>
+				<input type="number" name="val_pagina" value="$valoracion" min="1" max="5" > 
+				<br/>
+
+			</fieldset>
+
+			<!--Botones de enviar y reset-->
+			<input type="submit" name="editMerchandising" value="Enviar" />
+			<input type="reset" name="reset" value="Borrar" />
+EOS;
+
+
+	return $html;
+}
 	
 	function editMerchandising($params) {
 		$result = array();
@@ -175,7 +228,7 @@
 		return $result;
 	
 	}
-	function deleteMerchan($params) {
+	function deleteMercha($params) {
 		$okValidacionMercha = true;
 		$nombre = isset($params['nombre']) ? $params['nombre'] : null;
 	
