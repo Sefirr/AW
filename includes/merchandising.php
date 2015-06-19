@@ -209,4 +209,7 @@
 		return $result;
 	}
 
+function dameAllMercha() {
+	return dameMerchas();
+}
 ?>

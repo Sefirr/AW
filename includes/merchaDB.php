@@ -70,6 +70,24 @@ function dameMercha($id_merchandising){
 
 
 
+function dameMerchas(){
+
+global $BD;	
+		
+		$query = "SELECT * from merchandising";
+
+		$content = false;
+		$i = 0;
+		if ($resultado = $BD->query($query)) {
+			while($array = $resultado->fetch_assoc()) {
+				$content[$i++] = $array;
+			}
+			//$resultado->close();
+		}
+		  
+		return $content;
+
+
 }
 
 

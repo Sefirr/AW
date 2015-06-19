@@ -1,4 +1,5 @@
 <?php require_once __DIR__.'/config.php'; ?>
+<?php require_once __DIR__.'/merchandising.php'; ?>
 
 <!DOCTYPE html>
 <html>
@@ -51,7 +52,8 @@
 			
 			/*QUITAR SELECt*/
 				$html = "";
-				while($content = $result->fetch_assoc()) {	
+				$contents = dameAllMercha();
+				while($contents as $content) {	
 					$html = '	<tr>
 								<td>'.$content["nombre"].'</td>
 								<td>'.$content["descripcion"].'</td>

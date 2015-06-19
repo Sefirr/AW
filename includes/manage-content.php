@@ -41,9 +41,9 @@
 				<table id="tabla-contenido">
 				<thead>
 					<tr>
-							<td> ID </td>
-							<td> Título </td>
-							<td> Opciones </td>
+							<th> ID </th>
+							<th> Título </th>
+							<th> Opciones </th>
 					</tr>
 				</thead>
 			<?php
