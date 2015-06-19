@@ -86,10 +86,14 @@
 		}
 	}
 
+	function gestionarFormularioEditMercha() {
+	formulario('editMerchandising', 'generaFormularioEditMercha', 'editMerchandising', null, null, 'multipart/form-data');
+}
+	
 	function generaFormularioEditMercha($datos) { 
 
 	// Consulta de base datos para sacar los datos
-	$id_content = dameIDMercha($_GET['nombre']);
+	$id_mercha = dameIDMercha($_GET['nombre']);
 	$content = dameMercha($id_mercha);
 	$nombre = isset($content['nombre']) ? $content['nombre'] : null ;
 	$unidades = isset($content['unidades']) ? $content['unidades'] : null ;
@@ -99,7 +103,7 @@
 	$valoracion = isset($content['valoracion']) ? $content['valoracion'] : null ;
 
 	$html = <<<EOS
-			<input type="hidden" name="old-titulo" value="$nombre">
+			<input type="hidden" name="old-nombre" value="$nombre">
 			<input type="hidden" name="unidades" value="$unidades">
 			<label>Título : </label>
 			<input type="text" class="addmercha" placeholder="Nombre" name="nombre" value ="$nombre"><!--- AGREGAR TITULO PELICULA: agregar titulo de la pelicula.-->
@@ -204,37 +208,41 @@ EOS;
 			$okValidacionMercha = false;
 		}
 		
-		$val_pagina = isset($params['valoracionpagina']) ? $params['valoracionpagina'] : null;
-		
+		$val_pagina = isset($params['val_pagina']) ? $params['val_pagina'] : null;
+	
 		if(!$val_pagina || empty($val_pagina) || $val_pagina < 1 || $val_pagina > 5) {
-			$result[] = 'La valoración del merchansing no es válida';
+			$result[] = 'La valoración del contenido no es válida';
 			$okValidacionMercha = false;
 		}
 		
-		$id_mercha = dameIDMercha($titulo);
+		$old_nombre = isset($params['old-nombre']) ? $params['old-nombre'] : null ;
+		$id_mercha = dameIDMercha($old_nombre);
 		
 		if($okValidacionMercha) {
-			modifyMerchanombre($id_mercha, $titulo);
+			if($old_nombre != $nombre) {
+				modifyMerchanombre($id_mercha, $nombre);
+			}
 			modifyMerchafoto($id_mercha, $rutaDestino, "foto1");
 			modifyMerchafoto($id_mercha, $rutaDestino2, "foto2");
 			modifyMerchadescripcion($id_mercha, $descripcion);
 			modifyMerchaunidades($id_mercha, $unidades);
 			modifyMerchaproveedor($id_mercha, $proveedor);
 			modifyMerchaprecio($id_mercha, $precio);
-			modifyMerchavaloracion($id_mercha, $valoracion);
-			$result = "${_SERVER['PHP_SELF']}";
+			modifyMerchavaloracion($id_mercha, $val_pagina);
+			$result = "edit-mercha.php?nombre=".$nombre;
 		}
 		
 		return $result;
 	
 	}
-	function deleteMerchan($params) {
-		$okValidacionMercha = true;
-		$nombre = isset($params['nombre']) ? $params['nombre'] : null;
 	
-		$id_mercha = dameIDMercha($nombre);
+	function deleteMerchan($params) {
 		
-		if(!$nombre || empty($nombre) || $id_nombre == false ) {
+		$okValidacionMercha = true;
+		$nombre = isset($params) ? $params : null;
+		$id_mercha = dameIDMercha($nombre);
+
+		if(!$nombre || empty($nombre) || $id_mercha == false ) {
 			$result[] = 'El merchandising no existe.';
 			$okValidacionMercha = false;
 		}
@@ -242,11 +250,12 @@ EOS;
 		if($okValidacionMercha) {
 			$result = deleteMercha($id_mercha);
 		}
+		return $result;
 	}
 	
-	function getMerchandising($params) {
+/*function getMerchandising($params) {
 		$okValidacionMercha = true;
-		$nombre = isset($params['nombre']) ? $params['nombre'] : null;
+		$nombre = isset($params) ? $params : null;
 	
 		$id_mercha = dameMercha($nombre);
 		
@@ -260,7 +269,7 @@ EOS;
 		}
 		
 		return $result;
-	}
+}*/
 
 function dameAllMercha() {
 	return dameMerchas();

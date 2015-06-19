@@ -61,7 +61,7 @@
 								<td>'.$content["unidades"].'</td>
 								<td>'.$content["precio"].'</td>
 								<td>'.$content["proveedor"].'</td>
-								<td><a href="edit-mercha.php?title='.$content["nombre"].'">Editar</a> | <a href="delete-mercha.php?title='.$content["nombre"].'">Eliminar</a></td>
+								<td><a href="edit-mercha.php?nombre='.$content["nombre"].'">Editar</a> | <a href="delete-mercha.php?nombre='.$content["nombre"].'">Eliminar</a></td>
 							</tr>';
 					echo $html;
 				}
