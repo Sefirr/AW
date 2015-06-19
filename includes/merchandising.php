@@ -86,7 +86,7 @@
 		}
 	}
 
-	unction generaFormularioEditMercha($datos) { 
+	function generaFormularioEditMercha($datos) { 
 
 	// Consulta de base datos para sacar los datos
 	$id_content = dameIDMercha($_GET['nombre']);
@@ -228,7 +228,7 @@ EOS;
 		return $result;
 	
 	}
-	function deleteMercha($params) {
+	function deleteMerchan($params) {
 		$okValidacionMercha = true;
 		$nombre = isset($params['nombre']) ? $params['nombre'] : null;
 	
