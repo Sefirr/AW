@@ -53,7 +53,8 @@
 			/*QUITAR SELECt*/
 				$html = "";
 				$contents = dameAllMercha();
-				while($contents as $content) {	
+				
+				foreach($contents as $content) {	
 					$html = '	<tr>
 								<td>'.$content["nombre"].'</td>
 								<td>'.$content["descripcion"].'</td>

@@ -175,8 +175,8 @@
 		return $result;
 	
 	}
-	function deleteMercha($params) {
-		$okValidacionMercha = true
+	function deleteMerchan($params) {
+		$okValidacionMercha = true;
 		$nombre = isset($params['nombre']) ? $params['nombre'] : null;
 	
 		$id_mercha = dameIDMercha($nombre);
