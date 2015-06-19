@@ -317,7 +317,6 @@ input[type=submit].button {
 }
 
 #menu-ordenar ul{
-
 	list-style: none;
 	display: inline;
 
@@ -330,12 +329,43 @@ input[type=submit].button {
 	margin-left: 5%;
 	text-transform: uppercase;
 	min-width: 25%;
-	padding-top: 12px;
+	padding: 12px;
 }
 
 #menu-ordenar ul li a:hover{
-	margin-top: -2px;
-	padding-bottom: 12px;
-	text-decoration: none;
+	color: rgba(216,169,77, 0.9);
+	
 
+}
+
+#menu-ordenar ul li a{
+	text-decoration: none;
+	display : block;
+	text-align : center;
+	color : white;
+
+}
+
+#detalle-comentario{
+	border: 1px solid blue;
+	display:inline-block;
+	padding-top : 3%;
+	padding-right: 5%;
+	padding-left : 5%;
+	width: 90.5%;
+	margin-top: 2%;
+	margin-right: 2%;
+	border-radius: 5px;
+	background-color:#BDD5D5;
+	-moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+	-webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+	border-radius:5px;
+
+}
+
+a.options-comment {
+	text-decoration:none;
+	font-size: 12px;
+	color:#ff0000;
 }

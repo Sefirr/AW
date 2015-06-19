@@ -76,7 +76,7 @@
 		$result = array();
 		$okValidacionComentario = true;
 		
-		$id_comment = isset($params['id_comment']) ? $params['id_comment'] : null;
+		$id_comment = isset($params) ? $params : null;
 		
 		if(!$id_comment || $id_comment == false) {
 			$result[] = "El comentario no existe.";
@@ -84,12 +84,12 @@
 		}	
 		
 		if($okValidacionComentario) {
-			delComment($id_comment);
-			$result = "${_SERVER['PHP_SELF']}";
+			$result = delComment($id_comment);
 		}
+		return $result;
 	}
 	
-	function editComentario($params) {
+/*	function editComentario($params) {
 		$result = array();
 		$okValidacionComentario = true;
 		
@@ -113,7 +113,7 @@
 		
 		
 	}
-	
+*/	
 	function getComentario($params) {
 		$result = array();
 		$okValidacionComentario = true;	

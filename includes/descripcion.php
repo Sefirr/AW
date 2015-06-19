@@ -117,16 +117,21 @@
 					</div>
 				</div>
 				<div id="comentarios">
-					<h2> Comentarios</h2>
+					<h1> Comentarios</h1>
 					<?php $comments = dameComments($content['id_content']);
 				foreach($comments as $comment) {
 				?>
+				<div id = "detalle-comentario">
 					<a href="#"><?php echo getUser($comment["id_user"])["username"]; ?></a> el <?php echo $comment["fecha"]; ?>
+					<a class="options-comment" href="delete-comment.php?id=<?php echo $comment["id_comment"]; ?>"> Eliminar </a>
 					<p><?php echo $comment["texto"]; ?></p>
+				</div>
+				
 				<?php
 				} ?>
 					<form action="add-comment.php" method="post">
 						<input type="hidden" name="id_content" value="<?php echo $content['id_content']; ?>">
+						</br>
 						<div id="textarea"><textarea id="textarea" rows="7" name="message" placeholder="Deja tu comentario.." ></textarea></div>
 						<input type="submit" class="button" name="send-comment" value="Enviar comentario"> </input>
 					</form>

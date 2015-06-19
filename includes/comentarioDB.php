@@ -56,14 +56,14 @@ function delComment($id_comment){
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		$resultado->close();
+		//$resultado->close();
 	}
 
 	return $exito;
 
 }
 
-function editComment($id_comment, $mensaje){
+/*function editComment($id_comment, $mensaje){
 	global $BD;
 
 
@@ -77,7 +77,7 @@ function editComment($id_comment, $mensaje){
 
 	return $exito;
 
-}
+}*/
 
 function dameComment($id_comment){
 
