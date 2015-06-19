@@ -16,7 +16,25 @@
 			$page = 0;
 
 		$start_with = $page * $rows_for_page;
-		$contenido = getPaginationByType($start_with, $rows_for_page,3);
+		echo '<div id="menu-ordenar">
+					<ul>
+						<li><a href="'.RAIZ_APP.'videojuegos.php?page='.$page.'&ordenar=alfabeticamente">Alfabeticamente</a></li>
+						<li><a href="'.RAIZ_APP.'videojuegos.php?page='.$page.'&ordenar=ultimas">&Uacute;ltimas</a></li>
+						<li><a href="'.RAIZ_APP.'videojuegos.php?page='.$page.'&ordenar=valoradas">M&aacute;s valoradas</a></li>
+					</ul>
+				</div>';
+		$ordenado = isset($_GET['ordenar']) ? $_GET['ordenar'] : NULL;
+		if(strcmp($ordenado,"alfabeticamente") == 0) {
+			$ordenar = "titulo";
+		} else if(strcmp($ordenado,"valoradas") == 0) {
+			$ordenar = "valoracionpagina";
+		} else if(strcmp($ordenado,"ultimas") == 0){
+			$ordenar = "fechaestreno";	
+		} else {
+			$ordenar = "id_content";		
+		}
+		
+		$contenido = getPaginationByType($start_with, $rows_for_page, $ordenar, 3);
 
 		foreach($contenido as $content) {		
 			$imagen = RAIZ_APP;
@@ -31,26 +49,40 @@
 			echo  '</div>';
 		}
 
-		$html="</div>";
-		$html .= '<p><hr></p><div style="width:100%; text-align:center;">';
+		echo "</div>";
+		echo '<p><hr></p><div style="width:100%; text-align:center;">';
 		
 		if($page >= 1) {
-			$html .= '<a href="peliculas.php?page=0">Primero</a>';
-			$html .= '<a href="peliculas.php?page='.($page-1).'">Anterior</a>';
+			if(empty($ordenado)) {
+				echo '<a href="videojuegos.php?page=0">Primero</a>';
+				echo '<a href="videojuegos.php?page='.($page-1).'">Anterior</a>';
+			} else {
+				echo '<a href="videojuegos.php?page=0&ordenar='.$ordenado.'">Primero</a>';
+				echo '<a href="videojuegos.php?page='.($page-1).'&ordenar='.$ordenado.'"">Anterior</a>';
+			}
 		}
 		
 		for($i=0;$i<$pages;$i++) {
-			$html .= '| <a href="peliculas.php?page='.$i.'">'.$i.'</a> |';
+			if(empty($ordenado)) {
+				echo '<a href="videojuegos.php?page='.$i.'">'.$i.'</a> |';
+			} else {
+				echo '<a href="videojuegos.php?page='.$i.'&ordenar='.$ordenado.'">'.$i.'</a> |';
+			}
 		}
 
-		$html .= '<strong>'.($page+1).' de '.$pages.'</strong>';
+		echo '<strong>'.($page+1).' de '.$pages.'</strong>';
 
 		if($page < ($pages-1)) {
-			$html .= '<a href="peliculas.php?page='.($page+1).'">Siguiente</a>';
-			$html .= '<a href="peliculas.php?page='.($pages-1).'">Ultimo</a>';
+			if(empty($ordenado)) {
+				echo '<a href="videojuegos.php?page='.($page+1).'">Siguiente</a>';
+				echo '<a href="videojuegos.php?page='.($pages-1).'">Ultimo</a>';
+			} else {
+				echo '<a href="videojuegos.php?page='.($page+1).'&ordenar='.$ordenado.'">Siguiente</a>';
+				echo '<a href="videojuegos.php?page='.($pages-1).'&ordenar='.$ordenado.'">Ultimo</a>';
+			}
 		}
-		
-		echo $html;	
+
+		echo '</div>';	
 	}
 
 

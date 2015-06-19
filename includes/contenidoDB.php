@@ -277,13 +277,20 @@
 	return $exito->num_rows;
 	}
 
-	function damePaginacion($start_with, $rows_for_page){
+	function damePaginacion($start_with, $rows_for_page, $ordenado){
 
 	global $BD;	
 
+	if((strcmp($ordenado,"fechaestreno") == 0) || (strcmp($ordenado,"valoracionpagina") == 0)) {
+		$order_by = "DESC";
+	} else {
+		$order_by = "ASC";
+	}
+	
 	$query = "SELECT * from content 
-			ORDER BY id_content
-			ASC LIMIT ".$start_with.",".$rows_for_page;
+		ORDER BY $ordenado ".$order_by."
+			LIMIT ".$start_with.",".$rows_for_page;
+
 	
 	$exito = false;
 
@@ -296,42 +303,23 @@
 			//$resultado->close();	
 		}
 	}
-		  
-	return	$contenido;
-
+	
+	return $contenido;
 	}
 	
-	function damePaginacionByType($start_with, $rows_for_page, $tipo){
+	function damePaginacionByType($start_with, $rows_for_page, $ordenado, $tipo){
 
 	global $BD;	
 
-	$query = "SELECT * from content WHERE tipo='".$tipo."' 
-				ORDER BY id_content 
-				ASC LIMIT ".$start_with.",".$rows_for_page;
+	if((strcmp($ordenado,"fechaestreno") == 0) || (strcmp($ordenado,"valoracionpagina") == 0)) {
+		$order_by = "DESC";
+	} else {
+		$order_by = "ASC";
+	}
 	
-	$exito = false;
-
-	$contenido = array();
-	$i = 0;
-	if($resultado = $BD->query($query)) {
-		while($content = $resultado->fetch_assoc()) {
-			$contenido[$i] = array();
-			$contenido[$i++]= $content;
-			//$resultado->close();	
-		}
-	}
-		  
-	return	$contenido;
-
-	}
-
-	function ordenar($start_with, $rows_for_page, $ordenado){
-
-	global $BD;	
-
-	$query = "SELECT * from content 
-			ORDER BY $ordenado
-			ASC LIMIT ".$start_with.",".$rows_for_page;
+	$query = "SELECT * from content WHERE tipo='".$tipo."'  
+			ORDER BY $ordenado ".$order_by."
+				LIMIT ".$start_with.",".$rows_for_page;
 	
 	$exito = false;
 

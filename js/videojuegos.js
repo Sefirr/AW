@@ -1,7 +1,8 @@
 $(document).ready(function(){
 	var page = $_GET('page');
-	$.get("includes/procesaVideojuegos.php?page=" + page,loadPage);
-	//loadPage("includes/procesaIndex.php?page=" + page);
+	var ordenar = $_GET('ordenar');
+	
+	$.get("includes/procesaVideojuegos.php?page=" + page +"&ordenar=" + ordenar,loadPage);
 
 });
 

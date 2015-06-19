@@ -354,12 +354,12 @@ function getRowsByType($tipo) {
     return dameFilasByType($tipo);
 }
 
-function getPagination($start_with, $rows_for_page) {
-    return damePaginacion($start_with, $rows_for_page);
+function getPagination($start_with, $rows_for_page, $ordenado) {
+    return damePaginacion($start_with, $rows_for_page, $ordenado);
 }
 
-function getPaginationByType($start_with, $rows_for_page, $tipo){
-    return damePaginacionByType($start_with, $rows_for_page, $tipo);
+function getPaginationByType($start_with, $rows_for_page, $ordenado, $tipo){
+    return damePaginacionByType($start_with, $rows_for_page, $ordenado, $tipo);
 }
 
 ?>

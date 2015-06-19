@@ -1,7 +1,9 @@
 
 $(document).ready(function(){
 	var page = $_GET('page');
-	var request = $.get("includes/procesaIndex.php?page=" + page,loadPage);
+	var ordenar = $_GET('ordenar');
+	
+	$.get("includes/procesaIndex.php?page=" + page +"&ordenar=" + ordenar,loadPage);
 
 
 

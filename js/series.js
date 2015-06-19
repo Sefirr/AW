@@ -1,7 +1,8 @@
 $(document).ready(function(){
 	var page = $_GET('page');
-	$.get("includes/procesaSeries.php?page=" + page,loadPage);
-	//loadPage("includes/procesaIndex.php?page=" + page);
+	var ordenar = $_GET('ordenar');
+	
+	$.get("includes/procesaSeries.php?page=" + page +"&ordenar=" + ordenar,loadPage);
 
 });
 
