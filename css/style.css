@@ -303,3 +303,39 @@ input[type=submit].button {
 	background: #237373;
 	color : #f0f4f4;
 }
+
+/* MENU ORDENACION */
+
+#menu-ordenar{
+
+	clear:both;
+	font-size:1.15em;
+	height:40px; 
+	border-radius: 5px; 
+	background-color:#237373;
+
+}
+
+#menu-ordenar ul{
+
+	list-style: none;
+	display: inline;
+
+}
+
+#menu-ordenar ul li{
+	float:left;
+	text-align:center;
+	display: inline;
+	margin-left: 5%;
+	text-transform: uppercase;
+	min-width: 25%;
+	padding-top: 12px;
+}
+
+#menu-ordenar ul li a:hover{
+	margin-top: -2px;
+	padding-bottom: 12px;
+	text-decoration: none;
+
+}
