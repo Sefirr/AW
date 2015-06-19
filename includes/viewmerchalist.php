@@ -37,35 +37,40 @@
 			<!-- CONTENIDO -->
 			<div id = "contenido">
 				<table id="tabla-contenido">
-				<thead>
+				
 					<tr>
 							<th> Nombre </th>
 							<th> Descripcion </th>
 							<th> Proveedor </th>
 							<th> Unidades </th>
-							<th> Precio <th>
-
+							<th> Precio </th>
 							<th> Opciones </th>
 					</tr>
-				</thead>
+				
 			<?php
 			
 			/*QUITAR SELECt*/
 				$html = "";
 				$contents = dameAllMercha();
-				
-				foreach($contents as $content) {	
-					$html = '	<tr>
-								<td>'.$content["nombre"].'</td>
-								<td>'.$content["descripcion"].'</td>
-								<td>'.$content["proveedor"].'</td>
-								<td>'.$content["unidades"].'</td>								
-								<td>'.$content["precio"].'</td>
-								<td><a href="mechandising.php?title='.$content["nombre"].'">Ver</a>
-							</tr>';
+				if ($contents != NULL){
+					foreach($contents as $content) {	
+						$html = '	<tr>
+									<td>'.$content["nombre"].'</td>
+									<td>'.$content["descripcion"].'</td>
+									<td>'.$content["proveedor"].'</td>
+									<td>'.$content["unidades"].'</td>								
+									<td>'.$content["precio"].'</td>
+									<td><a href="mechandising.php?title='.$content["nombre"].'">Ver</a></td>
+								</tr>';
+						echo $html;
+					}
+					echo '</table>';
+				}
+				else{
+					echo '</table>';
+					$html = '<h1> No hay datos para mostrar </h1> ';
 					echo $html;
 				}
-				echo '</table>';
 
 
 			?>
