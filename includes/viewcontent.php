@@ -37,7 +37,7 @@
 			<!-- CONTENIDO -->
 			<div id = "contenido">
 				<table id="tabla-contenido">
-				<thead>
+				
 					<tr>
 							<th> Título </th>
 							<th> Director </th>
@@ -45,7 +45,7 @@
 							<th> Duración </th>
 							<th> Opciones </th>
 					</tr>
-				</thead>
+				
 			<?php
 			
 		

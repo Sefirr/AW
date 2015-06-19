@@ -39,13 +39,13 @@
 			<!-- CONTENIDO -->
 			<div id = "contenido">
 				<table id="tabla-contenido">
-				<thead>
+				
 					<tr>
 							<th> ID </th>
 							<th> Título </th>
 							<th> Opciones </th>
 					</tr>
-				</thead>
+				
 			<?php
 			
 				$html = "";
