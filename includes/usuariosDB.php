@@ -138,7 +138,7 @@ function addusers($username, $password, $nombre, $apellidos, $email, $descripcio
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		$resultado->close();
+		//$resultado->close();
 	}
 
 	return $exito;
