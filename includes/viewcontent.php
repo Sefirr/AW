@@ -51,6 +51,7 @@
 		
 				$html = "";
 				$contents = dameAllContent();
+				if ($contents != NULL){
 				foreach($contents as $content) {	
 					$html = '	<tr>
 								<td>'.$content["titulo"].'</td>
@@ -62,7 +63,12 @@
 					echo $html;
 				}
 				echo '</table>';
-
+				}
+				else{
+					echo '</table>';
+					$html = '<h1> No hay datos para mostrar </h1> ';
+					echo $html;
+				}
 
 			?>
 			</div>

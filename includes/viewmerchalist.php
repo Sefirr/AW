@@ -43,7 +43,7 @@
 							<th> Descripcion </th>
 							<th> Proveedor </th>
 							<th> Unidades </th>
-							<th> Precio </th>
+							<th> Precio (€) </th>
 							<th> Opciones </th>
 					</tr>
 				
