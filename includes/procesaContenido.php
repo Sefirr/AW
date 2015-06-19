@@ -154,6 +154,7 @@ function generaFormularioEditContent($datos) {
 	$id_content = dameIDContent($_GET['title']);
 	$content = dameContent($id_content);
 	$titulo = isset($content['titulo']) ? $content['titulo'] : null ;
+	$tipo = isset($content['tipo']) ? $content['tipo'] : null ;
 	$sinopsis = isset($content['sinopsis']) ? $content['sinopsis'] : null ;
 	$descripcion = isset($content['descripcion']) ? $content['descripcion'] : null ;
 	$fechaestreno = isset($content['fechaestreno']) ? $content['fechaestreno'] : null ;
@@ -162,6 +163,8 @@ function generaFormularioEditContent($datos) {
 	$valoracionpagina = isset($content['valoracionpagina']) ? $content['valoracionpagina'] : null ;
 
 	$html = <<<EOS
+			<input type="hidden" name="old-titulo" value="$titulo">
+			<input type="hidden" name="tipo" value="$tipo">
 			<label>Título : </label>
 			<input type="text" class="addcontent" placeholder="Título" name="titulo" value ="$titulo"><!--- AGREGAR TITULO PELICULA: agregar titulo de la pelicula.-->
 			<br/>
@@ -205,14 +208,14 @@ function editContent($params) {
 	$okValidacionContenido = true;
 		
 	$tipo = isset($params['tipo']) ? $params['tipo'] : null ;
-	$titulo = isset($params['titulo']) ? $params['titulo'] : null ;
-	
+	$titulo = isset($params['titulo']) ? rtrim($params['titulo']) : null ;
+
 	if(!$titulo || empty($titulo)) {
 		 $result[] = 'El titulo del contenido no es válido.';
 		 $okValidacionContenido = false;
 	}
 	
-	$sinopsis = isset($params['sinopsis']) ? $params['titulo'] : null;
+	$sinopsis = isset($params['sinopsis']) ? $params['sinopsis'] : null;
 	
 	if(!$sinopsis || empty($sinopsis)) {
 		 $result[] = 'La sinopsisdel contenido no es válida.';
@@ -255,38 +258,43 @@ function editContent($params) {
 		 $okValidacionContenido = false;
 	}
 	
-	$rutaDestino="../img/";
+	$rutaDestino= "img/";
 	
 	if(!empty($_FILES["imagen"]["name"])) {
 		$rutaTemporal=$_FILES["imagen"]["tmp_name"];
 		$nombreImagen=$_FILES["imagen"]["name"];
 		if($tipo == 1) {
-			$rutaDestino.="series/".$nombreImagen;
 			if (!file_exists("../img/series/")) 
 				mkdir("../img/series/", 0777, true);
+			$rutaDestino.="series/".$titulo.".".end(explode(".", $nombreImagen));
 		}else if($tipo == 2) {
-			$rutaDestino.="peliculas/".$nombreImagen;
 			if (!file_exists("../img/peliculas/")) 
 				mkdir("../img/peliculas/", 0777, true);
+			$rutaDestino.="peliculas/".$titulo.".".end(explode(".", $nombreImagen));
 		}else {
-			$rutaDestino.="videojuegos/".$nombreImagen;
 			if (!file_exists("../img/videojuegos/")) 
 				mkdir("../img/videojuegos/", 0777, true);
+			$rutaDestino.="videojuegos/".$titulo.".".end(explode(".", $nombreImagen));
 		}
-		move_uploaded_file($rutaTemporal,$rutaDestino);
+		
+		$rutaUpload = '../'.$rutaDestino;
+		move_uploaded_file($rutaTemporal,$rutaUpload);
 	}
-	
-	$id_content = dameIDContent($titulo);
+	$old_titulo = isset($params['old-titulo']) ? $params['old-titulo'] : null ;
+	$id_content = dameIDContent($old_titulo);
 	
 	if($okValidacionContenido) {
-		modifyContenttitulo($id_content, $titulo);
+		if($old_titulo != $titulo) {
+			modifyContenttitulo($id_content, $titulo);
+		}
 		modifyContentcaratula($id_content, $rutaDestino);
 		modifyContentsinopsis($id_content, $sinopsis);
 		modifyContentdescripcion($id_content, $descripcion);
 		modifyContentfechaestreno($id_content, $fecha);
 		modifyContentdirector($id_content, $director);
 		modifyContentvaloracion($id_content, $val_pagina);
-		$result = RAIZ_APP."includes/gestion-series.php";
+		$result = "edit-content.php?title=".$titulo;
+
 	}
 	
 	return $result;
@@ -317,12 +325,12 @@ function deleteContent($params) {
 function getContent($params) {
 	$okValidacion = true;
 	$titulo = isset($params) ? $params : null;
-	
+
 	$id_content = dameIDContent($titulo);
 	
 	if(!$titulo || empty($titulo) || $id_content == false ) {
 		$result[] = 'El contenido no existe.';
-		$result[] = $params['titulo'];
+		$result[] = $titulo;
 		$okValidacion = false;
 	}
 	

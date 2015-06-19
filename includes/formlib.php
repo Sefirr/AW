@@ -59,7 +59,6 @@ function formulario($formId, $generaCamposFormulario, $procesaFormulario, $actio
       } else {
         if (!headers_sent()) {    
 			header('Location: '.$result);
-			exit;
         } else { 
 			//Elimina el problema de header already sent
 			echo '<script type="text/javascript">';
@@ -67,7 +66,7 @@ function formulario($formId, $generaCamposFormulario, $procesaFormulario, $actio
 			echo '</script>';
 			echo '<noscript>';
 			echo '<meta http-equiv="refresh" content="0;url='.$result.'" />';
-			echo '</noscript>'; exit;
+			echo '</noscript>'; 
 		}
       }
     }

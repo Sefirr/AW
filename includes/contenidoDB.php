@@ -42,18 +42,14 @@
 
 	$exito = false;
 
-
 		if ($resultado = $BD->query($query)) {
-		
-		
-			 if($resultado->num_rows ==0)
+			 if($resultado->num_rows == 0) {
 	  			$exito =false;
 
-	  		else
+	  		}else {
 	  			$exito = $resultado->fetch_assoc()['id_content'];
-
-	  			
-	  		$resultado->close();
+			}			
+	  		//$resultado->close();
 		}
 		
 		return $exito;
@@ -97,10 +93,8 @@
 
 	function modifyContenttitulo($id_content, $newtitulo){
 	global $BD;	
-
 	$query = "UPDATE content 
-			set titulo = $newtitulo 
-			where id_content =$id_content";
+	set titulo ='$newtitulo' where id_content ='".$id_content."'";
 
 	$exito = false;
 
@@ -116,8 +110,8 @@
 	function modifyContentcaratula($id_content, $newcaratula){
 	global $BD;	
 	$query = "UPDATE content 
-	set caratula = $newcaratula 
-	where id_content =$id_content";
+	set caratula ='".$newcaratula." 
+	' where id_content ='".$id_content."'";
 
 	$exito = false;
 
@@ -133,8 +127,7 @@
 	function modifyContentsinopsis($id_content, $newsinopsis){
 	global $BD;	
 	$query = "UPDATE content 
-			set sinopsis = $newsinopsis 
-			where id_content =$id_content";
+			set sinopsis='$newsinopsis' where id_content ='".$id_content."'";
 
 	$exito = false;
 
@@ -152,8 +145,7 @@
 	function modifyContentdescripcion($id_content, $newdescripcion){
 	global $BD;	
 	$query = "UPDATE content 
-			set descripcion = $newdescripcion 
-			where id_content =$id_content";
+			set descripcion='$newdescripcion' where id_content ='".$id_content."'";
 
 	$exito = false;
 
@@ -170,8 +162,7 @@
 	function modifyContentfechaestreno($id_content, $newfecha){
 	global $BD;	
 	$query = "UPDATE content 
-			set fechaestreno = $newfecha
-			where id_content =$id_content";
+			set fechaestreno ='$newfecha' where id_content ='".$id_content."'";
 
 	$exito = false;
 
@@ -189,8 +180,8 @@
 	function modifyContentdirector($id_content, $newdirector){
 	global $BD;	
 	$query = "UPDATE content 
-			set director = $newdirector 
-			where id_content =$id_content";
+			set director ='$newdirector' 
+			where id_content ='".$id_content."'";
 
 	$exito = false;
 
@@ -207,8 +198,8 @@
 	function modifyContentvaloracion($id_content, $newvaloracion){
 	global $BD;	
 	$query = "UPDATE content 
-			set valoracionpagina = $newvaloracion 
-			where id_content =$id_content";
+			set valoracionpagina ='$newvaloracion' 
+			where id_content ='".$id_content."'";
 
 	$exito = false;
 
@@ -226,7 +217,7 @@
 	function modifyContentpublicado($id_content, $newstatus){
 	global $BD;	
 	$query = "UPDATE content 
-			set publicado = $newstatus 
+			set publicado ='$newstatus' 
 			where id_content =$id_content";
 
 	$exito = false;

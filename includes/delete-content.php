@@ -5,6 +5,6 @@
 	$titulo = $_GET['title'];
 	
 	deleteContent($titulo);
-	header("Location:gestion-series.php");
+	header("Location:manage-content.php");
 
 ?>
