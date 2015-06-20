@@ -25,7 +25,7 @@ body {
 
 #estrellas{
 	text-align: center;
-	height: 20px;
+	height: 15px;
 }
 
 /* FORMS */
@@ -98,6 +98,7 @@ h2{
 	border: 1px solid blue;
 	display:inline-block;
 	padding: 30px;
+	padding-right: 50px;
 	text-align:center;
 	width: 10%;
 	margin-top: 2%;
@@ -201,7 +202,7 @@ display: none;
 }
 
 #val-usuario img {
-	height:20px;
+	height:15px;
 }
 
 #precio{
@@ -332,7 +333,7 @@ input[type=submit].button {
 	display: inline;
 	margin-left: 5%;
 	text-transform: uppercase;
-	min-width: 25%;
+	min-width: 20%;
 	padding: 12px;
 }
 
