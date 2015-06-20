@@ -59,9 +59,19 @@ textarea.contact {
 
 textarea.register, input.register1 {
 	margin: 4px;
-	width: 100%;
+	width: 25%;
+
 }
 
+#registro{
+
+	font-size: 120%;
+
+}
+#descripcion2{
+
+	width: 100%;
+}
 
 textarea {
 	height: 100px;
