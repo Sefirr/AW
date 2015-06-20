@@ -26,7 +26,6 @@ body {
 #estrellas{
 	text-align: center;
 	height: 20px;
-	width: 70px;
 }
 
 /* FORMS */
@@ -100,6 +99,7 @@ h2{
 	display:inline-block;
 	padding: 30px;
 	text-align:center;
+	width: 10%;
 	margin-top: 2%;
 	margin-right: 2%;
 	border-radius: 5px;
@@ -108,7 +108,6 @@ h2{
 	-webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
 	border-radius:5px;
-	text-align:center;
 }
 
 #detalle a img{/*etiqueta para los bloques que forman las series, en pequeño*/
@@ -200,6 +199,11 @@ display: none;
 	text-align:center;
 
 }
+
+#val-usuario img {
+	height:20px;
+}
+
 #precio{
 	margin-top: 20px;
 	float:right;

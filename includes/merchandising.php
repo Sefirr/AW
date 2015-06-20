@@ -7,6 +7,14 @@
 		$okValidacionMercha = true;
 		$nombre = isset($params['nombre']) ? $params['nombre'] : null;
 		
+		$id_mercha = dameIDMercha($nombre);
+		
+		if($id_mercha == true) {
+			$result[] = 'Ya existe merchandising asociado a ese nombre.';
+			$okValidacionMercha = false;
+		}
+
+		
 		if(!$nombre || empty($nombre)) {
 		 $result[] = 'El título del merchandising no es válido.';
 		 $okValidacionMercha = false;
@@ -102,7 +110,10 @@
 	$precio = isset($content['precio']) ? $content['precio'] : null ;
 	$valoracion = isset($content['valoracion']) ? $content['valoracion'] : null ;
 
-	$html = <<<EOS
+	if($id_mercha == false) {
+		$html = "<div class='error'><ul><li>El merchandising qué está buscando no existe.</li></ul></div>";
+	} else {
+		$html = <<<EOS
 			<input type="hidden" name="old-nombre" value="$nombre">
 			<input type="hidden" name="unidades" value="$unidades">
 			<label>Título : </label>
@@ -138,8 +149,8 @@
 			<input type="submit" name="editMerchandising" value="Enviar" />
 			<input type="reset" name="reset" value="Borrar" />
 EOS;
-
-
+	}
+	
 	return $html;
 }
 	
@@ -253,7 +264,7 @@ EOS;
 		return $result;
 	}
 	
-/*function getMerchandising($params) {
+function getMerchandising($params) {
 		$okValidacionMercha = true;
 		$nombre = isset($params) ? $params : null;
 	
@@ -269,7 +280,7 @@ EOS;
 		}
 		
 		return $result;
-}*/
+}
 
 function dameAllMercha() {
 	return dameMerchas();

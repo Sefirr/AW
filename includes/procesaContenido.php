@@ -62,6 +62,13 @@ function addContent($params) {
 	$tipo = isset($params['tipo']) ? $params['tipo'] : null ;
 	$titulo = isset($params['titulo']) ? $params['titulo'] : null ;
 	
+	$id_content = dameIDContent($titulo);
+	
+	if($id_content == true) {
+		$result[] = 'Ya existe contenido asociado a ese nombre.';
+		 $okValidacionContenido = false;
+	}
+	
 	if(!$titulo || empty($titulo)) {
 		 $result[] = 'El titulo de la serie no es válido.';
 		 $okValidacionContenido = false;
@@ -152,6 +159,7 @@ function generaFormularioEditContent($datos) {
 
 	// Consulta de base datos para sacar los datos
 	$id_content = dameIDContent($_GET['title']);
+	
 	$content = dameContent($id_content);
 	$titulo = isset($content['titulo']) ? $content['titulo'] : null ;
 	$tipo = isset($content['tipo']) ? $content['tipo'] : null ;
@@ -162,7 +170,11 @@ function generaFormularioEditContent($datos) {
 	$duracion = isset($content['duracion']) ? $content['duracion'] : null ;
 	$valoracionpagina = isset($content['valoracionpagina']) ? $content['valoracionpagina'] : null ;
 
-	$html = <<<EOS
+	
+	if($id_content == false) {
+		$html = "<div class='error'><ul><li>El contenido qué está buscando no existe.</li></ul></div>";
+	} else {
+		$html = <<<EOS
 			<input type="hidden" name="old-titulo" value="$titulo">
 			<input type="hidden" name="tipo" value="$tipo">
 			<label>Título : </label>
@@ -199,6 +211,8 @@ function generaFormularioEditContent($datos) {
 			<input type="reset" name="reset" value="Borrar" />
 EOS;
 
+	}
+
 
 	return $html;
 }
@@ -209,7 +223,7 @@ function editContent($params) {
 		
 	$tipo = isset($params['tipo']) ? $params['tipo'] : null ;
 	$titulo = isset($params['titulo']) ? rtrim($params['titulo']) : null ;
-
+	
 	if(!$titulo || empty($titulo)) {
 		 $result[] = 'El titulo del contenido no es válido.';
 		 $okValidacionContenido = false;
@@ -218,7 +232,7 @@ function editContent($params) {
 	$sinopsis = isset($params['sinopsis']) ? $params['sinopsis'] : null;
 	
 	if(!$sinopsis || empty($sinopsis)) {
-		 $result[] = 'La sinopsisdel contenido no es válida.';
+		 $result[] = 'La sinopsis del contenido no es válida.';
 		 $okValidacionContenido = false;
 	}
 	

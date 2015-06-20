@@ -1,6 +1,7 @@
 <?php 
 	require_once __DIR__.'/config.php';
 	require_once __DIR__.'/procesaContenido.php'; 
+	require_once __DIR__.'/procesaValoracion.php'; 
 
 	$rows_for_page= 10;
 	
@@ -47,6 +48,24 @@
 			echo '<div id="detalle">';
 			echo '<a href="includes/descripcion.php?title='.$content["titulo"].'"><div id="cartel"><img src="'.$imagen.'" id="caratula"> </div></a>';
 			echo  '<a href="includes/descripcion.php?title='.$content["titulo"].'"><p><em>'.$content["titulo"].'</em></p></a>';
+			$val_user = getRatingContenido2($content["titulo"]);
+			$val_pagina = $content["valoracionpagina"];
+			$valoracion = ($val_user + $val_pagina)/2;
+			if($valoracion == 0) {
+							$html = '<img src="'.RAIZ_APP.'img/0estrellas.png" id="estrellas" />';
+						}
+						else if($valoracion == 1) {
+							$html = '<img src="'.RAIZ_APP.'img/1estrellas.png" id="estrellas" />';
+						} else if($valoracion == 2) {
+							$html = '<img src="'.RAIZ_APP.'img/2estrellas.png" id="estrellas" />';
+						} else if($valoracion == 3) {
+							$html = '<img src="'.RAIZ_APP.'img/3estrellas.png" id="estrellas" />';
+						} else if($valoracion == 4) {
+							$html = '<img src="'.RAIZ_APP.'img/4estrellas.png" id="estrellas" />';
+						} else {
+							$html = '<img src="'.RAIZ_APP.'img/5estrellas.png" id="estrellas" />';
+						}
+			echo $html;
 			echo  '</div>';
 			
 		}

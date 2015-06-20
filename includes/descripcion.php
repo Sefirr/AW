@@ -5,6 +5,8 @@
 	require_once __DIR__.'/procesaUsuario.php'; 
 
 	$titulo = $_GET['title'];
+	$id_content = dameIDContent($titulo);
+	
 	$content = getContent($titulo);
 
 ?>
@@ -30,8 +32,8 @@
 		<script src="<?php echo RAIZ_APP; ?>js/jquery-1.9.1.min.js" type="text/javascript"></script>
 		<script src="<?php echo RAIZ_APP; ?>js/sidebarIzq.js" type="text/javascript"></script>
 		<script src="<?php echo RAIZ_APP; ?>js/contact.js" type="text/javascript"></script>
-
-
+		<link rel="stylesheet" type="text/css" href="<?php echo RAIZ_APP; ?>css/starrating.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
+		<script src="<?php echo RAIZ_APP; ?>js/starrating.js" type="text/javascript"></script>
 	<!-- -----------------------------END LINKS REGION------------------------------ -->
 	</head>
 	<body>
@@ -43,6 +45,10 @@
 			<?php include_once(__DIR__ .'/sidebarIzq.php'); ?>
 			<!-- CONTENIDO -->
 			<div id = "contenido">
+				<?php if($id_content == false) {
+						echo "<div class='error'><ul><li>El contenido qué está buscando no existe.</li></ul></div>";
+					  } else {
+				?>
 				<div id="titulo-serie"> <?php echo $content["titulo"]; ?> </div>
 				<?php 	$imagen = RAIZ_APP;
 						if(empty($content["caratula"])) {
@@ -55,7 +61,7 @@
 				<div id="descripcion-basica"><?php echo $content["descripcion"]; ?></div>
 				<div id="val-pagina">Valoración de la página:</div>
 				<div id="val-usuario">Valoración de los usuarios:</div>
-				<div id="val-pagina"><!--<img src="./img/5estrellas.png" id="estrellas"/>-->
+				<div id="val-pagina">
 					<?php $valoracion = $content["valoracionpagina"]; 
 							$html = "";
 						if($valoracion == 0) {
@@ -76,9 +82,19 @@
 					?>
 				</div>
 				<div id="val-usuario">
-					<?php	$html = '<img src="'.RAIZ_APP.'img/0estrellas.png" id="estrellas" /></div>';
+					<?php	$html = '<ul class="star-rating" id="star-rating">
+										<span id="ratelinks">
+											<li><a href="javascript:void(0)" title="1 star out of 10" class="one-star">1</a></li>
+											<li><a href="javascript:void(0)" title="2 stars out of 10" class="two-stars">2</a></li>
+											<li><a href="javascript:void(0)" title="3 stars out of 10" class="three-stars">3</a></li>
+											<li><a href="javascript:void(0)" title="4 stars out of 10" class="four-stars">4</a></li>
+											<li><a href="javascript:void(0)" title="5 stars out of 10" class="five-stars">5</a></li>
+										</span>
+									</ul>
+									<img src="'.RAIZ_APP.'img/0estrellas.png" id="imgvaloracion"/>';
 							echo $html;
 					?>
+				</div>
 				<div id="titulo"> SINOPSIS</div>
 				<div id="texto"><?php echo $content["sinopsis"]; ?></div>
 				<div id="titulo"> MERCHANDISING</div>
@@ -137,6 +153,7 @@
 					</form>
 					
 				</div>
+				<?php 	} ?>
 			</div>
 			<!-- INCLUDE FOOTER -->
 			<?php include_once(__DIR__ .'/footer.php'); ?>
