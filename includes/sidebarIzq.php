@@ -21,8 +21,16 @@
 					<li><a href="<?php echo RAIZ_APP; ?>includes/manage-mercha.php">Gestionar nerchandising</a></li>
 				</ul>
 			</li>
-			<li><a href="<?php echo RAIZ_APP; ?>includes/perfil.php">Perfil de usuario</a></li>
-			<li><a href="<?php echo RAIZ_APP; ?>includes/modifyperfil.php"> Modificar perfil</a></li>
+			<li>
+				<a href="<?php echo RAIZ_APP; ?>includes/carrito.php">Mi carrito</a>
+			</li>
+			<li><a>Mi Perfil</a>
+				<ul>
+					<li><a href="<?php echo RAIZ_APP; ?>includes/perfil.php">Ver mi perfil</a></li>
+					<li><a href="<?php echo RAIZ_APP; ?>includes/modifyperfil.php">Modificar perfil</a></li>
+				</ul>
+			</li>
+			
 		</ul>
 	</div>
 	<div id="recomendaciones">
