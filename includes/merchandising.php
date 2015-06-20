@@ -132,7 +132,7 @@ EOS;
 		}
 		
 		if($okValidacionMercha) {
-			addMercha($nombre, $rutaDestino, $rutaDestino2, $descripcion, $unidades, $proveedor, $precio, $valoracion);
+			addMercha($nombre, $rutaDestino, $rutaDestino2, $descripcion, $unidades, $proveedor, $precio, $val_pagina);
 			$result = "viewmerchalist.php";
 		}
 		return $result;

@@ -15,7 +15,7 @@ function dameIDMercha($nombre){
 	  		else
 	  			$mercha = $resultado->fetch_assoc()['id_merchandising'];
 
-	    $resultado->close();
+	    //$resultado->close();
 	  }
 
 	  return $mercha;
@@ -33,7 +33,8 @@ function addMercha($nombre, $foto1, $foto2, $descripcion, $unidades, $proveedor,
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		$resultado->close();}
+		//$resultado->close();
+	}
 
 	return $exito;
 

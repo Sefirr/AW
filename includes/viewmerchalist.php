@@ -60,7 +60,7 @@
 									<td>'.$content["proveedor"].'</td>
 									<td>'.$content["unidades"].'</td>								
 									<td>'.$content["precio"].'</td>
-									<td><a href="mechandising.php?title='.$content["nombre"].'">Ver</a></td>
+									<td><a href="mechandising.php?nombre='.$content["nombre"].'">Ver</a></td>
 								</tr>';
 						echo $html;
 					}
