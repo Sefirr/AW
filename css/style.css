@@ -41,7 +41,7 @@ label {
   width: 120px; /* Width of labels */
 }
 
-input.addcontent, textarea.addcontent {
+input.addcontent, textarea.addcontent, input.addmerchandising, textarea.addmerchandising {
 	width: 80%;
 }
 /**/

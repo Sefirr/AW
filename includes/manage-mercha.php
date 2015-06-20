@@ -24,7 +24,7 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo RAIZ_APP; ?>css/footer.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
 		<script src="<?php echo RAIZ_APP; ?>js/jquery-1.9.1.min.js" type="text/javascript"></script>
 		<script src="<?php echo RAIZ_APP; ?>js/sidebarIzq.js" type="text/javascript"></script>
-		<script src="<?php echo RAIZ_APP; ?>js/contact.js" type="text/javascript"></script>
+		<script src="<?php echo RAIZ_APP; ?>js/merchandising.js" type="text/javascript"></script>
 
 
 	<!-- -----------------------------END LINKS REGION------------------------------ -->
@@ -61,7 +61,7 @@
 								<td>'.$content["unidades"].'</td>
 								<td>'.$content["precio"].'</td>
 								<td>'.$content["proveedor"].'</td>
-								<td><a href="edit-mercha.php?nombre='.$content["nombre"].'">Editar</a> | <a href="delete-mercha.php?nombre='.$content["nombre"].'">Eliminar</a></td>
+								<td><a href="mechandising.php?title='.$content["nombre"].'">Ver</a> | <a href="edit-mercha.php?nombre='.$content["nombre"].'">Editar</a> | <a href="delete-mercha.php?nombre='.$content["nombre"].'">Eliminar</a></td>
 							</tr>';
 					echo $html;
 				}

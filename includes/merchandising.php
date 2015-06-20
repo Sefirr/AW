@@ -2,6 +2,48 @@
 	require_once __DIR__.'/merchaDB.php';
 	require_once __DIR__.'/formlib.php';
 
+    function gestionarFormularioAddMercha() {
+        formulario('addMerchandising', 'generaFormularioaddMercha', 'addMerchandising', null, null, 'multipart/form-data');
+    }
+    function generaFormularioaddMercha($datos) { 
+    $html = <<<EOS
+            <label>Nombre : </label>
+            <input type="text" class="addmerchandising" placeholder="Nombre" name="nombre" id="nombre" /><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgname"/>
+            <br/>
+            <label>Foto 1 : </label> 
+            <input type="file" name="foto1"/>
+            <br/>
+            <label>Foto 2 : </label> 
+            <input type="file" name="foto2"/>
+            <br/>
+            <legend>Descripción básica </legend>
+                <label>Descripción: </label>
+                <textarea class="addmerchandising" name="descripcion" placeholder="Descripción" id="descripciones"></textarea><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgdescripcion"/>
+                <br/>
+                <label>Unidades: </label>
+                <input type="number" name="unidades" value="1"> 
+                <br/>
+                <label>Proveedor: </label>
+                <input class="addmerchandising" type="text" name="proveedor" id="proveedor" /><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgproveedor"/>
+                <br/>
+                <label>Precio: </label>
+                <input type="number" name="precio" value="4.95"> 
+                <br/>
+                <label>Valoración de la página: </label>
+                <input type="number" name="val_pagina" value="1" min="1" max="5" > 
+                <br/>
+ 
+            </fieldset>
+             
+            <!--Botones de enviar y reset-->
+            <input type="submit" name="addMerchandising" value="Enviar" />
+            <input type="reset" name="reset" value="Borrar" />
+EOS;
+ 
+ 
+    return $html;
+}
+
 	function addMerchandising($params) {
 		$result = array();
 		$okValidacionMercha = true;
@@ -24,9 +66,9 @@
 		
 		$rutaDestino="../img/mercha/";
 	
-		if(!empty($_FILES["imagen"]["name"][0])) {
-			$rutaTemporal=$_FILES["imagen"]["tmp_name"][0];
-			$nombreImagen=$_FILES["imagen"]["name"][0];
+		if(!empty($_FILES["foto1"]["name"][0])) {
+			$rutaTemporal=$_FILES["foto1"]["tmp_name"][0];
+			$nombreImagen=$_FILES["foto1"]["name"][0];
 			
 			$rutaDestino.= $nombreImagen;
 			if (!file_exists("../img/mercha/")) 
@@ -41,9 +83,9 @@
 		
 		$rutaDestino2="../img/mercha/";
 	
-		if(!empty($_FILES["imagen"]["name"][1])) {
-			$rutaTemporal=$_FILES["imagen"]["tmp_name"][1];
-			$nombreImagen=$_FILES["imagen"]["name"][1];
+		if(!empty($_FILES["foto2"]["name"][1])) {
+			$rutaTemporal=$_FILES["foto2"]["tmp_name"][1];
+			$nombreImagen=$_FILES["foto2"]["name"][1];
 			
 			$rutaDestino2 .= $nombreImagen;
 			if (!file_exists("../img/mercha/")) 
@@ -82,7 +124,7 @@
 			$okValidacionMercha = false;
 		}
 		
-		$val_pagina = isset($params['valoracionpagina']) ? $params['valoracionpagina'] : null;
+		$val_pagina = isset($params['val_pagina']) ? $params['val_pagina'] : null;
 		
 		if(!$val_pagina || empty($val_pagina) || $val_pagina < 1 || $val_pagina > 5) {
 			$result[] = 'La valoración del merchansing no es válida';
@@ -90,8 +132,10 @@
 		}
 		
 		if($okValidacionMercha) {
-			$result = addMercha($nombre, $rutaDestino, $rutaDestino2, $descripcion, $unidades, $proveedor, $precio, $valoracion);
+			addMercha($nombre, $rutaDestino, $rutaDestino2, $descripcion, $unidades, $proveedor, $precio, $valoracion);
+			$result = "viewmerchalist.php";
 		}
+		return $result;
 	}
 
 	function gestionarFormularioEditMercha() {
