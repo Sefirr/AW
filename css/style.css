@@ -363,7 +363,7 @@ input[type=submit].button {
 	display: inline;
 	margin-left: 5%;
 	text-transform: uppercase;
-	min-width: 20%;
+	min-width: 25%;
 	padding: 12px;
 }
 
