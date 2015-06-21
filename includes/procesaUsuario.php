@@ -166,6 +166,49 @@ function modifyPerfil($params) {
 	return $result;
 }
 
+/*****/
+
+
+function formularioUsuarios() {
+
+	$html = <<<EOS
+			<form action="" method="POST">
+			<label>Nombre de usuario:</label><input id="text" type="text" name="cadena">
+			<input type="submit" name="submit" value="Buscar" /><!-- boton de enviar -->
+			</form>
+EOS;
+	echo $html;
+
+	if(isset($_POST['submit'])) {
+		$usuarios = buscarUsuario($_POST['cadena']);
+
+		if($usuarios != NULL) {
+			echo '<table>';
+		foreach($usuarios as $usuario) {
+			$nick = $usuario["username"];
+			$id = $usuario["id_user"];
+			echo '<tr><td><a href="perfil.php?id='.$id.'">'.$nick.'</a></td><td><a href="add-friend.php?id='.$id.'">Añadir como amigo</a></td><td><a href="delete-friend.php?id='.$id.'">Eliminar como amigo</a></td><td><a href="#">Ascender a administrador</a></td></tr>';
+		}
+			echo '</table>';
+		} else {
+			echo '<div class="info"><ul><li>No se han encontrado usuarios.</li></ul></div>';
+		}
+	} else {
+		$usuarios = buscarUsuario("");
+
+		echo '<table>';
+		foreach($usuarios as $usuario) {
+			$nick = $usuario["username"];
+			$id = $usuario["id_user"];
+			echo '<tr><td><a href="perfil.php?id='.$id.'">'.$nick.'</a></td><td><a href="add-friend.php?id='.$id.'">Añadir como amigo</a></td><td><a href="delete-friend.php?id='.$id.'">Eliminar como amigo</a></td><td><a href="#">Ascender a administrador</a></td></tr>';
+		}
+		echo '</table>';
+	}
+}
+
+
+/******/
+
 function gestionarFormularioRegistro() {
   formulario('registro', 'generaFormularioRegistro', 'addUser', null, null, 'multipart/form-data');
 }
@@ -287,7 +330,7 @@ function deleteUser($params) {
 	if(!$user || empty($user) || $id_user == false ) {
 		$result[] = 'El usuario no existe.';
 		$okValidacion = false;
-	}
+}
 	
 	if($okValidacion) {
 		$result = eliminausuario($username);

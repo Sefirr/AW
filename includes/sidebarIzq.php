@@ -1,5 +1,13 @@
-<?php require_once __DIR__.'/procesaContenido.php';
-$content = getrecomendacion();
+<?php 
+	require_once __DIR__.'/procesaContenido.php';
+	$contentRecomendacion = getrecomendacion();
+
+	$menu = false;
+	if($contentRecomendacion == NULL) {
+		$menu = false;
+	} else {
+		$menu = true;
+	}
 
 ?>
 
@@ -47,14 +55,19 @@ $content = getrecomendacion();
 	<div id="recomendaciones">
 		<ul>
 			<li><em>Recomendaciones</em></li>
-			<li><h3>
-			<em><?php echo $content["titulo"]; ?></em></h3></li>
+			<?php if($menu) { ?>
+			<li><h3><em><?php echo $contentRecomendacion["titulo"]; ?></em></h3></li>
 			<li> <div id="descripcion">
-				<a href="descripcion.php?title=<?php echo $content["titulo"]; ?>"><img src="<?php echo RAIZ_APP; ?><?php echo $content["caratula"]; ?>" id="caratula-recomendaciones"/></a>
+				<a href="<?php echo RAIZ_APP;?>includes/descripcion.php?title=<?php echo $contentRecomendacion["titulo"]; ?>"><img src="<?php echo RAIZ_APP; ?><?php echo $contentRecomendacion["caratula"]; ?>" id="caratula-recomendaciones"/></a>
 				<img src="<?php echo RAIZ_APP; ?>img/5estrellas.png" id="estrellas" />
-			</div></li></ul>
-		</div>
+			</div></li>
+			<?php } else { ?>
+				<li><h3><em><?php echo "EXAMPLE"; ?></em></h3></li>
+				<li> <div id="descripcion">
+				<a href="#"><img src="<?php echo RAIZ_APP; ?>img/no_photo_available.png" id="caratula-recomendaciones"/></a>
+				<img src="<?php echo RAIZ_APP; ?>img/5estrellas.png" id="estrellas" />
+			</div></li>
+			<?php } ?>
+			</ul>
+	</div>
 </div>
-
-
-			

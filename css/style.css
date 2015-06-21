@@ -19,11 +19,7 @@ a{
 	font-size: 120%;
 	color: black;
 }
-a:hover{
 
-	font-weight: bold;
-
-}
 
 
 a:visited {
@@ -60,6 +56,17 @@ a:visited {
 	background-position: 10px center;
 	color: #D8000C;
 	background-color: #FFBABA;
+	background-image: url('../img/error.png');
+}
+
+.info {
+	border: 1px solid;
+	margin: 10px 0px;
+	padding:15px;
+	background-repeat: no-repeat;
+	background-position: 10px center;
+	color: blue;
+	background-color: #008080;
 	background-image: url('../img/error.png');
 }
 

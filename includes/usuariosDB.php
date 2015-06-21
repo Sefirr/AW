@@ -159,6 +159,20 @@ function addusers($username, $password, $nombre, $apellidos, $email, $descripcio
 
 }
 
+function buscarUsuario($user) {
+	global $BD;
+	$query = "SELECT *  FROM users WHERE username LIKE '%$user%'";
+	if($resultado = $BD->query($query)) {
+		$h = 0;
+		$array = array();
+		while ($usuario=$resultado->fetch_assoc()){
+			$array[$h++] = $usuario;
+		}						
+	}
+	
+	return $array;
+}
+
 function dameID($username){
 	global $BD;	
 	$usuario =false;	
@@ -174,7 +188,7 @@ function dameID($username){
 	return $usuario;
 }
 
-function searchUsers($busqueda){
+/*function searchUsers($busqueda){
 
 		global $BD;	
 		
@@ -202,6 +216,8 @@ function searchUsers($busqueda){
 
 
 
-}
+}*/
+
+
 
 ?>

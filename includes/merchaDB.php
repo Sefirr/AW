@@ -34,14 +34,37 @@ function addMercha($nombre, $foto1, $foto2, $descripcion, $unidades, $proveedor,
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
 		$id_mercha = $BD->insert_id;
-		$query2="INSERT INTO content_merchandising (id_content, id_merchandising)
-			VALUES ('$id_content','$id_mercha')";
-		$resultado = $BD->query($query2);
+		addContentAssoc($id_mercha, $id_content);
+		
 		//$resultado->close();
 	}
 
 	return $exito;
 
+}
+
+function addContentAssoc($id_mercha, $id_content) {
+	global $BD;
+	
+	if($id_content != NULL) {
+		foreach($id_content as $id) {
+			$query="INSERT INTO content_merchandising (id_content, id_merchandising)
+						VALUES ('$id','$id_mercha')";
+			$resultado = $BD->query($query);
+		}
+	}
+}
+
+function deleteContentAssoc($id_mercha, $id_content){
+
+	global $BD;
+
+	if($id_content != NULL) {
+		foreach($id_content as $id) {
+			$query="DELETE FROM content_merchandising WHERE id_content='$id' and id_merchandising= '$id_mercha'";
+			$resultado = $BD->query($query);
+		}
+	}
 }
 
 function deleteMercha($id_merchandising){
@@ -101,6 +124,35 @@ function dameMerchasById_content($id_content){
 	  
 	  return $array2;
 }
+
+function dameMerchasById_Mercha($id_mercha){
+
+		 global $BD;	
+	  $query = "SELECT id_content FROM content_merchandising WHERE id_merchandising='".$BD->real_escape_string($id_mercha)."'";
+		
+	  $array1 = array();
+	  $array2 = array();
+	  if ($resultado = $BD->query($query)) {
+		
+		$h = 0;
+		
+		while($arr = $resultado->fetch_array()) {
+			$array1[$h++] = $arr["id_content"];
+		}
+		$h = 0;
+		foreach($array1 as $id_content) {
+		$query2 = "SELECT * FROM content WHERE id_content='".$BD->real_escape_string($id_content)."'";
+		$result2 = $BD->query($query2);
+			while($mercha = $result2->fetch_assoc()) {
+				$array2[$h++] = $mercha;
+			}
+		}
+		//$resultado->close();
+	  }
+	  
+	  return $array2;
+}
+
 
 
 
@@ -253,7 +305,7 @@ function modifyMerchavaloracion($id_merchandising, $newvaloracion){
 
 }
 
-function searchMercha($busqueda){
+/*function searchMercha($busqueda){
 
 		global $BD;	
 		
@@ -283,7 +335,8 @@ function searchMercha($busqueda){
 
 
 	
-}
+}*/
+
 
 
 ?>

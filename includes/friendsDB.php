@@ -1,42 +1,37 @@
 <?php
 require_once __DIR__.'/config.php';
 require_once __DIR__.'/usuariosDB.php';
+
+function addfriendDB($username,$friend){
+
 global $BD;
 
-function addfriend($username,$friend){
-
-$idusu = dameID($username);
-
-$idusu2 = dameID($friend);
-
-$query ="INSERT INTO friends(id_amigo1, id_amigo2) 
-		VALUES ('$idusu','$idusu2')";
+$query ="INSERT INTO friends (id_amigo1, id_amigo2)  VALUES ('$username','$friend')";
 
 $exito = false;
 
 if ($resultado = $BD->query($query)) {
 	$exito = true;
-	$BD->close();}
+	//$BD->close();
+}
 
 return $exito;
 
 }
 
-function deletefriend($username, $friend){
+function deletefriendDB($username, $friend){
 
-$idusu = dameID($username);
+global $BD;
 
-$idusu2 = dameID($friend);
 
-$query = "DELETE FROM friends
-			WHERE id_amigo2=$idusu2";
-
+$query = "DELETE FROM friends WHERE (id_amigo1='$username' or id_amigo2='$username') and (id_amigo1='$friend' or id_amigo2='$friend')";
 
 $exito = false;
 
 if ($resultado = $BD->query($query)) {
 	$exito = true;
-	$BD->close();}
+	//$BD->close();
+}
 
 return $exito;
 

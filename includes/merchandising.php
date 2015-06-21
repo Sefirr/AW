@@ -33,7 +33,7 @@
 						<input class="addmerchandising" type="text" name="proveedor" id="proveedor" /><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgproveedor"/>
 						<br/>
 						<label>Precio: </label>
-						<input type="number" name="precio" value="4.95"> 
+						<input type="number" name="precio" placeholder="0,00" step="any"> 
 						<br/>
 						<label>Valoración de la página: </label>
 						<input type="number" name="val_pagina" value="1" min="1" max="5" > 
@@ -42,10 +42,10 @@
 					</fieldset>            
 EOS;
 
-	$html .= '<label> Contenido asociado : </label>	<select name="id_content">';
+	$html .= '<label> Contenido a asociar : </label>	<select multiple="multiple" name="id_content[]">';
 	foreach($contents as $content) {
 		$id_content = $content['id_content'];
-		$html .= '<option value="'.$id_content.'" selected="selected">'.$content["titulo"].'</option>';			
+		$html .= '<option value="'.$id_content.'">'.$content["titulo"].'</option>';			
 	}
 	$html .= '</select><br/> <!--Botones de enviar y reset-->
             <input type="submit" name="addMerchandising" value="Enviar" />
@@ -168,6 +168,9 @@ EOS;
 	$proveedor = isset($content['proveedor']) ? $content['proveedor'] : null ;
 	$precio = isset($content['precio']) ? $content['precio'] : null ;
 	$valoracion = isset($content['valoracion']) ? $content['valoracion'] : null ;
+	
+	$contents = dameAllContent();
+	$contents_assoc = dameMerchasById_Mercha($id_mercha);
 
 	if($id_mercha == false) {
 		$html = "<div class='error'><ul><li>El merchandising qué está buscando no existe.</li></ul></div>";
@@ -193,7 +196,7 @@ EOS;
 				<input type="number" placeholder="unidades" name="unidades" value ="$unidades">
 				<br/>
 				<label>Precio</label>
-				<input type="number" placeholder="precio" name="precio" value ="$precio">
+				<input type="number" placeholder="precio" name="precio" value ="$precio" step="any">
 				<br/>
 				<label>Proveedor</label>
 				<input type="text" placeholder="proveedor" name="proveedor" value ="$proveedor">
@@ -204,10 +207,24 @@ EOS;
 
 			</fieldset>
 
-			<!--Botones de enviar y reset-->
-			<input type="submit" name="editMerchandising" value="Enviar" />
-			<input type="reset" name="reset" value="Borrar" />
 EOS;
+
+			$html .= '<label> Contenido a asociar : </label>	<select multiple name="id_content[]">';
+			foreach($contents as $content) {
+				$id_content = $content['id_content'];
+				$html .= '<option value="'.$id_content.'" >'.$content["titulo"].'</option>';			
+			}
+			$html .= '</select><br/>';
+			$html .= '<label> Contenido ya asociado : </label>	<select multiple name="id_content_assoc[]">';
+			foreach($contents_assoc as $content_assoc) {
+				$id_content = $content_assoc['id_content'];
+				$html .= '<option value="'.$id_content.'" >'.$content_assoc["titulo"].'</option>';			
+			}
+			
+			$html .= '</select><br/> <!--Botones de enviar y reset-->
+            <input type="submit" name="editMerchandising" value="Enviar" />
+            <input type="reset" name="reset" value="Borrar" />';
+
 	}
 	
 	return $html;
@@ -216,6 +233,7 @@ EOS;
 	function editMerchandising($params) {
 		$result = array();
 		$okValidacionMercha = true;
+		
 		$nombre = isset($params['nombre']) ? $params['nombre'] : null;
 		
 		if(!$nombre || empty($nombre)) {
@@ -287,11 +305,14 @@ EOS;
 		
 		$old_nombre = isset($params['old-nombre']) ? $params['old-nombre'] : null ;
 		$id_mercha = dameIDMercha($old_nombre);
-		
+		$id_content = isset($params['id_content']) ? $params['id_content'] : null;
+		$id_content_delete = isset($params['id_content_assoc']) ? $params['id_content_assoc'] : null;
 		if($okValidacionMercha) {
 			if($old_nombre != $nombre) {
 				modifyMerchanombre($id_mercha, $nombre);
 			}
+			addContentAssoc($id_mercha, $id_content);
+			deleteContentAssoc($id_mercha, $id_content_delete);
 			modifyMerchafoto($id_mercha, $rutaDestino, "foto1");
 			modifyMerchafoto($id_mercha, $rutaDestino2, "foto2");
 			modifyMerchadescripcion($id_mercha, $descripcion);

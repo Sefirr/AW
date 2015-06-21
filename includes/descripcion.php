@@ -32,7 +32,6 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo RAIZ_APP; ?>css/footer.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
 		<script src="<?php echo RAIZ_APP; ?>js/jquery-1.9.1.min.js" type="text/javascript"></script>
 		<script src="<?php echo RAIZ_APP; ?>js/sidebarIzq.js" type="text/javascript"></script>
-		<script src="<?php echo RAIZ_APP; ?>js/contact.js" type="text/javascript"></script>
 		<link rel="stylesheet" type="text/css" href="<?php echo RAIZ_APP; ?>css/starrating.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
 		<script src="<?php echo RAIZ_APP; ?>js/starrating-content.js" type="text/javascript"></script>
 	<!-- -----------------------------END LINKS REGION------------------------------ -->
@@ -108,18 +107,21 @@
 				<?php 
 						$merchas = dameAllMerchaById_contents($id_content); 
 					
-					  
-						foreach($merchas as $mercha) {		
-							$imagen = RAIZ_APP;
-						if(empty($mercha["foto1"])) {
-							$imagen .= "img/no_photo_available.png";
+						if($merchas != NULL) {
+							foreach($merchas as $mercha) {		
+								$imagen = RAIZ_APP;
+							if(empty($mercha["foto1"])) {
+								$imagen .= "img/no_photo_available.png";
+							} else {
+								$imagen .= $mercha["foto1"];
+							}		
+								echo '<div id = "detalle-merchandising">';		
+								echo '<a href="descripcion-merchandising.php?nombre='.$mercha["nombre"].'"><div id="cartel"><img src="'.$imagen.'" id="foto-merchandising"/></div></a>';
+								echo '<a href="descripcion-merchandising.php?nombre='.$mercha["nombre"].'"><p><em>'.$mercha["nombre"].'</em></p></a>';
+								echo  '</div>';
+							}
 						} else {
-							$imagen .= $mercha["foto1"];
-						}		
-							echo '<div id = "detalle-merchandising">';		
-							echo '<a href="descripcion-merchandising.php?nombre='.$mercha["nombre"].'"><div id="cartel"><img src="'.$imagen.'" id="foto-merchandising"/></div></a>';
-							echo '<a href="descripcion-merchandising.php?nombre='.$mercha["nombre"].'"><p><em>'.$mercha["nombre"].'</em></p></a>';
-							echo  '</div>';
+							echo '<div class="info"><ul><li>No hay merchandising asociado a este contenido.</li></ul></div>';
 						}
 				?>
 				<div id="comentarios">

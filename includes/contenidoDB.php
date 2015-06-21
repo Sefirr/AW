@@ -351,7 +351,6 @@ function damerecomendacion(){
 		$i = 0;
 		if($resultado = $BD->query($query)) {
 		while($content = $resultado->fetch_assoc()) {
-			$contenido[$i] = array();
 			$contenido[$i++]= $content;
 			//$resultado->close();	
 		}
@@ -361,13 +360,17 @@ function damerecomendacion(){
 			$aletorio2=0;
 		}
 }
-		return $contenido[$aletorio2];
+
+		if($contenido == NULL) {
+			return NULL;
+		} else {
+			return $contenido[$aletorio2];
+		}
 
 
-	}
+}
 
-
-function searchContenido($busqueda){
+/*function searchContenido($busqueda){
 
 		global $BD;	
 		
@@ -394,6 +397,6 @@ function searchContenido($busqueda){
 
 
 
-}
+}*/
 
 ?>
