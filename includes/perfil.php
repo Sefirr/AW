@@ -74,8 +74,8 @@
 				$imagen .= $friend["foto"];
 			}		
 			echo '<div id="detalle">';
-			echo '<a href="includes/perfil.php?id='.$friend["id_user"].'"><div id="cartel"><img src="'.$imagen.'" id="caratula"> </div></a>';
-			echo  '<a href="includes/perfil.php?id='.$friend["id_user"].'">
+			echo '<a href="perfil.php?id='.$friend["id_user"].'"><div id="cartel"><img src="'.$imagen.'" id="caratula"> </div></a>';
+			echo  '<a href="perfil.php?id='.$friend["id_user"].'">
 			<p><em>'.$friend["username"].'</em></p></a>';
 			echo '</div>';
 			}
