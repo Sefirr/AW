@@ -343,7 +343,7 @@
 		
 		$query = "SELECT * 
 				FROM content 
-				WHERE valoracionpagina=5";
+				WHERE valoracionpagina='5'";
 
 		$exito = false;
 
@@ -355,10 +355,10 @@
 			$contenido[$i++]= $content;
 			//$resultado->close();	
 		}
-		}
-		$aleatorio = $contenido->num_rows;
-		$aletorio2 = rand(1, $aleatorio);
-		return $contenido[$aleatorio2];
+		$aleatorio = $resultado->num_rows;
+		$aletorio2 = rand(0, $aleatorio-1);
+}
+		return $contenido[$aletorio2];
 
 
 	}
