@@ -22,7 +22,7 @@
 					<li><a href="<?php echo RAIZ_APP; ?>includes/viewmerchalist.php">Lista de merchandising</a></li>
 <?php if(isset($_SESSION["rol"]) && ($_SESSION["rol"] > 1)) { ?>
 					<li><a href="<?php echo RAIZ_APP; ?>includes/add-merchandising.php">Añadir merchandising</a></li>
-					<li><a href="<?php echo RAIZ_APP; ?>includes/manage-mercha.php">Gestionar nerchandising</a></li>
+					<li><a href="<?php echo RAIZ_APP; ?>includes/manage-mercha.php">Gestionar merchandising</a></li>
 <?php } ?>
 				</ul>
 			</li>
