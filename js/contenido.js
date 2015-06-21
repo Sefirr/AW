@@ -20,7 +20,7 @@ $(document).ready(function(){
 	});
 	
 	$("#sinopsis").change(function(){
-		if ( textovalido($("#sinopsis").val() ) ) {
+		if ( textovalido2($("#sinopsis").val() ) ) {
 		// Ocultar icono rojo
 		$("#imgsinopsis").hide();
 		$("#imgsinopsis")[0].src="../img/form/ok.png";
@@ -40,7 +40,7 @@ $(document).ready(function(){
 	});
 	
 	$("#descripciones").change(function(){
-		if ( textovalido($("#descripciones").val() ) ) {
+		if ( textovalido2($("#descripciones").val() ) ) {
 		// Ocultar icono rojo
 		$("#imgdescripcion").hide();
 		$("#imgdescripcion")[0].src="../img/form/ok.png";
@@ -121,6 +121,15 @@ $(document).ready(function(){
 function textovalido(id){
 
 expr = /^([a-z ñáéíóú]{2,60})$/i;
+    if ( !expr.test(id) )
+        return false;
+    else
+    	return true;
+
+}
+function textovalido2(id){
+
+expr = /^([a-z ñáéíóú]{2,3500})$/i;
     if ( !expr.test(id) )
         return false;
     else
