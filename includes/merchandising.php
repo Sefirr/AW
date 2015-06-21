@@ -1,45 +1,58 @@
 <?php 
 	require_once __DIR__.'/merchaDB.php';
 	require_once __DIR__.'/formlib.php';
+	require_once __DIR__.'/procesaContenido.php';
 
     function gestionarFormularioAddMercha() {
         formulario('addMerchandising', 'generaFormularioaddMercha', 'addMerchandising', null, null, 'multipart/form-data');
     }
-    function generaFormularioaddMercha($datos) { 
-    $html = <<<EOS
-            <label>Nombre : </label>
-            <input type="text" class="addmerchandising" placeholder="Nombre" name="nombre" id="nombre" /><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgname"/>
-            <br/>
-            <label>Foto 1 : </label> 
-            <input type="file" name="foto1"/>
-            <br/>
-            <label>Foto 2 : </label> 
-            <input type="file" name="foto2"/>
-            <br/>
-            <legend>Descripción básica </legend>
-                <label>Descripción: </label>
-                <textarea class="addmerchandising" name="descripcion" placeholder="Descripción" id="descripciones"></textarea><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgdescripcion"/>
-                <br/>
-                <label>Unidades: </label>
-                <input type="number" name="unidades" value="1"> 
-                <br/>
-                <label>Proveedor: </label>
-                <input class="addmerchandising" type="text" name="proveedor" id="proveedor" /><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgproveedor"/>
-                <br/>
-                <label>Precio: </label>
-                <input type="number" name="precio" value="4.95"> 
-                <br/>
-                <label>Valoración de la página: </label>
-                <input type="number" name="val_pagina" value="1" min="1" max="5" > 
-                <br/>
- 
-            </fieldset>
-             
-            <!--Botones de enviar y reset-->
-            <input type="submit" name="addMerchandising" value="Enviar" />
-            <input type="reset" name="reset" value="Borrar" />
+    function generaFormularioaddMercha($datos) {
+	
+		$contents = dameAllContent();
+	
+	if ($contents != NULL){
+		
+			$html = <<<EOS
+					<label>Nombre : </label>
+					<input type="text" class="addmerchandising" placeholder="Nombre" name="nombre" id="nombre" /><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgname"/>
+					<br/>
+					<label>Foto 1 : </label> 
+					<input type="file" name="foto1"/>
+					<br/>
+					<label>Foto 2 : </label> 
+					<input type="file" name="foto2"/>
+					<br/>
+					<legend>Descripción básica </legend>
+						<label>Descripción: </label>
+						<textarea class="addmerchandising" name="descripcion" placeholder="Descripción" id="descripciones"></textarea><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgdescripcion"/>
+						<br/>
+						<label>Unidades: </label>
+						<input type="number" name="unidades" value="1"> 
+						<br/>
+						<label>Proveedor: </label>
+						<input class="addmerchandising" type="text" name="proveedor" id="proveedor" /><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgproveedor"/>
+						<br/>
+						<label>Precio: </label>
+						<input type="number" name="precio" value="4.95"> 
+						<br/>
+						<label>Valoración de la página: </label>
+						<input type="number" name="val_pagina" value="1" min="1" max="5" > 
+						<br/>
+		 
+					</fieldset>            
 EOS;
- 
+
+	$html .= '<label> Contenido asociado : </label>	<select name="id_content">';
+	foreach($contents as $content) {
+		$id_content = $content['id_content'];
+		$html .= '<option value="'.$id_content.'" selected="selected">'.$content["titulo"].'</option>';			
+	}
+	$html .= '</select><br/> <!--Botones de enviar y reset-->
+            <input type="submit" name="addMerchandising" value="Enviar" />
+            <input type="reset" name="reset" value="Borrar" />';
+	} else {
+		$html = "<div class='error'><ul><li>No puedes añadir merchandising porque no hay productos a los que asociarlo.</li></ul></div>";
+	}
  
     return $html;
 }
@@ -131,8 +144,10 @@ EOS;
 			$okValidacionMercha = false;
 		}
 		
+		$id_content = isset($params['id_content']) ? $params['id_content'] : null;
+		
 		if($okValidacionMercha) {
-			addMercha($nombre, $rutaDestino, $rutaDestino2, $descripcion, $unidades, $proveedor, $precio, $val_pagina);
+			addMercha($nombre, $rutaDestino, $rutaDestino2, $descripcion, $unidades, $proveedor, $precio, $val_pagina,$id_content);
 			$result = "viewmerchalist.php";
 		}
 		return $result;
@@ -312,7 +327,7 @@ function getMerchandising($params) {
 		$okValidacionMercha = true;
 		$nombre = isset($params) ? $params : null;
 	
-		$id_mercha = dameMercha($nombre);
+		$id_mercha = dameIDMercha($nombre);
 		
 		if(!$nombre || empty($nombre) || $id_mercha == false ) {
 			$result[] = 'El merchanising no existe.';
@@ -320,7 +335,7 @@ function getMerchandising($params) {
 		}
 		
 		if($okValidacionMercha) {
-			$result = dameContent($id_content);
+			$result = dameMercha($id_mercha);
 		}
 		
 		return $result;
@@ -329,4 +344,9 @@ function getMerchandising($params) {
 function dameAllMercha() {
 	return dameMerchas();
 }
+
+function dameAllMerchaById_contents($id_content) {
+	return dameMerchasById_content($id_content);
+}
+
 ?>

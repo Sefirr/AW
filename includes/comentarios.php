@@ -23,22 +23,22 @@
 			$okValidacionComentario = false;
 		}
 		
-		$id_content = isset($params['id_content']) ? $params['id_content'] : null;
+		$id = isset($params['id']) ? $params['id'] : null;
 		
-		if(!$id_content || $id_content == false) {
-			$result[] = "El contenido donde se va a escribir el comentario no existe.";
+		if(!$id || $id == false) {
+			$result[] = "El contenido o merchandising donde se va a escribir el comentario no existe.";
 			$okValidacionComentario = false;
 		}
 		
 		if($okValidacionComentario) {
-			addCommentContent($id_user, $message, $id_content);
+			addCommentContent($id_user, $message, $id);
 			$result = "${_SERVER['PHP_SELF']}";
 		}
 		
 		return $result;
 	
 	}
-
+	
 	function addComentarioMercha($params) {
 		$result = array();
 		$okValidacionComentario = true;
@@ -52,24 +52,25 @@
 		
 		$message = isset($params['message']) ? $params['message'] : null;
 		
-		if(!$message || empty(message)) {
+		if(!$message || empty($message)) {
 			$result[] = "El comentario no puede ser vacio.";
 			$okValidacionComentario = false;
 		}
 		
-		$id_mercha = isset($params['id_mercha']) ? $params['id_mercha'] : null;
+		$id = isset($params['id']) ? $params['id'] : null;
 		
-		if(!$id_mercha || $id_mercha == false) {
-			$result[] = "El merchandising donde se va a escribir el comentario no existe.";
+		if(!$id || $id == false) {
+			$result[] = "El contenido o merchandising donde se va a escribir el comentario no existe.";
 			$okValidacionComentario = false;
 		}
 		
 		if($okValidacionComentario) {
-			addCommentMercha($id_user, $message, $id_mercha);
+			addCommentMercha($id_user, $message, $id);
 			$result = "${_SERVER['PHP_SELF']}";
 		}
 		
 		return $result;
+	
 	}
 	
 	function deleteComentario($params) {
@@ -88,32 +89,7 @@
 		}
 		return $result;
 	}
-	
-/*	function editComentario($params) {
-		$result = array();
-		$okValidacionComentario = true;
 		
-		$id_comment = isset($params['id_comment']) ? $params['id_comment'] : null;
-		
-		if(!$id_comment || $id_comment == false) {
-			$result[] = 'El comentario no existe.';
-			$okValidacionComentario = false;
-		}	
-		
-		$message = isset($params['message']) ? $params['message'] : null;
-		
-		if(!$message || empty($message)) {
-			$result[] = 'El comentario está vacio';
-			$okValidacionComentario = false;
-		}
-	
-		if($okValidacionComentario) {
-			$result = editComment($id_comment, $message);
-		}
-		
-		
-	}
-*/	
 	function getComentario($params) {
 		$result = array();
 		$okValidacionComentario = true;	

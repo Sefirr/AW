@@ -41,7 +41,7 @@ label {
   width: 120px; /* Width of labels */
 }
 
-input.addcontent, textarea.addcontent, input.addmerchandising, textarea.addmerchandising {
+input.addcontent, textarea.addcontent {
 	width: 80%;
 }
 /**/
@@ -59,19 +59,9 @@ textarea.contact {
 
 textarea.register, input.register1 {
 	margin: 4px;
-	width: 25%;
-
-}
-
-#registro{
-
-	font-size: 120%;
-
-}
-#descripcion2{
-
 	width: 100%;
 }
+
 
 textarea {
 	height: 100px;
@@ -383,4 +373,38 @@ a.options-comment {
 	text-decoration:none;
 	font-size: 12px;
 	color:#ff0000;
+}
+
+img#foto-perfil {	
+	float:left;
+	margin-right : 10px;
+	width:175px;
+}
+
+#perfil{
+	border: 1px solid blue;
+	display:inline-block;
+	width : 80%;
+	background-color: #405656;
+	-moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+	-webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+	color : white;
+
+}
+
+#friends{
+	clear:both;
+	padding-top:1%;
+}
+
+#detalle-amigos{/*etiqueta para los bloques que forman las series, en pequeño*/
+	border: 1px solid blue;
+	width: 100px;
+	margin: 2%;
+	background-color: #405656;
+	-moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+	-webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+	border-radius:5px;
 }

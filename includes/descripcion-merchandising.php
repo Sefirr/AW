@@ -1,15 +1,13 @@
 <?php	
 	require_once __DIR__.'/config.php'; 
-	require_once __DIR__.'/procesaContenido.php';
-	require_once __DIR__.'/merchandising.php';
+	require_once __DIR__.'/merchandising.php'; 
 	require_once __DIR__.'/comentarios.php'; 
 	require_once __DIR__.'/procesaUsuario.php';  
 
-	$titulo = $_GET['title'];
-	$id_content = dameIDContent($titulo);
+	$nombre = $_GET['nombre'];
+	$content = getMerchandising($nombre);
 	
-	$content = getContent($titulo);
-
+	$id_mercha = dameIDMercha($nombre);
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,7 +32,7 @@
 		<script src="<?php echo RAIZ_APP; ?>js/sidebarIzq.js" type="text/javascript"></script>
 		<script src="<?php echo RAIZ_APP; ?>js/contact.js" type="text/javascript"></script>
 		<link rel="stylesheet" type="text/css" href="<?php echo RAIZ_APP; ?>css/starrating.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
-		<script src="<?php echo RAIZ_APP; ?>js/starrating-content.js" type="text/javascript"></script>
+		<script src="<?php echo RAIZ_APP; ?>js/starrating-mercha.js" type="text/javascript"></script>
 	<!-- -----------------------------END LINKS REGION------------------------------ -->
 	</head>
 	<body>
@@ -46,11 +44,11 @@
 			<?php include_once(__DIR__ .'/sidebarIzq.php'); ?>
 			<!-- CONTENIDO -->
 			<div id = "contenido">
-				<?php if($id_content == false) {
+				<?php if($id_mercha == false) {
 						echo "<div class='error'><ul><li>El contenido qué está buscando no existe.</li></ul></div>";
 					  } else {
 				?>
-				<div id="titulo-serie"> <?php echo $content["titulo"]; ?> </div>
+				<div id="titulo-mercha"> <?php echo $content["nombre"]; ?> </div>
 				<?php 	$imagen = RAIZ_APP;
 						if(empty($content["caratula"])) {
 							$imagen .= "img/no_photo_available.png";
@@ -58,12 +56,26 @@
 							$imagen .= $content["caratula"];
 						}
 				?>
-				<div id="cartel"><img src="<?php echo $imagen ?>" id="caratula"> </div>
-				<div id="descripcion-basica"><?php echo $content["descripcion"]; ?></div>
+				<?php 	$imagen = RAIZ_APP;
+						if(empty($content["caratula"])) {
+							$imagen .= "img/no_photo_available.png";
+						} else {
+							$imagen .= $content["caratula"];
+						}
+				
+				echo '<div id="cartel"><img src="<?php echo $imagen ?>" id="caratula"> </div>';
+				echo '<div id="descripcion-basica">'.$content["descripcion"].'</div>';
+				echo '<a class="boton" href="shopping_cart.php?id='.$content["id_merchandising"].'&action=';
+				if (isset($_SESSION['carro'][$content['id_merchandising']])){
+					echo 'removeProd" alt="Eliminar del carro">Eliminar </a>';
+				} else {
+					echo 'add" alt="Añadir al carro">Añadir </a>';
+				}	
+				?>
 				<div id="val-pagina">Valoración de la página:</div>
 				<div id="val-usuario">Valoración de los usuarios:</div>
 				<div id="val-pagina">
-					<?php $valoracion = $content["valoracionpagina"]; 
+					<?php $valoracion = $content["valoracion"]; 
 							$html = "";
 						if($valoracion == 0) {
 							$html = '<img src="'.RAIZ_APP.'img/0estrellas.png" id="estrellas" />';
@@ -85,8 +97,8 @@
 				<div id="val-usuario">
 					<?php 
 						if(isset($_SESSION['usuario'])) {
-						$user = $_SESSION['usuario'];
-						$usuario = getUserByName($user);
+							$user = $_SESSION['usuario'];
+							$usuario = getUserByName($user);
 						}
 						
 
@@ -102,29 +114,12 @@
 							echo $html;
 					?>
 				</div>
-				<div id="titulo"> SINOPSIS</div>
-				<div id="texto"><?php echo $content["sinopsis"]; ?></div>
-				<div id="titulo"> MERCHANDISING</div>
-				<?php 
-						$merchas = dameAllMerchaById_contents($id_content); 
-					
-					  
-						foreach($merchas as $mercha) {		
-							$imagen = RAIZ_APP;
-						if(empty($mercha["foto1"])) {
-							$imagen .= "img/no_photo_available.png";
-						} else {
-							$imagen .= $mercha["foto1"];
-						}		
-							echo '<div id = "detalle-merchandising">';		
-							echo '<a href="descripcion-merchandising.php?nombre='.$mercha["nombre"].'"><div id="cartel"><img src="'.$imagen.'" id="foto-merchandising"/></div></a>';
-							echo '<a href="descripcion-merchandising.php?nombre='.$mercha["nombre"].'"><p><em>'.$mercha["nombre"].'</em></p></a>';
-							echo  '</div>';
-						}
-				?>
+				<div id="precio">Precio: <?php echo $content["precio"]; ?></div>
+				<div id="proveedor">Proveedor: <?php echo $content["proveedor"]; ?></div>
+				<div id="unidades">Unidades: <?php echo $content["unidades"]; ?></div>
 				<div id="comentarios">
 					<h1> Comentarios</h1>
-					<?php $comments = dameCommentsContent($content["id_content"]);
+					<?php $comments = dameCommentsMercha($content["id_merchandising"]);
 				foreach($comments as $comment) {
 				?>
 				<div id = "detalle-comentario">
@@ -135,8 +130,8 @@
 				
 				<?php
 				} ?>
-					<form action="add-comment-content.php" method="post">
-						<input type="hidden" name="id" value="<?php echo $content['id_content']; ?>">
+					<form action="add-comment-mercha.php" method="post">
+						<input type="hidden" name="id" value="<?php echo $content['id_merchandising']; ?>">
 						</br>
 						<div id="textarea"><textarea id="textarea" rows="7" name="message" placeholder="Deja tu comentario.." ></textarea></div>
 						<input type="submit" class="button" name="send-comment" value="Enviar comentario"> </input>

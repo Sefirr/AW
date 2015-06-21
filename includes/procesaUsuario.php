@@ -76,126 +76,91 @@ function login($nombreUsuario, $password) {
   return $result;
 }
 
-function modifyRol($params) {
-	$result = array();
-	$okValidacion = true;
-	$user = isset($params['user']) ? $params['user'] : null;
-	
-	if(!$user || empty($user)) {
-		$result[] = 'El usuario no es válido.';
-		$okValidacion = false;
-	}
-	
-	$rol = isset($params['rol']) ? $params['rol'] : null;
-	
-	if(!$rol || empty($rol) || $rol < 0 || $rol > 3) {
-		$result[] = 'El rol no es válida.';
-		$okValidacion = false;
-	}
-	
-	if($okValidacion) {
-		modificaRol($user, $rol);
-	}
-	
-	return $result;
+function gestionarFormularioModifyPerfil() {
+   formulario('modifyPerfil', 'generaFormularioModifyPerfil', 'modifyPerfil', null, null, 'multipart/form-data');
 }
 
-function modifyEmail($params) {
+function generaFormularioModifyPerfil($datos) { 
+	// Consulta de base datos para sacar los datos
+	$usuario = dameUsuarioByUsername($_SESSION['usuario']);	
+	$username = $usuario["username"];
+	$nombre = $usuario["nombre"]." ".$usuario["apellidos"];
+	$email = $usuario["email"];
+	$descripcion = $usuario["descripcion"];
+	$html = <<<EOS
+			<label> Username : </label> $username
+			<br/>
+			<label>Nombre : </label> $nombre
+			<br/>
+			<label>Contraseña : </label>
+			<input type="password" name="password" placeholder="Contraseña" />
+			<br/>
+			<label>E-mail : </label>
+			<input type="text" name="email" placeholder="Email" value ="$email" />
+			<br/>
+			<label>Descripción: </label>
+			<textarea name="descripcion" placeholder="Descripción">$descripcion</textarea>
+			<br/>
+			<label>Foto : </label> 
+			<input type="file" name="imagen"/><!-- AGREGAR CARATULA: agregar imagen de la carátula de la pelicula. -->
+			<br/>
+			
+			<!--Botones de enviar y reset-->
+			<input type="submit" name="modifyPerfil" value="Modificar" />
+			<input type="reset" name="reset" value="Borrar" />
+EOS;
+
+
+	return $html;
+}
+
+function modifyPerfil($params) {
 	$result = array();
-	$okValidacion = true;
-	$user = isset($params['user']) ? $params['user'] : null;
-	
-	if(!$user || empty($user)) {
-		$result[] = 'El usuario no es válido.';
-		$okValidacion = false;
+	$okValidacionPerfil = true;
+		
+	$pass = isset($params['password']) ? $params['password'] : null ;
+	if ( ! $pass ||  strlen($pass) < 4 ) {
+		$result[] = 'La contraseña no es válida, debe contener numeros, y letras mayusculas y minusculas';
+		$okValidacionPerfil = false;
 	}
+	$hash = password_hash($pass, PASSWORD_BCRYPT); 
 	
 	$email = isset($params['email']) ? $params['email'] : null;
 	
 	 if (!$email || !preg_match(HTML5_EMAIL_REGEXP, $email)) {
 		$result[] = 'El e-mail no es válido';
-		$okValidacion = false;
-	}
-	if($okValidacion) {
-		 modificaremail($user, $email);
-	}
-	
-	return $result;
-}
-
-function modifyPassword($params) {
-	$result = array();
-	$okValidacion = true;
-	$user = isset($params['user']) ? $params['user'] : null;
-	
-	if(!$user || empty($user)) {
-		$result[] = 'El usuario no es válido.';
-		$okValidacion = false;
-	}
-	
-	$pass = isset($params['password']) ? $params['password'] : null ;
-	  if ( ! $pass ||  strlen($pass) < 4 ) {
-		$result[] = 'La contraseña no es válida';
-		$okValidacion = FALSE;
-	 
-	 }
-	if($okValidacion) {
-		$result = modificarpassword($user, $pass);
-	}
-	
-	return $result;
-}
-
-function modifyDescription($params) {
-	$result = array();
-	$okValidacion = true;
-	$user = isset($params['user']) ? $params['user'] : null;
-	
-	if(!$user || empty($user)) {
-		$result[] = 'El usuario no es válido.';
-		$okValidacion = false;
+		$okValidacionPerfil = false;
 	}
 	
 	$descripcion = isset($params['descripcion']) ? $params['descripcion'] : null ;
 	if (!$descripcion || empty($descripcion)) {
 		$result[] = 'La descripción no es válida';
-		$okValidacion = false;
+		$okValidacionPerfil = false;
 	}
 	
-	if($okValidacion) {
-		$result = modificardescripcion($user, $email);
-	}
+	$rutaDestino= "img/";
 	
-	return $result;
-}
-
-function modifyImage($params) {
-	$result = array();
-	$okValidacion = true;
-	$user = isset($params['user']) ? $params['user'] : null;
-	$user2 = dameID($user);
-	
-	if(!$user || empty($user)) {
-		$result[] = 'El usuario no es válido.';
-		$okValidacion = false;
-	}
-	
-	$imagen = isset($params['imagen']) ? $params['imagen'] : null;
-	
-	$rutaDestino="../img/users/";
 	if(!empty($_FILES["imagen"]["name"])) {
-			$rutaTemporal=$_FILES["imagen"]["tmp_name"];
-			$nombreImagen= $_FILES["imagen"]["name"];
-			
-			$rutaDestino.= $nombreImagen;
-			if (!file_exists("../img/users/")) 
-				mkdir("../img/users/", 0777, true);
-			
-			move_uploaded_file($rutaTemporal,$rutaDestino);
-	} 
-	
-	if($okValidacion) {
-		$result = modificarfoto($user, $rutaDestino);
+		$rutaTemporal=$_FILES["imagen"]["tmp_name"];
+		$nombreImagen=$_FILES["imagen"]["name"];
+		
+		if (!file_exists("../img/users/")) 
+			mkdir("../img/users/", 0777, true);
+		$rutaDestino.="users/".$_SESSION['usuario'].".".end(explode(".", $nombreImagen));
+		
+		$rutaUpload = '../'.$rutaDestino;
+		move_uploaded_file($rutaTemporal,$rutaUpload);
+	}
+	$username = $_SESSION['usuario'];
+	if($okValidacionPerfil) {
+		if(!empty($pass)) {
+			modificarpassword($username, $hash);
+		}
+		modificaremail($username, $email);
+		modificardescripcion($username, $descripcion);
+		modificarfoto($username, $rutaDestino);
+		$result = "perfil.php";
+
 	}
 	
 	return $result;
@@ -214,7 +179,9 @@ function generaFormularioRegistro($datos) {
 			<input type="text" class="register1" name="user" placeholder="Username" id="nick"/><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgnick"/>
 			<br/>
 			<label>Nombre y apellidos:</label>
+			<br/>
 			<input type="text" class="register1" name="nombre" placeholder="Nombre" id="name"> <img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgname"/> 
+			<br/>
 			<input type="text" class="register1" name="apellidos" placeholder="Apellidos" id="lastname"> <img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imglastname"/> 
 			</br>
 			<label> Contraseña </label>
@@ -334,6 +301,10 @@ function deleteUser($params) {
 
 function getUser($id) {
 	return dameUsuarioById($id);
+}
+
+function getUserByName($nombreUsuario) {
+	return dameUsuarioByUsername($nombreUsuario);
 }
 
 ?>

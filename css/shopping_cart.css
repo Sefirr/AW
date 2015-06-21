@@ -1,0 +1,36 @@
+/****************************************/
+/* MAIN CSS DE CARRITO DE COMPRA EN PHP */
+/****************************************/
+
+h1{
+	font-size: 18px;
+}
+th{
+	background: #D1D1D1;
+	border: 1px solid white;
+}
+
+#derecha{
+	width: 800px;
+	margin: 0 auto;
+	padding-top: 60px;
+	padding-bottom: 60px;
+}
+
+.desc_largo{width: 300px;}
+
+.borde_tabla{border-bottom: 1px solid #D1D1D1;}
+
+input[type="button"].compra, input[type="submit"].compra{
+	/*font-size: 11px;*/
+	font-weight: bold;
+	height: 29px;
+	line-height: 27px;
+	margin: 11px 6px;
+	min-width: 54px;
+	padding: 0 8px;
+	text-align: center;
+	background-color: #F8F8F8;
+	border: 1px solid #C6C6C6;
+	cursor: pointer;
+}

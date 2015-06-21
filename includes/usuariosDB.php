@@ -16,6 +16,20 @@ function dameUsuario($nombreUsuario) {
 	return $usuario;
 }
 
+function dameUsuarioByUsername($nombreUsuario) {
+	// Usar global UNICAMENTE para esta variable
+	global $BD;
+
+	$query = "SELECT * FROM users WHERE username='".$BD->real_escape_string($nombreUsuario)."'";
+	$usuario = false;
+	if ($resultado = $BD->query($query)) {
+		$usuario = $resultado->fetch_assoc();
+		$resultado->close();
+	}
+
+	return $usuario;
+}
+
 function dameUsuarioById($id) {
 	// Usar global UNICAMENTE para esta variable
 	global $BD;
@@ -33,14 +47,14 @@ function dameUsuarioById($id) {
 function modificaRol($username, $rol){
 	global $BD;	
 	$query = "UPDATE users 
-			set rol = $rol 
-			where username =".$BD->real_escape_string($username);
+			set rol = '".$rol.
+			"'where username =".$BD->real_escape_string($username);
 
 	$exito = false;
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		$resultado->close();
+		//$resultado->close();
 	}
 
 	return $exito;
@@ -50,14 +64,14 @@ function modificaRol($username, $rol){
 function modificarpassword($username, $newpass){
 	global $BD;	
 	$query = "UPDATE users 
-			set password = $newpass 
-			where username =".$BD->real_escape_string($username);
+			set password = '".$newpass.
+			"' where username ='".$BD->real_escape_string($username)."'";
 
 	$exito = false;
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		$resultado->close();
+		//$resultado->close();
 	}
 
 	return $exito;
@@ -67,14 +81,14 @@ function modificarpassword($username, $newpass){
 function modificarfoto($username, $newfoto){
 	global $BD;	
 	$query = "UPDATE users 
-			set foto = $newfoto 
-			where username =".$BD->real_escape_string($username);
+			set foto '".$newfoto.
+			"' where username =".$BD->real_escape_string($username);
 
 	$exito = false;
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		$resultado->close();
+		//$resultado->close();
 	}
 
 return $exito;
@@ -85,13 +99,13 @@ function modificardescripcion($username, $newdescription) {
 	global $BD;
 	
 	$query = "UPDATE users 
-			set descripcion = $newdescription 
-			where username =".$BD->real_escape_string($username);
+			set descripcion = '".$newdescription.
+			"' where username ='".$BD->real_escape_string($username)."'";
 	$exito = false;
 	
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		$resultado->close();
+		//$resultado->close();
 	}
 	
 	return $exito;
@@ -100,14 +114,14 @@ function modificardescripcion($username, $newdescription) {
 function modificaremail($username, $newemail){
 	global $BD;	
 	$query = "UPDATE users 
-			set email = $newemail 
-			where username =".$BD->real_escape_string($username);
+			set email = '".$newemail.
+			"' where username ='".$BD->real_escape_string($username)."'";
 
 	$exito = false;
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		$resultado->close();
+		//$resultado->close();
 	}
 
 return $exito;
@@ -122,7 +136,7 @@ function eliminausuario($username){
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		$resultado->close();
+		//$resultado->close();
 	}
 
 return $exito;
@@ -132,7 +146,7 @@ return $exito;
 function addusers($username, $password, $nombre, $apellidos, $email, $descripcion, $foto){
 	global $BD;	
 	$query = "INSERT INTO users (username, password, nombre, apellidos, email, descripcion, foto, rol) 
-		VALUES  ('$username','$password','$nombre','$apellidos', '$email','$descripcion','$foto', '0')";
+		VALUES  ('$username','$password','$nombre','$apellidos', '$email','$descripcion','$foto', '1')";
 
 	$exito = false;
 

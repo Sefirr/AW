@@ -3,7 +3,7 @@
 .star-rating,
 .star-rating a:hover,
 .star-rating a:active{
-	background: url(../img/star.gif) repeat-x;
+	background: url(../img/star.png) repeat-x;
 	overflow:hidden;
     text-align: center;
     margin:auto;

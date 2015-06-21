@@ -22,7 +22,7 @@ function dameIDMercha($nombre){
 }
 
 
-function addMercha($nombre, $foto1, $foto2, $descripcion, $unidades, $proveedor, $precio, $valoracion){
+function addMercha($nombre, $foto1, $foto2, $descripcion, $unidades, $proveedor, $precio, $valoracion, $id_content){
 	global $BD;
 
 
@@ -33,6 +33,10 @@ function addMercha($nombre, $foto1, $foto2, $descripcion, $unidades, $proveedor,
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
+		$id_mercha = $BD->insert_id;
+		$query2="INSERT INTO content_merchandising (id_content, id_merchandising)
+			VALUES ('$id_content','$id_mercha')";
+		$resultado = $BD->query($query2);
 		//$resultado->close();
 	}
 
@@ -68,6 +72,34 @@ function dameMercha($id_merchandising){
   }
   
   return $mercha;
+}
+
+function dameMerchasById_content($id_content){
+
+		 global $BD;	
+	  $query = "SELECT id_merchandising FROM content_merchandising WHERE id_content='".$BD->real_escape_string($id_content)."'";
+		
+	  $array1 = array();
+	  $array2 = array();
+	  if ($resultado = $BD->query($query)) {
+		
+		$h = 0;
+		
+		while($arr = $resultado->fetch_array()) {
+			$array1[$h++] = $arr["id_merchandising"];
+		}
+		$h = 0;
+		foreach($array1 as $id_merchandising) {
+		$query2 = "SELECT * FROM merchandising WHERE id_merchandising='".$BD->real_escape_string($id_merchandising)."'";
+		$result2 = $BD->query($query2);
+			while($mercha = $result2->fetch_assoc()) {
+				$array2[$h++] = $mercha;
+			}
+		}
+		//$resultado->close();
+	  }
+	  
+	  return $array2;
 }
 
 

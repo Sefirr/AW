@@ -1,7 +1,7 @@
 <?php 
 	require_once __DIR__.'/config.php';
 	require_once __DIR__.'/procesaContenido.php'; 
-	require_once __DIR__.'/procesaValoracion.php'; 
+	require_once __DIR__.'/procesaValoracionContent.php';
 
 	$rows_for_page= 10;
 	
@@ -50,7 +50,7 @@
 			echo  '<a href="includes/descripcion.php?title='.$content["titulo"].'"><p><em>'.$content["titulo"].'</em></p></a>';
 			$val_user = getRatingContenido2($content["titulo"]);
 			$val_pagina = $content["valoracionpagina"];
-			$valoracion = ($val_user + $val_pagina)/2;
+			$valoracion = floor(($val_user + $val_pagina)/2);
 			if($valoracion == 0) {
 							$html = '<img src="'.RAIZ_APP.'img/0estrellas.png" id="estrellas" />';
 						}
