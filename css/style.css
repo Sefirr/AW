@@ -16,8 +16,8 @@ h2{
 
 a{
 	text-decoration: none;
-	color:white;
 	font-size: 120%;
+	color: black;
 }
 a:hover{
 
@@ -27,6 +27,7 @@ a:hover{
 
 a:visited {
     text-decoration: none;
+    color:black;
 } 
 
 #contenedor {
@@ -115,7 +116,7 @@ textarea.register, input.register1 {
 
 #descripcion2{
 
-	width: 100%;
+	width: 90%;
 }
 
 textarea {
