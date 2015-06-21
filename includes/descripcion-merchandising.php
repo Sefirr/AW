@@ -50,20 +50,34 @@
 				?>
 				<div id="titulo-mercha"> <?php echo $content["nombre"]; ?> </div>
 				<?php 	$imagen = RAIZ_APP;
-						if(empty($content["caratula"])) {
+						if(empty($content["foto1"])) {
 							$imagen .= "img/no_photo_available.png";
 						} else {
-							$imagen .= $content["caratula"];
+							$imagen .= $content["foto1"];
+						}
+				?>
+				<?php 	$imagen2 = RAIZ_APP;
+						if(empty($content["foto2"])) {
+							$imagen2 .= "img/no_photo_available.png";
+						} else {
+							$imagen2 .= $content["foto2"];
 						}
 				?>
 				<?php 	$imagen = RAIZ_APP;
-						if(empty($content["caratula"])) {
+						if(empty($content["foto1"])) {
 							$imagen .= "img/no_photo_available.png";
 						} else {
-							$imagen .= $content["caratula"];
+							$imagen .= $content["foto1"];
+						}
+						$imagen2 = RAIZ_APP;
+						if(empty($content["foto1"])) {
+							$imagen2 .= "img/no_photo_available.png";
+						} else {
+							$imagen2 .= $content["foto1"];
 						}
 				
 				echo '<div id="cartel"><img src="<?php echo $imagen ?>" id="caratula"> </div>';
+				echo '<div id="cartel2"><img src="<?php echo $imagen2 ?>" id="caratula2"> </div>';
 				echo '<div id="descripcion-basica">'.$content["descripcion"].'</div>';
 				echo '<a class="boton" href="shopping_cart.php?id='.$content["id_merchandising"].'&action=';
 				if (isset($_SESSION['carro'][$content['id_merchandising']])){

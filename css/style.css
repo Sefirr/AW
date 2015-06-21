@@ -179,7 +179,7 @@ input[type=submit].button {
 	width: 75px;
 }
 
-#caratula{
+#caratula, #caratula2{
 	margin: 0 auto;
 	height: 170px;
 	width: 150px;
@@ -217,7 +217,7 @@ input[type=submit].button {
 	text-align:center;
 }
 
-#cartel {
+#cartel, #cartel2 {
 	float:left;
 	padding-right : 10px;
 
@@ -230,7 +230,7 @@ input[type=submit].button {
 
 }
 
-#cartel, #descripcion-basica { 
+#cartel, #cartel2, #descripcion-basica { 
 	padding-top: 10px;
 	padding-left: 5%;
 }
