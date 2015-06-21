@@ -99,7 +99,7 @@ function generaFormularioModifyPerfil($datos) {
 			<input type="text" name="email" placeholder="Email" value ="$email" />
 			<br/>
 			<label>Descripción: </label>
-			<textarea name="descripcion" placeholder="Descripción">$descripcion</textarea>
+			<textarea name="descripcion" placeholder="Descripción" id="descripcion2">$descripcion</textarea>
 			<br/>
 			<label>Foto : </label> 
 			<input type="file" name="imagen"/><!-- AGREGAR CARATULA: agregar imagen de la carátula de la pelicula. -->
