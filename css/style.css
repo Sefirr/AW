@@ -346,6 +346,10 @@ input[type=submit].button {
 	background: #237373;
 	color : #f0f4f4;
 }
+#tabla-contenido tbody tr:hover td a{
+	color : #f0f4f4;
+
+}
 
 /**************** MENU ORDENACION ****************/
 

@@ -183,7 +183,7 @@ EOS;
 		$usuarios = buscarUsuario($_POST['cadena']);
 
 		if($usuarios != NULL) {
-			echo '<table>';
+			echo '<table id="tabla-contenido">';
 		foreach($usuarios as $usuario) {
 			$nick = $usuario["username"];
 			$id = $usuario["id_user"];
@@ -196,7 +196,7 @@ EOS;
 	} else {
 		$usuarios = buscarUsuario("");
 
-		echo '<table>';
+		echo '<table id="tabla-contenido">';
 		foreach($usuarios as $usuario) {
 			$nick = $usuario["username"];
 			$id = $usuario["id_user"];
