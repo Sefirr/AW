@@ -12,7 +12,7 @@
 
 		<!-- ----------------------------- END META REGION------------------------------ -->
 
-		<tittle> Registrarse W&C </tittle>
+		<title> Registrarse W&C </title>
 
 		<!-- -----------------------------LINKS REGION------------------------------ -->
 		<link rel="shortcut icon" type="image/x-icon" href="<?php echo RAIZ_APP; ?>img/favicon.ico"> <!-- ESTABLECIMIENTO DEL FAVICON -->

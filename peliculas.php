@@ -8,7 +8,7 @@
 		<meta name="author" content="Watchandcoment Team"><!-- AUTORES DE LA PÁGINA -->
 
 	<!-- ----------------------------- END META REGION------------------------------ -->
-		<tittle> Películas W&C </tittle>
+		<title> Películas W&C </title>
 
 	<!-- -----------------------------LINKS REGION------------------------------ -->
 		<link rel="shortcut icon" type="image/x-icon" href="<?php echo RAIZ_APP; ?>img/favicon.ico"> <!-- ESTABLECIMIENTO DEL FAVICON -->
