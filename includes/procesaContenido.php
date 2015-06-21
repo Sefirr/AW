@@ -74,7 +74,7 @@ function addContent($params) {
 		 $okValidacionContenido = false;
 	}
 	
-	$sinopsis = isset($params['sinopsis']) ? $params['titulo'] : null;
+	$sinopsis = isset($params['sinopsis']) ? $params['sinopsis'] : null;
 	
 	if(!$sinopsis || empty($sinopsis)) {
 		 $result[] = 'La sinopsis de la serie no es válida.';

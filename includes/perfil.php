@@ -1,10 +1,11 @@
 <?php
  
 	require_once __DIR__ .'/procesaUsuario.php';
+	require_once __DIR__ .'/social.php';
 	require_once __DIR__ .'/config.php';
 	
-	$nombreUsuario = $_SESSION['usuario'];
-	$user = dameUsuarioByUsername($nombreUsuario);
+	$id_user = $_GET['id'];
+	$user = dameUsuarioById($id_user);
 	
 ?>
 <!DOCTYPE html>
@@ -55,8 +56,6 @@
 									if($user['rol'] == 1) {
 										$rol = "Usuario registrado";
 									} else if($user['rol'] == 2) {
-										$rol = "Moderador";
-									} else {
 										$rol = "Administrador";
 									}
 									echo $rol;
@@ -65,18 +64,22 @@
 							<h3>Descripcion: <?php echo $user['descripcion'] ?></h3>
 					<div id="friends">				
 						<h1>Amigos</h1>
-						<img src="../img/perfil.jpg" alt="imagen de perfil" id="detalle-amigos"/>
-						<img src="../img/perfil.jpg" alt="imagen de perfil" id="detalle-amigos"/>
-						<img src="../img/perfil.jpg" alt="imagen de perfil" id="detalle-amigos"/>
-						<img src="../img/perfil.jpg" alt="imagen de perfil" id="detalle-amigos"/>
-						<img src="../img/perfil.jpg" alt="imagen de perfil" id="detalle-amigos"/>
-						<img src="../img/perfil.jpg" alt="imagen de perfil" id="detalle-amigos"/>
-						<img src="../img/perfil.jpg" alt="imagen de perfil" id="detalle-amigos"/>
-						<img src="../img/perfil.jpg" alt="imagen de perfil" id="detalle-amigos"/>
-						<img src="../img/perfil.jpg" alt="imagen de perfil" id="detalle-amigos"/>
-						<img src="../img/perfil.jpg" alt="imagen de perfil" id="detalle-amigos"/>
-						<img src="../img/perfil.jpg" alt="imagen de perfil" id="detalle-amigos"/>
-						<img src="../img/perfil.jpg" alt="imagen de perfil" id="detalle-amigos"/>
+						<?php 
+						$friends = findFriends($user['id_user']);
+						foreach($friends as $friend) {	
+			$imagen = RAIZ_APP;
+			if(empty($friend["foto"])) {
+				$imagen .= "img/no_photo_available.png";
+			} else {
+				$imagen .= $friend["foto"];
+			}		
+			echo '<div id="detalle">';
+			echo '<a href="includes/perfil.php?id='.$friend["id_user"].'"><div id="cartel"><img src="'.$imagen.'" id="caratula"> </div></a>';
+			echo  '<a href="includes/perfil.php?id='.$friend["id_user"].'">
+			<p><em>'.$friend["username"].'</em></p></a>';
+			echo '</div>';
+			}
+						?>
 					</div>
 			</div>
 		</div>			

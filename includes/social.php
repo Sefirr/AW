@@ -45,4 +45,8 @@
 	
 	}
 
+	function findFriends($params) {
+		return findFriendsDB($params);
+	}
+
 ?>

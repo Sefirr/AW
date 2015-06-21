@@ -9,6 +9,8 @@
 		$menu = true;
 	}
 
+	$user = dameUsuarioByUsername($_SESSION['usuario']);
+
 ?>
 
 <div id="menus-izq">
@@ -44,7 +46,7 @@
 			</li>
 			<li><a>Mi Perfil</a>
 				<ul>
-					<li><a href="<?php echo RAIZ_APP; ?>includes/perfil.php">Ver mi perfil</a></li>
+					<li><a href="<?php echo RAIZ_APP; ?>includes/perfil.php?id=<?php echo $user['id_user'];?>">Ver mi perfil</a></li>
 					<li><a href="<?php echo RAIZ_APP; ?>includes/modifyperfil.php">Modificar perfil</a></li>
 				</ul>
 			</li>
