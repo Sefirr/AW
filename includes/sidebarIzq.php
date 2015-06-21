@@ -4,21 +4,26 @@
 		<input type="submit" class="search" value="Buscar">
 		</form>
 	<div id="menu-user">
+<?php if(isset($_SESSION["rol"]) && ($_SESSION["rol"] > 0)) { ?>
 		<ul>
 			<li>Menú de usuario</li>
 			<li><a>Contenido</a>
 				<ul>
 					<li><a href="<?php echo RAIZ_APP; ?>includes/viewcontent.php">Lista de contenido</a></li>
+<?php if(isset($_SESSION["rol"]) && ($_SESSION["rol"] > 1)) { ?>
 					<li><a href="<?php echo RAIZ_APP; ?>includes/add-content.php">Añadir contenido</a></li>
 					<li><a href="<?php echo RAIZ_APP; ?>includes/manage-content.php">Gestionar contenido</a></li>
+<?php } ?>
 
 				</ul>
 			</li>
 			<li><a>Merchandising</a>
 				<ul>
 					<li><a href="<?php echo RAIZ_APP; ?>includes/viewmerchalist.php">Lista de merchandising</a></li>
+<?php if(isset($_SESSION["rol"]) && ($_SESSION["rol"] > 1)) { ?>
 					<li><a href="<?php echo RAIZ_APP; ?>includes/add-merchandising.php">Añadir merchandising</a></li>
 					<li><a href="<?php echo RAIZ_APP; ?>includes/manage-mercha.php">Gestionar nerchandising</a></li>
+<?php } ?>
 				</ul>
 			</li>
 			<li>
@@ -32,6 +37,7 @@
 			</li>
 			<li><a href="<?php echo RAIZ_APP; ?>includes/shopping_cart.php?id=1&action=mostrar"> Ver carrito</a></li>
 		</ul>
+<?php } ?>
 	</div>
 	<div id="recomendaciones">
 		<ul>
