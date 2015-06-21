@@ -20,7 +20,7 @@
 		<meta name="author" content="Watchandcoment Team"><!-- AUTORES DE LA PÁGINA -->
 
 	<!-- ----------------------------- END META REGION------------------------------ -->
-
+		<title>Contenido W&C</title>
 
 	<!-- -----------------------------LINKS REGION------------------------------ -->
 		<link rel="shortcut icon" type="image/x-icon" href="<?php echo RAIZ_APP; ?>img/favicon.ico"> <!-- ESTABLECIMIENTO DEL FAVICON -->

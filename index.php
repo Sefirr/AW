@@ -8,7 +8,7 @@
 		<meta name="author" content="Watchandcoment Team"><!-- AUTORES DE LA PÁGINA -->
 
 	<!-- ----------------------------- END META REGION------------------------------ -->
-
+		<title>Watch & Comment</title>
 
 	<!-- -----------------------------LINKS REGION------------------------------ -->
 		<link rel="shortcut icon" type="image/x-icon" href="<?php echo RAIZ_APP; ?>img/favicon.ico"> <!-- ESTABLECIMIENTO DEL FAVICON -->
@@ -25,7 +25,7 @@
 
 	<!-- -----------------------------END LINKS REGION------------------------------ -->
 
-		<title>Watch & Comment</title>
+		
 	</head>
 	<body>
 		<div id = "contenedor">

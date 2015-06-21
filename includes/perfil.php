@@ -10,9 +10,8 @@
 <!DOCTYPE html>
 
 <html>
-		<head>
-		<?php	require_once __DIR__.'/config.php'; ?>
-		
+	<head>
+	
 	<!-- -----------------------------META REGION------------------------------ -->
 
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> <!--ESTABLECEMOS LA CODIFICACION A UTF-8-->
@@ -20,7 +19,7 @@
 
 	<!-- ----------------------------- END META REGION------------------------------ -->
 
-
+		<tittle> Mi Perfil W&C </tittle>
 	<!-- -----------------------------LINKS REGION------------------------------ -->
 		<link rel="shortcut icon" type="image/x-icon" href="<?php echo RAIZ_APP; ?>img/favicon.ico"> <!-- ESTABLECIMIENTO DEL FAVICON -->
 
@@ -31,11 +30,9 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo RAIZ_APP; ?>css/footer.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
 		<script src="<?php echo RAIZ_APP; ?>js/jquery-1.9.1.min.js" type="text/javascript"></script>
 		<script src="<?php echo RAIZ_APP; ?>js/sidebarIzq.js" type="text/javascript"></script>
-		<script src="<?php echo RAIZ_APP; ?>js/contact.js" type="text/javascript"></script>
-
-
+		
 	<!-- -----------------------------END LINKS REGION------------------------------ -->
-	<title> Mi perfil </title>
+	
 	</head>
 	<body>
 		<div id = "contenedor">

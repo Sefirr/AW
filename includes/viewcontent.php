@@ -11,6 +11,7 @@
 
 	<!-- ----------------------------- END META REGION------------------------------ -->
 
+		<tittle> Lista de Contenido W&C </tittle>
 
 	<!-- -----------------------------LINKS REGION------------------------------ -->
 		<link rel="shortcut icon" type="image/x-icon" href="<?php echo RAIZ_APP; ?>img/favicon.ico"> <!-- ESTABLECIMIENTO DEL FAVICON -->
@@ -22,7 +23,7 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo RAIZ_APP; ?>css/footer.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
 		<script src="<?php echo RAIZ_APP; ?>js/jquery-1.9.1.min.js" type="text/javascript"></script>
 		<script src="<?php echo RAIZ_APP; ?>js/sidebarIzq.js" type="text/javascript"></script>
-		<script src="<?php echo RAIZ_APP; ?>js/contact.js" type="text/javascript"></script>
+		
 
 
 	<!-- -----------------------------END LINKS REGION------------------------------ -->
@@ -38,7 +39,7 @@
 			<div id = "contenido">
 				<table id="tabla-contenido">
 				
-					<tr>
+					<tr><!--Table head -->
 							<th> Título </th>
 							<th> Director </th>
 							<th> Fecha de estreno </th>
@@ -48,7 +49,7 @@
 				
 			<?php
 			
-		
+				//Procesado de la tabla con los datos
 				$html = "";
 				$contents = dameAllContent();
 				if ($contents != NULL){

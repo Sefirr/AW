@@ -12,7 +12,7 @@
 		<meta name="author" content="Watchandcoment Team"><!-- AUTORES DE LA PÁGINA -->
 
 	<!-- ----------------------------- END META REGION------------------------------ -->
-
+		<title>Administrar Contenido W&C</title>
 
 	<!-- -----------------------------LINKS REGION------------------------------ -->
 		<link rel="shortcut icon" type="image/x-icon" href="<?php echo RAIZ_APP; ?>img/favicon.ico"> <!-- ESTABLECIMIENTO DEL FAVICON -->
@@ -24,8 +24,7 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo RAIZ_APP; ?>css/footer.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
 		<script src="<?php echo RAIZ_APP; ?>js/jquery-1.9.1.min.js" type="text/javascript"></script>
 		<script src="<?php echo RAIZ_APP; ?>js/sidebarIzq.js" type="text/javascript"></script>
-		<script src="<?php echo RAIZ_APP; ?>js/contact.js" type="text/javascript"></script>
-
+		
 
 	<!-- -----------------------------END LINKS REGION------------------------------ -->
 	</head>
@@ -40,14 +39,14 @@
 			<div id = "contenido">
 				<table id="tabla-contenido">
 				
-					<tr>
+					<tr><!--Table head-->
 							<th> ID </th>
 							<th> Título </th>
 							<th> Opciones </th>
 					</tr>
 				
 			<?php
-			
+				//Procesado de tabla con sus datos correspondientes
 				$html = "";
 				$contents = dameAllContent();
 				if ($contents != NULL){

@@ -8,7 +8,7 @@
 		<meta name="author" content="Watchandcoment Team"><!-- AUTORES DE LA PÁGINA -->
 
 	<!-- ----------------------------- END META REGION------------------------------ -->
-
+		<tittle> Películas W&C </tittle>
 
 	<!-- -----------------------------LINKS REGION------------------------------ -->
 		<link rel="shortcut icon" type="image/x-icon" href="<?php echo RAIZ_APP; ?>img/favicon.ico"> <!-- ESTABLECIMIENTO DEL FAVICON -->
@@ -33,7 +33,7 @@
 			<!-- Menu izq -->
 			<?php include_once(__DIR__ .'/includes/sidebarIzq.php'); ?>
 			<!-- CONTENIDO -->
-			<div id = "contenido">
+			<div id = "contenido"><!-- PROCESADO MEDIANTE AJAX -->
 			</div>	
 		</div>	
 <!-- INCLUDE FOOTER -->

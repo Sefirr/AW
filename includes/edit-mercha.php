@@ -11,7 +11,7 @@
 		<meta name="author" content="Watchandcoment Team"><!-- AUTORES DE LA PÁGINA -->
 
 	<!-- ----------------------------- END META REGION------------------------------ -->
-
+		<title>Editar Merchandising W&C</title>
 
 	<!-- -----------------------------LINKS REGION------------------------------ -->
 		<link rel="shortcut icon" type="image/x-icon" href="<?php echo RAIZ_APP; ?>img/favicon.ico"> <!-- ESTABLECIMIENTO DEL FAVICON -->
@@ -23,7 +23,7 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo RAIZ_APP; ?>css/footer.css"><!-- LINK AL ESTILO DE ESTA PAGINA -->
 		<script src="<?php echo RAIZ_APP; ?>js/jquery-1.9.1.min.js" type="text/javascript"></script>
 		<script src="<?php echo RAIZ_APP; ?>js/sidebarIzq.js" type="text/javascript"></script>
-		<script src="<?php echo RAIZ_APP; ?>js/series.js" type="text/javascript"></script>
+		
 
 
 	<!-- -----------------------------END LINKS REGION------------------------------ -->
@@ -37,7 +37,7 @@
 			<?php include_once(__DIR__ .'/sidebarIzq.php'); ?>
 			<!-- CONTENIDO -->
 			<div id = "contenido">
-			<?php gestionarFormularioEditMercha(); ?>
+			<?php gestionarFormularioEditMercha(); ?> <!-- Call to merchandising.php -->
 			</div>	
 		</div>	
 <!-- INCLUDE FOOTER -->
