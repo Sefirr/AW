@@ -36,8 +36,7 @@ a:visited {
 #contenido {
 	float:left;
 	width: 69%;
-	word-wrap: break-word;
-    background-color: rgba(216,169,77, 0.9);
+	background-color: rgba(216,169,77, 0.9);
 	margin: 1% 0 1% 0;
 	padding: 5%;
 	border-radius: 3px;
