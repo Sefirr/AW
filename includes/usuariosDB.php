@@ -174,6 +174,34 @@ function dameID($username){
 	return $usuario;
 }
 
+function searchUsers($busqueda){
 
+		global $BD;	
+		
+		$query = "SELECT * 
+				FROM merchandising 
+				WHERE username LIKE '%$busqueda%'
+					OR nombre LIKE '%$busqueda%'
+					OR apellidos LIKE '%$busqueda%'
+					OR email LIKE '%$busqueda%'
+					OR descripcion LIKE '%$busqueda%'";
+
+		$exito = false;
+
+		$contenido = array();
+		$i = 0;
+		if($resultado = $BD->query($query)) {
+		while($content = $resultado->fetch_assoc()) {
+			$contenido[$i] = array();
+			$contenido[$i++]= $content;
+			//$resultado->close();	
+		}
+
+		return $contenido;
+
+
+
+
+}
 
 ?>

@@ -366,4 +366,34 @@ function damerecomendacion(){
 
 	}
 
+
+function searchContenido($busqueda){
+
+		global $BD;	
+		
+		$query = "SELECT * 
+				FROM content 
+				WHERE titulo LIKE '%$busqueda%'
+					OR director LIKE '%$busqueda%'
+					OR sinopsis LIKE '%$busqueda%'";
+
+		$exito = false;
+
+		$contenido = array();
+		$i = 0;
+		if($resultado = $BD->query($query)) {
+		while($content = $resultado->fetch_assoc()) {
+			$contenido[$i] = array();
+			$contenido[$i++]= $content;
+			//$resultado->close();	
+		}
+
+		return $contenido;
+
+
+
+
+
+}
+
 ?>

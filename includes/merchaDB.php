@@ -253,6 +253,37 @@ function modifyMerchavaloracion($id_merchandising, $newvaloracion){
 
 }
 
+function searchMercha($busqueda){
+
+		global $BD;	
+		
+		$query = "SELECT * 
+				FROM merchandising 
+				WHERE nombre LIKE '%$busqueda%'
+					OR descripcion LIKE '%$busqueda%'
+					OR proveedor LIKE '%$busqueda%'";
+
+		$exito = false;
+
+		$contenido = array();
+		$i = 0;
+		if($resultado = $BD->query($query)) {
+		while($content = $resultado->fetch_assoc()) {
+			$contenido[$i] = array();
+			$contenido[$i++]= $content;
+			//$resultado->close();	
+		}
+
+		return $contenido;
+
+
+
+
+
+
+
+	
+}
 
 
 ?>
