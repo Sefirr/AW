@@ -128,7 +128,7 @@
 							echo $html;
 					?>
 				</div>
-				<div id="precio">Precio: <?php echo $content["precio"]; ?></div>
+				<div id="precio">Precio: <?php echo $content["precio"]; ?>€</div>
 				<div id="proveedor">Proveedor: <?php echo $content["proveedor"]; ?></div>
 				<div id="unidades">Unidades: <?php echo $content["unidades"]; ?></div>
 				<div id="comentarios">
