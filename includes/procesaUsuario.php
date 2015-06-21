@@ -179,9 +179,7 @@ function generaFormularioRegistro($datos) {
 			<input type="text" class="register1" name="user" placeholder="Username" id="nick"/><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgnick"/>
 			<br/>
 			<label>Nombre y apellidos:</label>
-			<br/>
 			<input type="text" class="register1" name="nombre" placeholder="Nombre" id="name"> <img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgname"/> 
-			<br/>
 			<input type="text" class="register1" name="apellidos" placeholder="Apellidos" id="lastname"> <img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imglastname"/> 
 			</br>
 			<label> Contraseña </label>
