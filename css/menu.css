@@ -2,6 +2,7 @@
 	word-wrap: break-word;
 	float: left;
 	width:21%;
+	clear:both;
 }
 
 #menu-user, #recomendaciones {
