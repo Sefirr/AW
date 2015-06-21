@@ -337,7 +337,7 @@
 	return	$contenido;
 	}
 
-	function damerecomendacion(){
+function damerecomendacion(){
 
 		global $BD;	
 		
@@ -357,6 +357,9 @@
 		}
 		$aleatorio = $resultado->num_rows;
 		$aletorio2 = rand(0, $aleatorio-1);
+		if($aletorio2 < 1 || $aletorio2 == NULL){
+			$aletorio2=0;
+		}
 }
 		return $contenido[$aletorio2];
 
