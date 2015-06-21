@@ -203,6 +203,12 @@ input[type=submit].button {
 	height:15px;
 }
 
+#formbuscausu{
+	margin-left:25%;
+	font-size:120%;
+
+}
+
 /***************UTILIDADES DESCRIPCION********************/
 #titulo-serie, #titulo-mercha {
 	margin-top: 10px;

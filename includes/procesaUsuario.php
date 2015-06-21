@@ -172,7 +172,7 @@ function modifyPerfil($params) {
 function formularioUsuarios() {
 
 	$html = <<<EOS
-			<form action="" method="POST">
+			<form action="" method="POST" id="formbuscausu">
 			<label>Nombre de usuario:</label><input id="text" type="text" name="cadena">
 			<input type="submit" name="submit" value="Buscar" /><!-- boton de enviar -->
 			</form>
