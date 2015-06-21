@@ -22,6 +22,7 @@
 					<label>Foto 2 : </label> 
 					<input type="file" name="foto2"/>
 					<br/>
+					<fieldset>
 					<legend>Descripción básica </legend>
 						<label>Descripción: </label>
 						<textarea class="addmerchandising" name="descripcion" placeholder="Descripción" id="descripciones"></textarea><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgdescripcion"/>
@@ -42,7 +43,7 @@
 					</fieldset>            
 EOS;
 
-	$html .= '<label> Contenido a asociar : </label>	<select multiple="multiple" name="id_content[]">';
+	$html .= '<label> Contenido a asociar: </label>	<select multiple="multiple" name="id_content[]">';
 	foreach($contents as $content) {
 		$id_content = $content['id_content'];
 		$html .= '<option value="'.$id_content.'">'.$content["titulo"].'</option>';			
@@ -209,7 +210,7 @@ EOS;
 
 EOS;
 
-			$html .= '<label> Contenido a asociar : </label>	<select multiple name="id_content[]">';
+			$html .= '<label> Contenido a asociar: </label>	<select multiple name="id_content[]">';
 			foreach($contents as $content) {
 				$id_content = $content['id_content'];
 				$html .= '<option value="'.$id_content.'" >'.$content["titulo"].'</option>';			
