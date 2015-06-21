@@ -375,5 +375,10 @@ function getPagination($start_with, $rows_for_page, $ordenado) {
 function getPaginationByType($start_with, $rows_for_page, $ordenado, $tipo){
     return damePaginacionByType($start_with, $rows_for_page, $ordenado, $tipo);
 }
+function getrecomendacion(){
+
+	return damerecomendacion();
+
+}
 
 ?>

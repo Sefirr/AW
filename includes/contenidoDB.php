@@ -243,7 +243,8 @@
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		$resultado->close();}
+		//$resultado->close();
+	}
 
 	return $exito;
 
@@ -334,6 +335,32 @@
 	}
 		  
 	return	$contenido;
+	}
+
+	function damerecomendacion(){
+
+		global $BD;	
+		
+		$query = "SELECT * 
+				FROM content 
+				WHERE valoracionpagina=5";
+
+		$exito = false;
+
+		$contenido = array();
+		$i = 0;
+		if($resultado = $BD->query($query)) {
+		while($content = $resultado->fetch_assoc()) {
+			$contenido[$i] = array();
+			$contenido[$i++]= $content;
+			//$resultado->close();	
+		}
+		}
+		$aleatorio = $contenido->num_rows;
+		$aletorio2 = rand(1, $aleatorio);
+		return $contenido[$aleatorio2];
+
+
 	}
 
 ?>

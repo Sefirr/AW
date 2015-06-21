@@ -1,3 +1,8 @@
+<?php require_once __DIR__.'/procesaContenido.php';
+$content = getrecomendacion();
+
+?>
+
 <div id="menus-izq">
 	<form action="" method="POST">
 		<input type="text" class="search">
@@ -43,10 +48,9 @@
 		<ul>
 			<li><em>Recomendaciones</em></li>
 			<li><h3>
-<em>Titulo recomendación</em></h3></li>
+			<em><?php echo $content["titulo"]; ?></em></h3></li>
 			<li> <div id="descripcion">
-				<a href="descripcion.php?title=0"><img src="<?php echo RAIZ_APP; ?>img/videojuegos/dragonAge3.jpg" id="caratula-recomendaciones"/></a>
-				<a href="descripcion.php?title=0"><p><em>Dragon Age Inquisition</em></p></a>
+				<a href="descripcion.php?title=<?php echo $content["titulo"]; ?>"><img src="<?php echo RAIZ_APP; ?><?php echo $content["caratula"]; ?>" id="caratula-recomendaciones"/></a>
 				<img src="<?php echo RAIZ_APP; ?>img/5estrellas.png" id="estrellas" />
 			</div></li></ul>
 		</div>
