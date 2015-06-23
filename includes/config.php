@@ -27,6 +27,14 @@ function cierraConexion() {
     $BD->close();
   }
 }
+function cierraConsultas(){
+	global $DB;
+	if (isset($DB) && ! $DB->connect_errno){
+		$DB->close();
+	}
+
+
+}
 
 session_start();
 

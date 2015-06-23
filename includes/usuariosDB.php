@@ -12,7 +12,7 @@ function dameUsuario($nombreUsuario) {
 		$usuario = $resultado->fetch_assoc();
 		$resultado->close();
 	}
-
+	cierraConsultas();
 	return $usuario;
 }
 
@@ -26,7 +26,7 @@ function dameUsuarioByUsername($nombreUsuario) {
 		$usuario = $resultado->fetch_assoc();
 		$resultado->close();
 	}
-
+	cierraConsultas();
 	return $usuario;
 }
 
@@ -40,7 +40,7 @@ function dameUsuarioById($id) {
 		$usuario = $resultado->fetch_assoc();
 		$resultado->close();
 	}
-
+	cierraConsultas();
 	return $usuario;
 }
 
@@ -54,9 +54,9 @@ function modificaRol($username, $rol){
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		//$resultado->close();
+		
 	}
-
+	cierraConsultas();
 	return $exito;
 
 }
@@ -71,9 +71,9 @@ function modificarpassword($username, $newpass){
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		//$resultado->close();
+		
 	}
-
+	cierraConsultas();
 	return $exito;
 
 }
@@ -88,10 +88,10 @@ function modificarfoto($username, $newfoto){
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		//$resultado->close();
+		
 	}
-
-return $exito;
+	cierraConsultas();
+	return $exito;
 
 }
 
@@ -105,9 +105,9 @@ function modificardescripcion($username, $newdescription) {
 	
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		//$resultado->close();
+		
 	}
-	
+	cierraConsultas();
 	return $exito;
 }
 
@@ -121,10 +121,10 @@ function modificaremail($username, $newemail){
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		//$resultado->close();
+		
 	}
-
-return $exito;
+	cierraConsultas();
+	return $exito;
 }
 
 function eliminausuario($username){
@@ -136,10 +136,10 @@ function eliminausuario($username){
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		//$resultado->close();
+		
 	}
-
-return $exito;
+	cierraConsultas();
+	return $exito;
 
 }
 
@@ -152,9 +152,9 @@ function addusers($username, $password, $nombre, $apellidos, $email, $descripcio
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		//$resultado->close();
+		
 	}
-
+	cierraConsultas();
 	return $exito;
 
 }
@@ -169,7 +169,7 @@ function buscarUsuario($user) {
 			$array[$h++] = $usuario;
 		}						
 	}
-	
+	cierraConsultas();
 	return $array;
 }
 
@@ -185,6 +185,7 @@ function dameID($username){
 		}	
 		$resultado->close();
 	}
+	cierraConsultas();
 	return $usuario;
 }
 
@@ -203,6 +204,7 @@ function emailExiste($email){
 		}
 		$resultado->close();
 	}
+	cierraConsultas();
 	return $exito;
 }
 
@@ -227,10 +229,10 @@ function searchUsers($busqueda){
 			while($content = $resultado->fetch_assoc()) {
 				$contenido[$i] = array();
 				$contenido[$i++]= $content;
-				//$resultado->close();	
+					
 			}
 		}
-
+		cierraConsultas();
 		return $contenido;
 
 
@@ -253,7 +255,7 @@ function dameFilasUsuarios($search){
 	$exito = false;
 
 	$exito = $BD->query($query);
-		  
+	cierraConsultas();
 	return $exito->num_rows;
 	}
 

@@ -22,7 +22,7 @@
 				$rating = $suma / $rows; 
 			//}
 		}
-		
+		cierraConsultas();
 		return floor($rating);
 	}
 	
@@ -41,7 +41,7 @@
 			$rows= $resultado->num_rows;		
 			$rating = $suma / $rows; 
 		}
-		
+		cierraConsultas();
 		return floor($rating);
 	}
 	
@@ -54,7 +54,7 @@
 		if($resultado = $BD->query($sql)) {
 			$rows= $resultado->num_rows;
 		}
-		
+		cierraConsultas();
 		return $rows;
 	}
 	
@@ -67,7 +67,7 @@
 		if($resultado = $BD->query($sql)) {
 			$rows= $resultado->num_rows;
 		}
-		
+		cierraConsultas();
 		return $rows;
 	}
 
@@ -80,7 +80,7 @@
 		if($resultado = $BD->query($sql)) {
 			$rows= $resultado->num_rows;
 		}
-		
+		cierraConsultas();
 		return $rows;
 	}
 	
@@ -93,7 +93,7 @@
 		if($resultado = $BD->query($sql)) {
 			$rows= $resultado->num_rows;
 		}
-		
+		cierraConsultas();
 		return $rows;
 	}
 	
@@ -102,7 +102,9 @@
 		$id_content = dameIDContent($title);
 		$sql= "insert into content_ratings (id_user,id_content,rating) values ($id_user,$id_content,$rating) ";
 		$result= $BD->query($sql);
+
 		echo $sql;
+		cierraConsultas();
 	}
 	
 	function insertRatingMerchandising($id_user,$nombre, $rating){
@@ -111,6 +113,7 @@
 		$sql= "insert into merchandising_ratings (id_user,id_merchandising,rating) values ($id_user,$id_mercha,$rating) ";
 		$result= $BD->query($sql);
 		echo $sql;
+		cierraConsultas();
 	}
 
 

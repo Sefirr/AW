@@ -16,7 +16,7 @@ function addCommentContent($id_user, $mensaje, $id_content){
 		$query2="INSERT INTO comments_content (id_content, id_comment) VALUES ('".$BD->real_escape_string($id_content)."','".$BD->real_escape_string($id_comment)."')";
 		if($resultado = $BD->query($query2)) {
 			$exito = true;
-			//$resultado->close();			
+			cierraConsultas();		
 		}
 	}
 
@@ -33,15 +33,15 @@ function addCommentMercha($id_user, $mensaje, $id_merchandising){
 	$exito = false;
 
 	if ($resultado = $BD->query($query)) {
-		//$resultado->close();
+		
 		$id_comment = $BD->insert_id;
 		$query2="INSERT INTO comments_merchandising (id_merchansing, id_comment) VALUES ('".$BD->real_escape_string($id_merchandising)."','".$BD->real_escape_string($id_comment)."')";
 		if($resultado = $BD->query($query2)) {
 			$exito = true;
-			//$resultado->close();			
+						
 		}
 	}
-
+	cierraConsultas();
 	return $exito;
 
 }
@@ -56,9 +56,9 @@ function delComment($id_comment){
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		//$resultado->close();
+		
 	}
-
+	cierraConsultas();
 	return $exito;
 
 }
@@ -88,7 +88,7 @@ function dameComment($id_comment){
     $mercha = $resultado->fetch_assoc();
     $resultado->close();
   }
-  
+  cierraConsultas();
   return $mercha;
 }
 
@@ -114,9 +114,9 @@ function dameCommentsContent($id_content){
 			$array2[$h++] = $comentarios;
 		}
 	}
-    //$resultado->close();
+    
   }
-  
+  cierraConsultas();
   return $array2;
 }
 
@@ -142,9 +142,9 @@ function dameCommentsMercha($id_mercha){
 			$array2[$h++] = $comentarios;
 		}
 	}
-    //$resultado->close();
+    
   }
-  
+  cierraConsultas();
   return $array2;
 }
 

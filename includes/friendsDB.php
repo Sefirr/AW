@@ -4,36 +4,36 @@ require_once __DIR__.'/usuariosDB.php';
 
 function addfriendDB($username,$friend){
 
-global $BD;
+    global $BD;
 
-$query ="INSERT INTO friends (id_amigo1, id_amigo2)  VALUES ('$username','$friend')";
+    $query ="INSERT INTO friends (id_amigo1, id_amigo2)  VALUES ('$username','$friend')";
 
-$exito = false;
+    $exito = false;
 
-if ($resultado = $BD->query($query)) {
-    $exito = true;
-    //$BD->close();
-}
-
-return $exito;
+    if ($resultado = $BD->query($query)) {
+        $exito = true;
+            
+    }
+    cierraConsultas();
+    return $exito;
 
 }
 
 function deletefriendDB($username, $friend){
 
-global $BD;
+    global $BD;
 
 
-$query = "DELETE FROM friends WHERE (id_amigo1='$username' or id_amigo2='$friend')";
+    $query = "DELETE FROM friends WHERE (id_amigo1='$username' AND id_amigo2='$friend')";
 
-$exito = false;
+    $exito = false;
 
-if ($resultado = $BD->query($query)) {
-    $exito = true;
-    //$BD->close();
-}
-
-return $exito;
+    if ($resultado = $BD->query($query)) {
+        $exito = true;
+        
+    }
+    cierraConsultas();
+    return $exito;
 
 }
 
@@ -55,10 +55,10 @@ function findFriendsDB($username) {
                 $user = dameUsuarioById($usuario['id_amigo1']);
                 $friends[$h++] = $user;
             }
-            //$resultado->close();
+            
         }
     }
-
+    cierraConsultas();
     return $friends;
 
 }
@@ -78,7 +78,7 @@ function isFriendDB($user_id, $friend_id) {
             $exito = true;
         }
     }
-
+    cierraConsultas();
     return $exito;
 
 }

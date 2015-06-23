@@ -9,9 +9,9 @@
 		
 		if ($resultado = $BD->query($query)) {
 			$exito = true;
-			//$resultado->close();
+			
 		}
-		
+		cierraConsultas();
 		return $exito;
 	}
 
@@ -26,9 +26,9 @@
 
 	if ($resultado = $BD->query($query)) {
 			$exito = true;
-			//$resultado->close();
+			
 	}
-		
+		cierraConsultas();
 		return $exito;
 
 
@@ -49,9 +49,9 @@
 	  		}else {
 	  			$exito = $resultado->fetch_assoc()['id_content'];
 			}			
-	  		//$resultado->close();
+	  		
 		}
-		
+		cierraConsultas();
 		return $exito;
 
 	}
@@ -68,7 +68,7 @@
 			$content = $resultado->fetch_assoc();
 			$resultado->close();
 		}
-		  
+		cierraConsultas();
 		return $content;
 	}
 	
@@ -84,9 +84,9 @@
 			while($array = $resultado->fetch_assoc()) {
 				$content[$i++] = $array;
 			}
-			//$resultado->close();
+			
 		}
-		  
+		cierraConsultas();  
 		return $content;
 	}
 
@@ -100,9 +100,9 @@
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		//$resultado->close();
+		
 	}
-
+	cierraConsultas();
 	return $exito;
 
 	}
@@ -117,9 +117,9 @@
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		//$resultado->close();
+		
 	}
-
+	cierraConsultas();
 	return $exito;
 
 	}
@@ -133,9 +133,9 @@
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		//$resultado->close();
+		
 	}
-
+	cierraConsultas();
 	return $exito;
 
 
@@ -151,9 +151,9 @@
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		//$resultado->close();
+		
 	}
-
+	cierraConsultas();
 	return $exito;
 
 
@@ -168,9 +168,9 @@
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		//$resultado->close();
+		
 	}
-
+	cierraConsultas();
 	return $exito;
 
 
@@ -187,9 +187,9 @@
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		//$resultado->close();
+		
 	}
-
+	cierraConsultas();
 	return $exito;
 
 
@@ -205,9 +205,9 @@
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		//$resultado->close();
+		
 	}
-
+	cierraConsultas();
 	return $exito;
 
 
@@ -224,9 +224,9 @@
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		//$resultado->close();
+		
 	}
-
+	cierraConsultas();
 	return $exito;
 
 
@@ -243,9 +243,9 @@
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		//$resultado->close();
+		
 	}
-
+	cierraConsultas();
 	return $exito;
 
 	}
@@ -259,7 +259,7 @@
 	$exito = false;
 
 	$exito = $BD->query($query);
-		  
+	cierraConsultas();
 	return $exito->num_rows;
 	}
 	
@@ -274,7 +274,7 @@
 	$exito = false;
 
 	$exito = $BD->query($query);
-		  
+	cierraConsultas();
 	return $exito->num_rows;
 	}
 	
@@ -287,7 +287,7 @@
 	$exito = false;
 
 	$exito = $BD->query($query);
-		  
+	cierraConsultas();	  
 	return $exito->num_rows;
 	}
 
@@ -309,7 +309,7 @@
 			//$resultado->close();	
 		}
 	}
-	
+	cierraConsultas();
 	return $contenido;
 	}
 	
@@ -335,10 +335,10 @@
 		while($content = $resultado->fetch_assoc()) {
 			$contenido[$i] = array();
 			$contenido[$i++]= $content;
-			//$resultado->close();	
+			
 		}
 	}
-		  
+	cierraConsultas();	  
 	return	$contenido;
 	}
 
@@ -362,7 +362,7 @@ function damerecomendacion(){
 		if($resultado = $BD->query($query)) {
 		while($content = $resultado->fetch_assoc()) {
 			$contenido[$i++]= $content;
-			//$resultado->close();	
+		
 		}
 		$aleatorio = $resultado->num_rows;
 		$aletorio2 = rand(0, $aleatorio-1);
@@ -376,7 +376,7 @@ function damerecomendacion(){
 		} else {
 			return $contenido[$aletorio2];
 		}
-
+		cierraConsultas();
 
 }
 
@@ -396,10 +396,10 @@ function searchContenido($busqueda){
 		while($content = $resultado->fetch_assoc()) {
 			$contenido[$i] = array();
 			$contenido[$i++]= $content;
-			//$resultado->close();	
+				
 		}
 	}
-	
+	cierraConsultas();
 	return $contenido;
 }
 

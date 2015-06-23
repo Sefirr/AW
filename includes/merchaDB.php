@@ -15,7 +15,7 @@ function dameIDMercha($nombre){
 	  		else
 	  			$mercha = $resultado->fetch_assoc()['id_merchandising'];
 
-	    //$resultado->close();
+	    cierraConsultas();
 	  }
 
 	  return $mercha;
@@ -36,7 +36,7 @@ function addMercha($nombre, $foto1, $foto2, $descripcion, $unidades, $proveedor,
 		$id_mercha = $BD->insert_id;
 		addContentAssoc($id_mercha, $id_content);
 		
-		//$resultado->close();
+		cierraConsultas();
 	}
 
 	return $exito;
@@ -51,6 +51,7 @@ function addContentAssoc($id_mercha, $id_content) {
 			$query="INSERT INTO content_merchandising (id_content, id_merchandising)
 						VALUES ('$id','$id_mercha')";
 			$resultado = $BD->query($query);
+			cierraConsultas();
 		}
 	}
 }
@@ -63,6 +64,7 @@ function deleteContentAssoc($id_mercha, $id_content){
 		foreach($id_content as $id) {
 			$query="DELETE FROM content_merchandising WHERE id_content='$id' and id_merchandising= '$id_mercha'";
 			$resultado = $BD->query($query);
+			cierraConsultas();
 		}
 	}
 }
@@ -77,7 +79,7 @@ function deleteMercha($id_merchandising){
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		//$resultado->close();
+		cierraConsultas();
 	}
 
 	return $exito;
@@ -91,7 +93,7 @@ function dameMercha($id_merchandising){
   $mercha = false;
   if ($resultado = $BD->query($query)) {
     $mercha = $resultado->fetch_assoc();
-    //$resultado->close();
+    cierraConsultas();
   }
   
   return $mercha;
@@ -119,7 +121,7 @@ function dameMerchasById_content($id_content){
 				$array2[$h++] = $mercha;
 			}
 		}
-		//$resultado->close();
+		cierraConsultas();
 	  }
 	  
 	  return $array2;
@@ -147,7 +149,7 @@ function dameMerchasById_Mercha($id_mercha){
 				$array2[$h++] = $mercha;
 			}
 		}
-		//$resultado->close();
+		cierraConsultas();
 	  }
 	  
 	  return $array2;
@@ -168,7 +170,7 @@ global $BD;
 			while($array = $resultado->fetch_assoc()) {
 				$content[$i++] = $array;
 			}
-			//$resultado->close();
+			cierraConsultas();
 		}
 		  
 		return $content;
@@ -190,7 +192,7 @@ function modifyMerchanombre($id_merchandising, $newname){
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		//$resultado->close();
+		cierraConsultas();
 	}
 
 	return $exito;
@@ -208,7 +210,7 @@ function modifyMerchafoto($id_merchandising, $newfoto, $foto){
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		//$resultado->close();
+		cierraConsultas();
 	}
 
 	return $exito;
@@ -225,7 +227,7 @@ function modifyMerchadescripcion($id_merchandising, $newdescripcion){
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		//$resultado->close();
+		cierraConsultas();
 	}
 
 	return $exito;
@@ -242,7 +244,7 @@ function modifyMerchaunidades($id_merchandising, $newunidades){
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		//$resultado->close();
+		cierraConsultas();
 	}
 
 	return $exito;
@@ -260,7 +262,7 @@ function modifyMerchaproveedor($id_merchandising, $newproveedor){
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		//$resultado->close();
+		cierraConsultas();
 	}
 
 	return $exito;
@@ -280,7 +282,7 @@ function modifyMerchaprecio($id_merchandising, $newprecio){
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		//$resultado->close();
+		cierraConsultas();
 	}
 
 	return $exito;
@@ -298,7 +300,7 @@ function modifyMerchavaloracion($id_merchandising, $newvaloracion){
 
 	if ($resultado = $BD->query($query)) {
 		$exito = true;
-		//$resultado->close();
+		cierraConsultas();
 	}
 
 	return $exito;
@@ -323,7 +325,7 @@ function searchMercha($busqueda){
 			while($content = $resultado->fetch_assoc()) {
 				$contenido[$i] = array();
 				$contenido[$i++]= $content;
-				//$resultado->close();	
+				cierraConsultas();
 			}
 		}
 
@@ -344,7 +346,7 @@ function dameFilasMercha($search){
 	$exito = false;
 
 	$exito = $BD->query($query);
-		  
+	cierraConsultas();
 	return $exito->num_rows;
 	}
 

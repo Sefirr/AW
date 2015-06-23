@@ -19,7 +19,7 @@
 			$mercha[$i] = getMerchaCart($id);
 			$mercha[$i++]['unidades'] = $x;
 		}
-		
+		cierraConsultas();
 		return $mercha;
 	}
 	
@@ -44,5 +44,6 @@
 		}
 		
 		unset($_SESSION['carro']);
+		cierraConsultas();
 	}
 ?>
