@@ -223,11 +223,17 @@ input[type=submit].button {
 }
 
 /***************UTILIDADES DESCRIPCION********************/
+#indexstyle{
+	background-color: #405656;
+}
+
 #titulo-serie, #titulo-mercha {
 
 	margin-top: 10px;
 	font-size: 20px;
 	text-align:center;
+	padding-top: 10px;
+	font-weight: bold;
 }
 
 #cartel, #cartel2 {

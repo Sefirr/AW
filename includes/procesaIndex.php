@@ -44,7 +44,7 @@
 					$imagen .= $content["caratula"];
 				}
 
-				echo '<div style="background-color: #405656;">';		
+				echo '<div id="indexstyle">';		
 				echo '<div id="titulo-serie">'.$content["titulo"].'</div>';
 				echo '<div id="cartel"><img src="'.$imagen.'" id="caratula"> </div>';
 				echo '<div id="descripcion-basica">'.substr($content["sinopsis"],0,400)."...".'</div>';
