@@ -2,6 +2,7 @@
 
 require_once __DIR__.'/config.php';
 require_once __DIR__.'/usuariosDB.php';
+require_once __DIR__.'/friendsDB.php';
 require_once __DIR__.'/formlib.php';
 
 function gestionarFormularioLogin() {
@@ -180,16 +181,23 @@ function formularioUsuarios() {
 			</form>
 EOS;
 	echo $html;
-
+	$me = getUserByName($_SESSION["usuario"]);
 	if(isset($_POST['submit'])) {
 		$usuarios = buscarUsuario($_POST['cadena']);
 
+		echo '<table id="tabla-contenido">';
 		if($usuarios != NULL) {
-			echo '<table id="tabla-contenido">';
+			//$me = getUserByName($_SESSION["usuario"]);
 		foreach($usuarios as $usuario) {
 			$nick = $usuario["username"];
 			$id = $usuario["id_user"];
-			echo '<tr><td><a href="perfil.php?id='.$id.'">'.$nick.'</a></td><td><a href="add-friend.php?id='.$id.'"><img src="'.RAIZ_APP.'img/add_friend.png" /></a></td><td><a href="delete-friend.php?id='.$id.'"><img src="'.RAIZ_APP.'img/delete_friend.png" /></a></td>';
+			echo '<tr>';
+			if(!isFriendDB($me["id_user"], $id)) {
+			echo '<td><a href="perfil.php?id='.$id.'">'.$nick.'</a></td><td><a href="add-friend.php?id='.$id.'"><img src="'.RAIZ_APP.'img/add_friend.png" /></a></td>';
+			} else {
+			echo '<td><a href="delete-friend.php?id='.$id.'"><img src="'.RAIZ_APP.'img/delete_friend.png" /></a></td>';
+			}
+			echo '</tr>';
 			if(isset($_SESSION["rol"]) && $_SESSION["rol"] > 1) {
 				echo '<td><a href="modify-rol.php?id='.$id.'"><img src="'.RAIZ_APP.'img/rol_admin.png" /></a></td></tr>';
 			}
@@ -200,14 +208,19 @@ EOS;
 		}
 	} else {
 		$usuarios = buscarUsuario("");
-
 		echo '<table id="tabla-contenido">';
 		foreach($usuarios as $usuario) {
 			$nick = $usuario["username"];
 			$id = $usuario["id_user"];
-			echo '<tr><td><a href="perfil.php?id='.$id.'">'.$nick.'</a></td><td><a href="add-friend.php?id='.$id.'"><img src="'.RAIZ_APP.'img/add_friend.png" /></a></td><td><a href="delete-friend.php?id='.$id.'"><img src="'.RAIZ_APP.'img/delete_friend.png" /></a></td>';
+			echo '<tr><td><a href="perfil.php?id='.$id.'">'.$nick.'</a></td>';
+			if(!isFriendDB($me["id_user"], $id)) {
+			echo '<td><a href="add-friend.php?id='.$id.'"><img src="'.RAIZ_APP.'img/add_friend.png" /></a></td><td></td>';
+			} else {
+			echo '<td></td><td><a href="delete-friend.php?id='.$id.'"><img src="'.RAIZ_APP.'img/delete_friend.png" /></a></td>';
+			}
 			if (isset($_SESSION["rol"]) && $_SESSION["rol"] > 1) {
 				echo '<td><a href="modify-rol.php?id='.$id.'"><img src="'.RAIZ_APP.'img/rol_admin.png" /></a></td></tr>';
+			echo '</tr>';
 			}
 		}
 		echo '</table>';

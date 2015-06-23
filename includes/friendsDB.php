@@ -24,7 +24,7 @@ function deletefriendDB($username, $friend){
 global $BD;
 
 
-$query = "DELETE FROM friends WHERE (id_amigo1='$username' or id_amigo2='$username') and (id_amigo1='$friend' or id_amigo2='$friend')";
+$query = "DELETE FROM friends WHERE (id_amigo1='$username' or id_amigo2='$friend')";
 
 $exito = false;
 
@@ -61,6 +61,26 @@ function findFriendsDB($username) {
 	}
 
 	return $friends;
+
+}
+
+function isFriendDB($user_id, $friend_id) {
+
+	// Usar global UNICAMENTE para esta variable
+	global $BD;
+
+	$query = "SELECT * FROM friends WHERE (id_amigo1='".$BD->real_escape_string($user_id)."'
+			and id_amigo2='".$BD->real_escape_string($friend_id)."')";
+	$exito = false;
+	if ($resultado = $BD->query($query)) {
+		if($resultado->num_rows ==0){
+			$exito = false;
+		} else {
+			$exito = true;
+		}
+	}
+
+	return $exito;
 
 }
 

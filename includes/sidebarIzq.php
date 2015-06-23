@@ -47,7 +47,9 @@
 					<li><a href="<?php echo RAIZ_APP; ?>includes/modifyperfil.php">Modificar perfil</a></li>
 				</ul>
 			</li>
+<?php if($_SESSION["rol"] == 1) { ?>
 			<li><a href="<?php echo RAIZ_APP; ?>includes/shopping_cart.php?id=1&action=mostrar"> Ver carrito</a></li>
+<?php } ?>
 		</ul>
 <?php } ?>
 	</div>

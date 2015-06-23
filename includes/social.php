@@ -17,6 +17,16 @@
 			$okValidacionFriend = false;
 		}
 
+		if(isFriendDB($user_id, $user_id2)) {
+			$result[] = "Este usuario ya es amigo tuyo.";
+			$okValidacionFriend = false;
+		}
+		
+		if($user_id == $user_id2) {
+			$result[] = "No te puedes agregar a ti mismo.";
+			$okValidacionFriend = false;
+		}
+
 		if($okValidacionFriend) {
 			$result =  addfriendDB($user_id, $user_id2);
 		}

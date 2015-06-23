@@ -98,9 +98,16 @@
 				}
 
 				echo '<div style="background-color: #405656;">';		
-				echo '<div id="titulo-serie">'.$usuarios["username"].'</div>';
+				echo '<div id="titulo-serie"> '.$usuarios["username"].'</div>';
 				echo '<div id="cartel"><img src="'.$imagen.'" id="caratula"> </div>';
-				echo '<div id="descripcion-basica">'.substr($usuarios["descripcion"],0,400)."...".'</div>';
+				echo '<div id="descripcion-basica"> Nombre: '.$usuarios["nombre"]." ".$usuarios["apellidos"].'</div>';
+				echo '<div id="descripcion-basica"> Email: '.$usuarios["email"]." ".$usuarios["email"].'</div>';
+				if($usuarios["rol"] == 1) {
+					echo '<div id="descripcion-basica"> Rol: Usuario registrado</div>';
+				} else if($usuarios["rol"] == 2) {
+					echo '<div id="descripcion-basica"> Rol: Administrador</div>';
+				}
+				echo '<div id="descripcion-basica">Descripcion: '.substr($usuarios["descripcion"],0,400)."...".'</div>';
 				echo '<div style="clear:both;margin-left: 90%;padding-bottom:2%;"><a href="'.RAIZ_APP.'includes/perfil.php?id='.$usuarios["id_user"].'">Leer más</a></div>';
 				echo '</div>';
 			}
