@@ -14,6 +14,12 @@ $mercha = searchMercha($busqueda);
 
 $contenido = searchContenido($busqueda);
 
+$resultado_consulta = array();
+$resultado_consulta[0] = $usuario;
+$resultado_consulta[1] = $mercha;
+$resultado_consulta[2] = $contenido;
+
+return $resultado_consulta;
 
 }
 

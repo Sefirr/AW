@@ -4,7 +4,7 @@
 	require_once __DIR__.'/procesaContenido.php';
 	require_once __DIR__.'/procesaValoracionContent.php';
 	
-	$rows_for_page= 10;
+	$rows_for_page= 12;
 	
 	$total_records = getRowsByType(2);
 	$pages= ceil($total_records/$rows_for_page);
@@ -47,30 +47,29 @@
 			}		
 			echo '<div id="detalle">';
 			echo '<a href="includes/descripcion.php?title='.$content["titulo"].'"><div id="cartel"><img src="'.$imagen.'" id="caratula"> </div></a>';
-			echo  '<a href="includes/descripcion.php?title='.$content["titulo"].'"><p><em>'.$content["titulo"].'</em></p></a>';
+			echo  '<a href="includes/descripcion.php?title='.$content["titulo"].'"><p><em>'.substr($content["titulo"],0,13).'</em></p></a>';
 			$val_user = getRatingContenido2($content["titulo"]);
 			$val_pagina = $content["valoracionpagina"];
 			$valoracion = floor(($val_user + $val_pagina)/2);
 			if($valoracion == 0) {
-							$html = '<img src="'.RAIZ_APP.'img/0estrellas.png" id="estrellas" />';
-						}
-						else if($valoracion == 1) {
-							$html = '<img src="'.RAIZ_APP.'img/1estrellas.png" id="estrellas" />';
-						} else if($valoracion == 2) {
-							$html = '<img src="'.RAIZ_APP.'img/2estrellas.png" id="estrellas" />';
-						} else if($valoracion == 3) {
-							$html = '<img src="'.RAIZ_APP.'img/3estrellas.png" id="estrellas" />';
-						} else if($valoracion == 4) {
-							$html = '<img src="'.RAIZ_APP.'img/4estrellas.png" id="estrellas" />';
-						} else {
-							$html = '<img src="'.RAIZ_APP.'img/5estrellas.png" id="estrellas" />';
-						}
+				$html = '<img src="'.RAIZ_APP.'img/0estrellas.png" id="estrellas" />';
+			} else if($valoracion == 1) {
+				$html = '<img src="'.RAIZ_APP.'img/1estrellas.png" id="estrellas" />';
+			} else if($valoracion == 2) {
+				$html = '<img src="'.RAIZ_APP.'img/2estrellas.png" id="estrellas" />';
+			} else if($valoracion == 3) {
+				$html = '<img src="'.RAIZ_APP.'img/3estrellas.png" id="estrellas" />';
+			} else if($valoracion == 4) {
+				$html = '<img src="'.RAIZ_APP.'img/4estrellas.png" id="estrellas" />';
+			} else {
+				$html = '<img src="'.RAIZ_APP.'img/5estrellas.png" id="estrellas" />';
+			}
 			echo $html;
 			echo  '</div>';
 		}
 
 		echo "</div>";
-		echo '<p><hr></p><div style="width:100%; text-align:center;">';
+		echo '<div style="paginacion"><br/>';
 		
 		if($page >= 1) {
 			if(empty($ordenado)) {

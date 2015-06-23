@@ -2,8 +2,13 @@
 
 	include_once 'comentarios.php';
 	
-	addComentarioMercha($_POST);
+	if(!isset($_SESSION["rol"]) ||(isset($_SESSION["rol"]) && $_SESSION["rol"] < 1)) {
+		header('Location:permissions.php');
+	} else {
 	
-	header('Location:' .$_SERVER['HTTP_REFERER']);
+		addComentarioMercha($_POST);
+		
+		header('Location:' .$_SERVER['HTTP_REFERER']);
+	}
 	
 ?>

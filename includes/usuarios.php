@@ -1,14 +1,10 @@
 <?php	
-	require_once __DIR__.'/config.php'; 
-	require_once __DIR__.'/procesaContenido.php';
-	require_once __DIR__.'/merchandising.php';
-	require_once __DIR__.'/comentarios.php'; 
-	require_once __DIR__.'/procesaUsuario.php';  
+	require_once __DIR__.'/config.php';  
+	require_once __DIR__.'/procesaUsuario.php'; 
 
-	$titulo = $_GET['title'];
-	$id_content = dameIDContent($titulo);
-	
-	$content = getContent($titulo);
+	if(!isset($_SESSION["rol"]) ||(isset($_SESSION["rol"]) && $_SESSION["rol"] < 1)) {
+		header('Location:permissions.php');
+	}
 
 ?>
 <!DOCTYPE html>

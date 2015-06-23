@@ -31,7 +31,7 @@ function generaFormularioAddContent($datos) {
 				<textarea class="addcontent" name="descripcion" placeholder="Descripción" id="descripciones"></textarea><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgdescripcion"/>
 				<br/>
 				<label>Fecha de estreno: </label>
-				<input name="fecha" type="date" placeholder="DD-MM-YY" id="fecha" /><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgfecha"/>
+				<input name="fecha" type="text" placeholder="DD-MM-YY" id="fecha" /><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgfecha"/>
 				<br/>
 				<label>Director: </label>
 				<input class="addcontent" type="text" name="director" id="director" /><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgdirect"/>
@@ -137,15 +137,15 @@ function addContent($params) {
 		}
 		
 		$rutaUpload = '../'.$rutaDestino;
-		move_uploaded_file($rutaTemporal,$rutaUpload);
 	} else {
 		$result[] = "Debes añadir una imagen al contenido";
 		$okValidacionContenido = false;
 	}
 	
 	if($okValidacionContenido) {
+		move_uploaded_file($rutaTemporal,$rutaUpload);
 		addContentDB($tipo, $titulo, $rutaDestino, $sinopsis, $descripcion, $fecha, $director, $duracion, $val_pagina);
-		$result = "${_SERVER['PHP_SELF']}";
+		$result = "descripcion.php?title=".$titulo;
 	}
 	
 	return $result;
@@ -192,7 +192,7 @@ function generaFormularioEditContent($datos) {
 				<textarea class="addcontent" name="descripcion" placeholder="Descripción">$descripcion</textarea>
 				<br/>
 				<label>Fecha de estreno: </label>
-				<input name="fecha" type="date" value="$fechaestreno">
+				<input name="fecha" type="text" value="$fechaestreno">
 				<br/>
 				<label>Director: </label>
 				<input class="addcontent" type="text" name="director" value="$director">
@@ -293,7 +293,9 @@ function editContent($params) {
 		
 		$rutaUpload = '../'.$rutaDestino;
 		move_uploaded_file($rutaTemporal,$rutaUpload);
+		modifyContentcaratula($id_content, $rutaDestino);
 	}
+	
 	$old_titulo = isset($params['old-titulo']) ? $params['old-titulo'] : null ;
 	$id_content = dameIDContent($old_titulo);
 	
@@ -301,13 +303,12 @@ function editContent($params) {
 		if($old_titulo != $titulo) {
 			modifyContenttitulo($id_content, $titulo);
 		}
-		modifyContentcaratula($id_content, $rutaDestino);
 		modifyContentsinopsis($id_content, $sinopsis);
 		modifyContentdescripcion($id_content, $descripcion);
 		modifyContentfechaestreno($id_content, $fecha);
 		modifyContentdirector($id_content, $director);
 		modifyContentvaloracion($id_content, $val_pagina);
-		$result = "edit-content.php?title=".$titulo;
+		$result = "descripcion.php?title=".$titulo;
 
 	}
 	
@@ -329,7 +330,7 @@ function deleteContent($params) {
 	
 	if($okValidacion) {
 		deleteContentDB($id_content);
-		$result = "${_SERVER['PHP_SELF']}";
+		$result = "manage-content.php";
 	}
 	
 	return $result;
@@ -360,16 +361,20 @@ function dameAllContent() {
 	return dameContents();
 }
 
-function getRows() {
+function getRowsContent() {
     return dameFilas();
+}
+
+function getRowsContent2($search) {
+    return dameFilas2($search);
 }
 
 function getRowsByType($tipo) {
     return dameFilasByType($tipo);
 }
 
-function getPagination($start_with, $rows_for_page, $ordenado) {
-    return damePaginacion($start_with, $rows_for_page, $ordenado);
+function getPagination($start_with, $rows_for_page) {
+    return damePaginacion($start_with, $rows_for_page);
 }
 
 function getPaginationByType($start_with, $rows_for_page, $ordenado, $tipo){

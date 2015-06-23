@@ -32,15 +32,23 @@ a:visited {
 	position:relative;
 }
 
+#search-index {
+	float:left;
+	width: 79%;
+}
+
+#search-index input {
+	margin-top:1%;
+	width:99.5%;
+}
 
 #contenido {
 	float:left;
 	width: 69%;
 	background-color: rgba(216,169,77, 0.9);
 	margin: 1% 0 1% 0;
-	padding: 5%;
+	padding: 5% 5% 5% 5%;
 	border-radius: 3px;
-	font-size: 120%;
 }
 
 #estrellas{
@@ -159,11 +167,10 @@ input[type=submit].button {
 
 #detalle{/*etiqueta para los bloques que forman las series, en pequeño*/
 	border: 1px solid blue;
-	display:inline-block;
-	padding: 30px;
-	padding-right: 50px;
+	float:left;
+	padding: 3%;
 	text-align:center;
-	width: 10%;
+	width: 12%;
 	margin-top: 2%;
 	margin-right: 2%;
 	border-radius: 5px;
@@ -206,7 +213,6 @@ input[type=submit].button {
 
 #formbuscausu{
 	margin-left:25%;
-	font-size:120%;
 
 }
 
@@ -242,6 +248,11 @@ input[type=submit].button {
 	float:right;
 	width:50%;
 	font-size:150%;
+
+}
+
+#proveedor,#unidades{
+	font-size:120%;
 
 }
 
@@ -304,14 +315,18 @@ input[type=submit].button {
 
 #detalle-merchandising{/*etiqueta para los bloques que forman las series, en pequeño*/
 	border: 1px solid blue;
-	display:inline-block;
-    background-color: gray;
-	height: 125px;
-	width: 125px;
-	padding: 30px;
-	margin-left:10px;
-	margin-top:5px;
-	margin-right:5px;
+	float:left;
+	padding: 3%;
+	text-align:center;
+	width: 12%;
+	margin-top: 2%;
+	margin-right: 2%;
+	border-radius: 5px;
+	background-color: #405656;
+	-moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+	-webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+	border-radius:5px;
 }
 
 #foto-merchandising{
@@ -430,8 +445,15 @@ img#foto-perfil {
 }
 
 #friends{
+
 	clear:both;
 	padding-top:1%;
+}
+
+#paginacion {
+	clear:both;
+	width:100%; 
+	text-align:center;
 }
 
 #detalle-amigos{/*etiqueta para los bloques que forman las series, en pequeño*/

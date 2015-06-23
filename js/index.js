@@ -1,10 +1,35 @@
 
 $(document).ready(function(){
 	var page = $_GET('page');
-	var ordenar = $_GET('ordenar');
+	var envio = $('#search').val();
 	
-	$.get("includes/procesaIndex.php?page=" + page +"&ordenar=" + ordenar,loadPage);
+	$('#search_form').submit(function(e){
+		e.preventDefault();
+	})
+	
+	if(envio == "") {	
+		$.get("includes/procesaIndex.php?search="+envio+"&page=" + page,loadPage);
+	}
 
+	$('#search').keyup(function(){
+		var page = $_GET('page');
+		var envio = $('#search').val();
+
+		$.ajax({
+			type: 'POST',
+			url: 'includes/procesaIndex.php',
+			data: ('search='+envio+'&page='+page),
+			success: function(resp){
+				if(envio == "") {
+					$.get("includes/procesaIndex.php?search="+envio+"&page=" + page,loadPage);
+				} else {
+				if(resp!=""){
+					$('#contenido').html(resp);
+				}
+				}
+			}
+		})
+	})
 
 
 

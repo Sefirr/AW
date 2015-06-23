@@ -12,7 +12,7 @@
 		
 		$user_id2 = isset($params) ? $params : null ;
 
-		if($user_id == false || $user_id2 == false) {
+		if($user_id == false) {
 			$result[] = "El usuario no existe";
 			$okValidacionFriend = false;
 		}

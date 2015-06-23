@@ -3,6 +3,10 @@
 	require_once __DIR__ .'/procesaUsuario.php';
 	require_once __DIR__ .'/config.php';
 	
+	if(!isset($_SESSION["rol"]) ||(isset($_SESSION["rol"]) && $_SESSION["rol"] < 1)) {
+		header('Location:permissions.php');
+	}
+	
 	$nombreUsuario = $_SESSION['usuario'];
 	$user = dameUsuarioByUsername($nombreUsuario);
 	

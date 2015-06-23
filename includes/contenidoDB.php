@@ -254,9 +254,22 @@
 
 	global $BD;	
 
+	$query = "SELECT * from content ";
+
+	$exito = false;
+
+	$exito = $BD->query($query);
+		  
+	return $exito->num_rows;
+	}
+	
+	function dameFilas2($search){
+
+	global $BD;	
+
 	$query = "SELECT *
 			from content
-			ORDER BY id_content";
+			where titulo LIKE '%".$search."%' or descripcion LIKE '%".$search."%' or sinopsis LIKE '%".$search."%'";
 
 	$exito = false;
 
@@ -278,19 +291,11 @@
 	return $exito->num_rows;
 	}
 
-	function damePaginacion($start_with, $rows_for_page, $ordenado){
+	function damePaginacion($start_with, $rows_for_page){
 
 	global $BD;	
-
-	if((strcmp($ordenado,"fechaestreno") == 0) || (strcmp($ordenado,"valoracionpagina") == 0)) {
-		$order_by = "DESC";
-	} else {
-		$order_by = "ASC";
-	}
 	
-	$query = "SELECT * from content 
-		ORDER BY $ordenado ".$order_by."
-			LIMIT ".$start_with.",".$rows_for_page;
+	$query = "SELECT * from content LIMIT ".$start_with.",".$rows_for_page;
 
 	
 	$exito = false;
@@ -341,9 +346,14 @@ function damerecomendacion(){
 
 		global $BD;	
 		
+		$query = "SELECT max(valoracionpagina) FROM content";
+		if($resultado = $BD->query($query)) {
+			$max_valoracion = $resultado->fetch_array();
+		}
+		
 		$query = "SELECT * 
 				FROM content 
-				WHERE valoracionpagina='5'";
+				WHERE valoracionpagina='$max_valoracion[0]'";
 
 		$exito = false;
 
@@ -370,33 +380,27 @@ function damerecomendacion(){
 
 }
 
-/*function searchContenido($busqueda){
+function searchContenido($busqueda){
 
 		global $BD;	
 		
-		$query = "SELECT * 
-				FROM content 
-				WHERE titulo LIKE '%$busqueda%'
-					OR director LIKE '%$busqueda%'
-					OR sinopsis LIKE '%$busqueda%'";
+		$query = "SELECT * from content 
+					where titulo LIKE '%".$busqueda."%' or descripcion LIKE '%".$busqueda."%' 
+						or sinopsis LIKE '%".$busqueda."%'";
 
 		$exito = false;
 
-		$contenido = array();
-		$i = 0;
-		if($resultado = $BD->query($query)) {
+	$contenido = array();
+	$i = 0;
+	if($resultado = $BD->query($query)) {
 		while($content = $resultado->fetch_assoc()) {
 			$contenido[$i] = array();
 			$contenido[$i++]= $content;
 			//$resultado->close();	
 		}
-
-		return $contenido;
-
-
-
-
-
-}*/
+	}
+	
+	return $contenido;
+}
 
 ?>

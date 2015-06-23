@@ -2,10 +2,14 @@
 
 	require_once __DIR__ .'/social.php';
 	
-	$id_friend = $_GET['id'];
+	if(!isset($_SESSION["rol"]) ||(isset($_SESSION["rol"]) && $_SESSION["rol"] < 1)) {
+		header('Location:permissions.php');
+	} else {
 	
-	addFriend($id_friend);
-	
-	header('Location:'.$_SERVER['HTTP_REFERER']);
+		$id_friend = $_GET['id'];
+
+		addFriend($id_friend);
+		header('Location:'.$_SERVER['HTTP_REFERER']);
+	}
 	
 ?>

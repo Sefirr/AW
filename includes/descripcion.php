@@ -58,7 +58,11 @@
 						}
 				?>
 				<div id="cartel"><img src="<?php echo $imagen ?>" id="caratula"> </div>
-				<div id="descripcion-basica"><?php echo $content["descripcion"]; ?></div>
+				<div id="descripcion-basica"><?php echo $content["descripcion"]; ?>
+				<br/>Fecha de estreno : <?php echo $content["fechaestreno"]; ?>
+				<br/>Director: <?php echo $content["director"]; ?>
+				<br/>Duración: <?php echo $content["duracion"]; ?> minutos
+				</div>
 				<div id="val-pagina">Valoración de la página:</div>
 				<div id="val-usuario">Valoración de los usuarios:</div>
 				<div id="val-pagina">
@@ -127,16 +131,25 @@
 				<div id="comentarios">
 					<h1> Comentarios</h1>
 					<?php $comments = dameCommentsContent($content["id_content"]);
-				foreach($comments as $comment) {
+					
+				if($comments != NULL) {
+					foreach($comments as $comment) {
+					?>
+					<div id = "detalle-comentario">
+						<a href="perfil.php?id=<?php echo $comment["id_user"]; ?>"><?php echo getUser($comment["id_user"])["username"]; ?></a> el <?php echo $comment["fecha"]; ?>
+						<?php if(isset($_SESSION['rol']) && ((isset($_SESSION["rol"]) && $_SESSION["rol"] > 1) || ((getUserByName($_SESSION["usuario"]) == $comment["id_user"])))) { ?>
+						<a class="options-comment" href="delete-comment.php?id=<?php echo $comment["id_comment"]; ?>"> Eliminar </a>
+						<?php } ?>
+						<p><?php echo $comment["texto"]; ?></p>
+					</div>
+					
+					<?php
+					}
+				}	else {
+					echo "No hay comentarios.";
+				}				
+				if(isset($_SESSION['rol']) && $_SESSION['rol'] > 0) { 
 				?>
-				<div id = "detalle-comentario">
-					<a href="#"><?php echo getUser($comment["id_user"])["username"]; ?></a> el <?php echo $comment["fecha"]; ?>
-					<a class="options-comment" href="delete-comment.php?id=<?php echo $comment["id_comment"]; ?>"> Eliminar </a>
-					<p><?php echo $comment["texto"]; ?></p>
-				</div>
-				
-				<?php
-				} ?>
 					<form action="add-comment-content.php" method="post">
 						<input type="hidden" name="id" value="<?php echo $content['id_content']; ?>">
 						</br>
@@ -144,8 +157,8 @@
 						<input type="submit" class="button" name="send-comment" value="Enviar comentario"> </input>
 					</form>
 					
+				<?php } 	} ?>
 				</div>
-				<?php 	} ?>
 			</div>
 			<!-- INCLUDE FOOTER -->
 			<?php include_once(__DIR__ .'/footer.php'); ?>

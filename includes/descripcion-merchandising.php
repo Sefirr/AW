@@ -70,22 +70,15 @@
 							$imagen .= $content["foto1"];
 						}
 						$imagen2 = RAIZ_APP;
-						if(empty($content["foto1"])) {
+						if(empty($content["foto2"])) {
 							$imagen2 .= "img/no_photo_available.png";
 						} else {
-							$imagen2 .= $content["foto1"];
+							$imagen2 .= $content["foto2"];
 						}
 				
-				echo '<div id="cartel"><img src="<?php echo $imagen ?>" id="caratula"> </div>';
-				echo '<div id="cartel2"><img src="<?php echo $imagen2 ?>" id="caratula2"> </div>';
-				echo '<div id="descripcion-basica">'.$content["descripcion"].'</div>';
-				echo '<a class="boton" href="shopping_cart.php?id='.$content["id_merchandising"].'&action=';
-				if (isset($_SESSION['carro'][$content['id_merchandising']])){
-					echo 'removeProd" alt="Eliminar del carro">Eliminar </a>';
-				} else {
-					echo 'add" alt="Añadir al carro">Añadir </a>';
-				}	
-				?>
+				echo '<div id="cartel"><img src="'.$imagen.'" id="caratula"> </div>';
+				echo '<div id="cartel2"><img src="'.$imagen2.'" id="caratula2"> </div>';
+				echo '<div id="descripcion-basica">'.$content["descripcion"].'</div>'; ?>
 				<div id="val-pagina">Valoración de la página:</div>
 				<div id="val-usuario">Valoración de los usuarios:</div>
 				<div id="val-pagina">
@@ -128,22 +121,38 @@
 							echo $html;
 					?>
 				</div>
+				<?php 
+					if(isset($_SESSION["rol"]) && $_SESSION["rol"] > 0) {
+						echo '<a class="boton" href="shopping_cart.php?id='.$content["id_merchandising"].'&action=';
+						if (isset($_SESSION['carro'][$content['id_merchandising']])){
+							echo 'removeProd" alt="Eliminar del carro">Eliminar </a>';
+						} else {
+							echo 'add" alt="Añadir al carro">Añadir </a>';
+						}
+					} ?>
 				<div id="precio">Precio: <?php echo $content["precio"]; ?>€</div>
 				<div id="proveedor">Proveedor: <?php echo $content["proveedor"]; ?></div>
 				<div id="unidades">Unidades: <?php echo $content["unidades"]; ?></div>
 				<div id="comentarios">
 					<h1> Comentarios</h1>
 					<?php $comments = dameCommentsMercha($content["id_merchandising"]);
-				foreach($comments as $comment) {
-				?>
-				<div id = "detalle-comentario">
-					<a href="#"><?php echo getUser($comment["id_user"])["username"]; ?></a> el <?php echo $comment["fecha"]; ?>
-					<a class="options-comment" href="delete-comment.php?id=<?php echo $comment["id_comment"]; ?>"> Eliminar </a>
-					<p><?php echo $comment["texto"]; ?></p>
-				</div>
-				
-				<?php
-				} ?>
+				if($comments != NULL) {
+					foreach($comments as $comment) {
+					?>
+					<div id = "detalle-comentario">
+						<a href="perfil.php?id=<?php echo $comment["id_user"]; ?>"><?php echo getUser($comment["id_user"])["username"]; ?></a> el <?php echo $comment["fecha"]; ?>
+						<?php if(isset($_SESSION['rol']) && ((isset($_SESSION["rol"]) && $_SESSION["rol"] > 1) || ((getUserByName($_SESSION["usuario"]) == $comment["id_user"])))) { ?>
+						<a class="options-comment" href="delete-comment.php?id=<?php echo $comment["id_comment"]; ?>"> Eliminar </a>
+						<?php } ?>
+						<p><?php echo $comment["texto"]; ?></p>
+					</div>
+					
+					<?php
+					} 
+				}	else {
+					echo "No hay comentarios.";
+				}
+				if(isset($_SESSION['rol']) && $_SESSION['rol'] > 0) { ?>
 					<form action="add-comment-mercha.php" method="post">
 						<input type="hidden" name="id" value="<?php echo $content['id_merchandising']; ?>">
 						</br>
@@ -151,8 +160,8 @@
 						<input type="submit" class="button" name="send-comment" value="Enviar comentario"> </input>
 					</form>
 					
+				<?php   }	} ?>
 				</div>
-				<?php 	} ?>
 			</div>
 			<!-- INCLUDE FOOTER -->
 			<?php include_once(__DIR__ .'/footer.php'); ?>

@@ -4,9 +4,13 @@
 	require_once __DIR__ .'/social.php';
 	require_once __DIR__ .'/config.php';
 	
-	$id_user = $_GET['id'];
-	$user = dameUsuarioById($id_user);
-	
+	if(isset($_GET['id'])) {
+		$id_user = $_GET['id'];
+	} else {
+		$id_user = -1;
+	}
+	$user = getUser($id_user);
+		
 ?>
 <!DOCTYPE html>
 
@@ -44,43 +48,57 @@
 			<?php include __DIR__ .'/sidebarIzq.php'; ?>
 			<!-- CONTENIDO -->
 			<div id = "contenido">
-							<?php 	$imagen = RAIZ_APP;
-									$imagen .= $user['foto'];
-							?>
-							<img src="<?php echo $imagen ?>" id="foto-perfil">
-							<h3>Username: <?php echo $user['username']; ?>  </h3>
-							<h3>Nombre completo: <?php echo $user['nombre']." ".$user['apellidos']; ?></h3>
-							<h3>E-mail: <?php echo $user['email'] ?></h3>
-							<h3>Rol:
-							<?php 	$rol = "";
-									if($user['rol'] == 1) {
-										$rol = "Usuario registrado";
-									} else if($user['rol'] == 2) {
-										$rol = "Administrador";
-									}
-									echo $rol;
-							?>
-							</h3>
-							<h3>Descripcion: <?php echo $user['descripcion'] ?></h3>
-					<div id="friends">				
-						<h1>Amigos</h1>
-						<?php 
+				<?php 
+					if($user == null) {
+						echo "<div class='error'><ul><li>El usuario qué está buscando no existe.</li></ul></div>";
+					} else {	
+					
+					$imagen = RAIZ_APP;
+					if(empty($user["foto"])) {
+						$imagen .= "img/no_photo_available.png";
+					} else {
+						$imagen .= $user["foto"];
+					}
+				?>
+				<img src="<?php echo $imagen ?>" id="foto-perfil">
+				<h3>Username: <?php echo $user['username']; ?>  </h3>
+				<h3>Nombre completo: <?php echo $user['nombre']." ".$user['apellidos']; ?></h3>
+				<h3>E-mail: <?php echo $user['email'] ?></h3>
+				<h3>Rol:
+				<?php 	$rol = "";
+						if($user['rol'] == 1) {
+							$rol = "Usuario registrado";
+						} else if($user['rol'] == 2) {
+							$rol = "Administrador";
+						}
+						echo $rol;
+				?>
+				</h3>
+				<h3>Descripcion: <?php echo $user['descripcion'] ?></h3>
+			<div id="friends">				
+				<h1>Amigos</h1>
+				<?php 
 						$friends = findFriends($user['id_user']);
-						foreach($friends as $friend) {	
-			$imagen = RAIZ_APP;
-			if(empty($friend["foto"])) {
-				$imagen .= "img/no_photo_available.png";
-			} else {
-				$imagen .= $friend["foto"];
-			}		
-			echo '<div id="detalle">';
-			echo '<a href="perfil.php?id='.$friend["id_user"].'"><div id="cartel"><img src="'.$imagen.'" id="caratula"> </div></a>';
-			echo  '<a href="perfil.php?id='.$friend["id_user"].'">
-			<p><em>'.$friend["username"].'</em></p></a>';
-			echo '</div>';
-			}
-						?>
-					</div>
+						if($friends != null) {
+							foreach($friends as $friend) {	
+								$imagen = RAIZ_APP;
+								if(empty($friend["foto"])) {
+									$imagen .= "img/no_photo_available.png";
+								} else {
+									$imagen .= $friend["foto"];
+								}		
+								echo '<div id="detalle">';
+								echo '<a href="perfil.php?id='.$friend["id_user"].'"><div id="cartel"><img src="'.$imagen.'" id="caratula"> </div></a>';
+								echo  '<a href="perfil.php?id='.$friend["id_user"].'">
+								<p><em>'.$friend["username"].'</em></p></a>';
+								echo '</div>';
+							}
+						} else {
+							echo "El usuario no tiene amigos.";
+						}
+					}
+				?>
+			</div>
 			</div>
 		</div>			
 			<!-- INCLUDE FOOTER -->

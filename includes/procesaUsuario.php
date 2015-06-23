@@ -20,9 +20,7 @@ function generaFormularioLogin($datos) {
 			<input type="password" name="password" id="password" />
 		</fieldset>
 		<input type="submit" id="login" name ="loginForm" value="Enviar" />
-		<label for="checkbox"><input type="checkbox" id="checkbox" />Recuérdame</label>
 	</fieldset>
-	<span><a href="#">¿Has olvidado tu contraseña?</a></span>
 EOS;
 
   return $html;
@@ -66,7 +64,7 @@ function login($nombreUsuario, $password) {
       $_SESSION['usuario'] = $usuario['username'];
       // También podemos guardar en la sesión el rol del usuario 
 	  $_SESSION['rol'] = $usuario['rol'];
-	  $result = "${_SERVER['PHP_SELF']}";
+	  $result = RAIZ_APP."index.php";
     } else {
       $result[] = "Usuario o contraseña no válidos";
     }
@@ -102,7 +100,7 @@ function generaFormularioModifyPerfil($datos) {
 			<textarea name="descripcion" placeholder="Descripción" id="descripcion2">$descripcion</textarea>
 			<br/>
 			<label>Foto : </label> 
-			<input type="file" name="imagen"/><!-- AGREGAR CARATULA: agregar imagen de la carátula de la pelicula. -->
+			<input type="file" name="imagen" /><!-- AGREGAR IMAGEN: agregar foto de perfil. -->
 			<br/>
 			
 			<!--Botones de enviar y reset-->
@@ -117,6 +115,8 @@ EOS;
 function modifyPerfil($params) {
 	$result = array();
 	$okValidacionPerfil = true;
+	
+	$username = $_SESSION['usuario'];
 		
 	$pass = isset($params['password']) ? $params['password'] : null ;
 	if ( ! $pass ||  strlen($pass) < 4 ) {
@@ -150,16 +150,18 @@ function modifyPerfil($params) {
 		
 		$rutaUpload = '../'.$rutaDestino;
 		move_uploaded_file($rutaTemporal,$rutaUpload);
+		modificarfoto($username, $rutaDestino);
 	}
-	$username = $_SESSION['usuario'];
+	
+	$id_user = dameID($_SESSION['usuario']);	
+	
 	if($okValidacionPerfil) {
 		if(!empty($pass)) {
 			modificarpassword($username, $hash);
 		}
 		modificaremail($username, $email);
 		modificardescripcion($username, $descripcion);
-		modificarfoto($username, $rutaDestino);
-		$result = "perfil.php";
+		$result = "perfil.php?id=".$id_user;
 
 	}
 	
@@ -187,7 +189,10 @@ EOS;
 		foreach($usuarios as $usuario) {
 			$nick = $usuario["username"];
 			$id = $usuario["id_user"];
-			echo '<tr><td><a href="perfil.php?id='.$id.'">'.$nick.'</a></td><td><a href="add-friend.php?id='.$id.'">Añadir como amigo</a></td><td><a href="delete-friend.php?id='.$id.'">Eliminar como amigo</a></td><td><a href="#">Ascender a administrador</a></td></tr>';
+			echo '<tr><td><a href="perfil.php?id='.$id.'">'.$nick.'</a></td><td><a href="add-friend.php?id='.$id.'"><img src="'.RAIZ_APP.'img/add_friend.png" /></a></td><td><a href="delete-friend.php?id='.$id.'"><img src="'.RAIZ_APP.'img/delete_friend.png" /></a></td>';
+			if(isset($_SESSION["rol"]) && $_SESSION["rol"] > 1) {
+				echo '<td><a href="modify-rol.php?id='.$id.'"><img src="'.RAIZ_APP.'img/rol_admin.png" /></a></td></tr>';
+			}
 		}
 			echo '</table>';
 		} else {
@@ -200,7 +205,10 @@ EOS;
 		foreach($usuarios as $usuario) {
 			$nick = $usuario["username"];
 			$id = $usuario["id_user"];
-			echo '<tr><td><a href="perfil.php?id='.$id.'">'.$nick.'</a></td><td><a href="add-friend.php?id='.$id.'">Añadir como amigo</a></td><td><a href="delete-friend.php?id='.$id.'">Eliminar como amigo</a></td><td><a href="#">Ascender a administrador</a></td></tr>';
+			echo '<tr><td><a href="perfil.php?id='.$id.'">'.$nick.'</a></td><td><a href="add-friend.php?id='.$id.'"><img src="'.RAIZ_APP.'img/add_friend.png" /></a></td><td><a href="delete-friend.php?id='.$id.'"><img src="'.RAIZ_APP.'img/delete_friend.png" /></a></td>';
+			if (isset($_SESSION["rol"]) && $_SESSION["rol"] > 1) {
+				echo '<td><a href="modify-rol.php?id='.$id.'"><img src="'.RAIZ_APP.'img/rol_admin.png" /></a></td></tr>';
+			}
 		}
 		echo '</table>';
 	}
@@ -216,7 +224,7 @@ function gestionarFormularioRegistro() {
 function generaFormularioRegistro($datos) {
 
 	$html = <<<EOS
-			<input type="file" name="imagen" />
+			<input name="imagen" type="file" />
 			<br/>
 			<label>Username</label>
 			<input type="text" class="register1" name="user" placeholder="Username" id="nick"/><img class="hide" src="<?php echo RAIZ_APP; ?>img/form/no.png" alt="no" id="imgnick"/>
@@ -279,8 +287,9 @@ function addUser($params) {
 	}
 	
 	$email = isset($params['email']) ? $params['email'] : null ;
-	if ( !$email || ! preg_match(HTML5_EMAIL_REGEXP, $email) ) {
-		$result[] = 'El e-mail no es válido';
+
+	if ( !$email || ! preg_match(HTML5_EMAIL_REGEXP, $email) || !emailExiste($email)) {
+		$result[] = 'El e-mail no es válido o ya existe un usuario con ese e-mail asociado';
 		$okValidacion = FALSE;
 	}
 	
@@ -290,17 +299,15 @@ function addUser($params) {
 		$okValidacion = false;
 	}
 	
-	$imagen = isset($params['imagen']) ? $params['imagen'] : null;
-	
-	$rutaDestino="img/";
+	$rutaDestino = "img/";
 	if(!empty($_FILES["imagen"]["name"])) {
 		$rutaTemporal=$_FILES["imagen"]["tmp_name"];
 		$nombreImagen=$_FILES["imagen"]["name"];
 		
-		$rutaDestino.= "users/".$user.".".end(explode(".", $nombreImagen));
-		if (!file_exists("../img/users/")) 
-			mkdir("../img/users/", 0777, true);
-		$rutaUpload = "../".$rutaDestino;
+		if (!file_exists("img/users/")) 
+			mkdir("img/users/", 0777, true);
+		$rutaDestino.="users/".$user.".".end(explode(".", $nombreImagen));
+		$rutaUpload = $rutaDestino;
 		move_uploaded_file($rutaTemporal,$rutaUpload);
 	} else {
 		$result[] = 'Debe subirse una imagen.';
@@ -317,7 +324,7 @@ function addUser($params) {
 	
 	if($okValidacion) {
 		addusers($user, $hash, $nombre, $apellidos, $email, $descripcion, $rutaDestino);
-		$result="${_SERVER['PHP_SELF']}";
+		$result= RAIZ_APP."index.php";
 	}
 	
 	return $result;
@@ -340,12 +347,25 @@ function deleteUser($params) {
 
 }
 
+function modifyRol($username,$rol) {
+
+	$user = isset($username) ? strtolower($username) : null;
+	
+	$usuarios = getUser($user);
+	
+	modificaRol($usuarios["username"], $rol);
+}
+
 function getUser($id) {
 	return dameUsuarioById($id);
 }
 
 function getUserByName($nombreUsuario) {
 	return dameUsuarioByUsername($nombreUsuario);
+}
+
+function getRowsUser($search) {
+	return dameFilasUsuarios($search);
 }
 
 ?>

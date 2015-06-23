@@ -9,17 +9,13 @@
 		$menu = true;
 	}
 
-	$user = dameUsuarioByUsername($_SESSION['usuario']);
-
+	if(isset($_SESSION['usuario']))  {
+		$usuario_logueado = dameUsuarioByUsername($_SESSION['usuario']);
+	}
 ?>
 
 <div id="menus-izq">
-	<form action="" method="POST">
-		<input type="text" class="search">
-		<input type="submit" class="search" value="Buscar">
-		</form>
 	<div id="menu-user">
-<?php if(isset($_SESSION["rol"]) && ($_SESSION["rol"] > 0)) { ?>
 		<ul>
 			<li>Menú de usuario</li>
 			<li><a>Contenido</a>
@@ -41,12 +37,13 @@
 <?php } ?>
 				</ul>
 			</li>
+<?php if(isset($_SESSION["rol"]) && ($_SESSION["rol"] > 0)) { ?>
 			<li>
 				<a href="<?php echo RAIZ_APP; ?>includes/usuarios.php">Usuarios</a>
 			</li>
 			<li><a>Mi Perfil</a>
 				<ul>
-					<li><a href="<?php echo RAIZ_APP; ?>includes/perfil.php?id=<?php echo $user['id_user'];?>">Ver mi perfil</a></li>
+					<li><a href="<?php echo RAIZ_APP; ?>includes/perfil.php?id=<?php echo $usuario_logueado['id_user'];?>">Ver mi perfil</a></li>
 					<li><a href="<?php echo RAIZ_APP; ?>includes/modifyperfil.php">Modificar perfil</a></li>
 				</ul>
 			</li>
@@ -54,22 +51,32 @@
 		</ul>
 <?php } ?>
 	</div>
+	<?php if($menu) { ?>
 	<div id="recomendaciones">
 		<ul>
 			<li><em>Recomendaciones</em></li>
-			<?php if($menu) { ?>
 			<li><h3><em><?php echo $contentRecomendacion["titulo"]; ?></em></h3></li>
 			<li> <div id="descripcion">
 				<a href="<?php echo RAIZ_APP;?>includes/descripcion.php?title=<?php echo $contentRecomendacion["titulo"]; ?>"><img src="<?php echo RAIZ_APP; ?><?php echo $contentRecomendacion["caratula"]; ?>" id="caratula-recomendaciones"/></a>
-				<img src="<?php echo RAIZ_APP; ?>img/5estrellas.png" id="estrellas" />
+				<?php 
+					$valoracion = $contentRecomendacion["valoracionpagina"];
+					if($valoracion == 0) {
+						$html = '<img src="'.RAIZ_APP.'img/0estrellas.png" id="estrellas" />';
+					} else if($valoracion == 1) {
+						$html = '<img src="'.RAIZ_APP.'img/1estrellas.png" id="estrellas" />';
+					} else if($valoracion == 2) {
+						$html = '<img src="'.RAIZ_APP.'img/2estrellas.png" id="estrellas" />';
+					} else if($valoracion == 3) {
+						$html = '<img src="'.RAIZ_APP.'img/3estrellas.png" id="estrellas" />';
+					} else if($valoracion == 4) {
+						$html = '<img src="'.RAIZ_APP.'img/4estrellas.png" id="estrellas" />';
+					} else {
+						$html = '<img src="'.RAIZ_APP.'img/5estrellas.png" id="estrellas" />';
+					}
+					echo $html;
+				?>
 			</div></li>
-			<?php } else { ?>
-				<li><h3><em><?php echo "EXAMPLE"; ?></em></h3></li>
-				<li> <div id="descripcion">
-				<a href="#"><img src="<?php echo RAIZ_APP; ?>img/no_photo_available.png" id="caratula-recomendaciones"/></a>
-				<img src="<?php echo RAIZ_APP; ?>img/5estrellas.png" id="estrellas" />
-			</div></li>
-			<?php } ?>
 			</ul>
 	</div>
+	<?php } ?>
 </div>

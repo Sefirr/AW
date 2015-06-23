@@ -78,16 +78,17 @@ EOS;
 		
 		$foto1 = isset($params['foto1']) ? $params['foto1'] : null;
 		
-		$rutaDestino="../img/mercha/";
+		$rutaDestino="img/";
+		$rutaUpload = "";
 	
-		if(!empty($_FILES["foto1"]["name"][0])) {
-			$rutaTemporal=$_FILES["foto1"]["tmp_name"][0];
-			$nombreImagen=$_FILES["foto1"]["name"][0];
+		if(!empty($_FILES["foto1"]["name"])) {
+			$rutaTemporal=$_FILES["foto1"]["tmp_name"];
+			$nombreImagen=$_FILES["foto1"]["name"];
 			
-			$rutaDestino.= $nombreImagen;
 			if (!file_exists("../img/mercha/")) 
 				mkdir("../img/mercha/", 0777, true);
-			move_uploaded_file($rutaTemporal,$rutaDestino);
+			$rutaDestino.="mercha/".$nombre."1.".end(explode(".", $nombreImagen));
+			$rutaUpload = '../'.$rutaDestino;
 		} else {
 			$result[] = "Debes añadir dos imagenes al merchandising";
 			$okValidacionMercha = false;
@@ -95,16 +96,17 @@ EOS;
 		
 		$foto2 = isset($params['foto2']) ? $params['foto2'] : null;
 		
-		$rutaDestino2="../img/mercha/";
+		$rutaDestino2="img/";
+		$rutaUpload2 = "";
 	
-		if(!empty($_FILES["foto2"]["name"][1])) {
-			$rutaTemporal=$_FILES["foto2"]["tmp_name"][1];
-			$nombreImagen=$_FILES["foto2"]["name"][1];
+		if(!empty($_FILES["foto2"]["name"])) {
+			$rutaTemporal2=$_FILES["foto2"]["tmp_name"];
+			$nombreImagen2=$_FILES["foto2"]["name"];
 			
-			$rutaDestino2 .= $nombreImagen;
 			if (!file_exists("../img/mercha/")) 
 				mkdir("../img/mercha/", 0777, true);
-			move_uploaded_file($rutaTemporal,$rutaDestino);
+			$rutaDestino2.="mercha/".$nombre."2.".end(explode(".", $nombreImagen2));
+			$rutaUpload2 = '../'.$rutaDestino2;
 		} else {
 			$result[] = "Debes añadir dos imagenes al merchandising";
 			$okValidacionMercha = false;
@@ -148,8 +150,10 @@ EOS;
 		$id_content = isset($params['id_content']) ? $params['id_content'] : null;
 		
 		if($okValidacionMercha) {
+			move_uploaded_file($rutaTemporal,$rutaUpload);
+			move_uploaded_file($rutaTemporal,$rutaUpload2);
 			addMercha($nombre, $rutaDestino, $rutaDestino2, $descripcion, $unidades, $proveedor, $precio, $val_pagina,$id_content);
-			$result = "viewmerchalist.php";
+			$result = "descripcion-merchandising.php?nombre=".$nombre;
 		}
 		return $result;
 	}
@@ -254,6 +258,7 @@ EOS;
 			if (!file_exists("../img/mercha/")) 
 				mkdir("../img/mercha/", 0777, true);
 			move_uploaded_file($rutaTemporal,$rutaDestino);
+			modifyMerchafoto($id_mercha, $rutaDestino, "foto1");
 		}
 		$foto2 = isset($params['foto2']) ? $params['foto2'] : null;
 		
@@ -267,6 +272,7 @@ EOS;
 			if (!file_exists("../img/mercha/")) 
 				mkdir("../img/mercha/", 0777, true);
 			move_uploaded_file($rutaTemporal,$rutaDestino);
+			modifyMerchafoto($id_mercha, $rutaDestino2, "foto2");
 		}
 		
 		$descripcion = isset($params['descripcion']) ? $params['descripcion'] : null;
@@ -314,14 +320,12 @@ EOS;
 			}
 			addContentAssoc($id_mercha, $id_content);
 			deleteContentAssoc($id_mercha, $id_content_delete);
-			modifyMerchafoto($id_mercha, $rutaDestino, "foto1");
-			modifyMerchafoto($id_mercha, $rutaDestino2, "foto2");
 			modifyMerchadescripcion($id_mercha, $descripcion);
 			modifyMerchaunidades($id_mercha, $unidades);
 			modifyMerchaproveedor($id_mercha, $proveedor);
 			modifyMerchaprecio($id_mercha, $precio);
 			modifyMerchavaloracion($id_mercha, $val_pagina);
-			$result = "edit-mercha.php?nombre=".$nombre;
+			$result = "descripcion-merchandising.php?nombre=".$nombre;
 		}
 		
 		return $result;
@@ -340,7 +344,8 @@ EOS;
 		}
 		
 		if($okValidacionMercha) {
-			$result = deleteMercha($id_mercha);
+			deleteMercha($id_mercha);
+			$result = "manage-mercha.php";
 		}
 		return $result;
 	}
@@ -369,6 +374,10 @@ function dameAllMercha() {
 
 function dameAllMerchaById_contents($id_content) {
 	return dameMerchasById_content($id_content);
+}
+
+function getRowsMercha($search) {
+	return dameFilasMercha($search);
 }
 
 ?>

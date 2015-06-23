@@ -48,7 +48,7 @@ function modificaRol($username, $rol){
 	global $BD;	
 	$query = "UPDATE users 
 			set rol = '".$rol.
-			"'where username =".$BD->real_escape_string($username);
+			"' where username ='".$BD->real_escape_string($username)."'";
 
 	$exito = false;
 
@@ -81,8 +81,8 @@ function modificarpassword($username, $newpass){
 function modificarfoto($username, $newfoto){
 	global $BD;	
 	$query = "UPDATE users 
-			set foto '".$newfoto.
-			"' where username =".$BD->real_escape_string($username);
+			set foto = '".$newfoto.
+			"' where username ='".$BD->real_escape_string($username)."'";
 
 	$exito = false;
 
@@ -188,27 +188,47 @@ function dameID($username){
 	return $usuario;
 }
 
-/*function searchUsers($busqueda){
+function emailExiste($email){
+	global $BD;	
+	$usuario =false;
+	$exito = true;
+	$query = "SELECT email FROM users";	
+	if ($resultado = $BD->query($query)) {
+		while($usuario = $resultado->fetch_assoc()) {
+			if($usuario["email"] == $email) {
+				$exito &= false;
+			} else {
+				$exito &= true;
+			}			
+		}
+		$resultado->close();
+	}
+	return $exito;
+}
+
+
+function searchUsers($busqueda){
 
 		global $BD;	
 		
 		$query = "SELECT * 
-				FROM merchandising 
-				WHERE username LIKE '%$busqueda%'
-					OR nombre LIKE '%$busqueda%'
-					OR apellidos LIKE '%$busqueda%'
-					OR email LIKE '%$busqueda%'
-					OR descripcion LIKE '%$busqueda%'";
+				FROM users 
+				WHERE username LIKE '%".$busqueda."%'
+					OR nombre LIKE '%".$busqueda."%'
+					OR apellidos LIKE '%".$busqueda."%'
+					OR email LIKE '%".$busqueda."%'
+					OR descripcion LIKE '%".$busqueda."%'";
 
 		$exito = false;
 
 		$contenido = array();
 		$i = 0;
 		if($resultado = $BD->query($query)) {
-		while($content = $resultado->fetch_assoc()) {
-			$contenido[$i] = array();
-			$contenido[$i++]= $content;
-			//$resultado->close();	
+			while($content = $resultado->fetch_assoc()) {
+				$contenido[$i] = array();
+				$contenido[$i++]= $content;
+				//$resultado->close();	
+			}
 		}
 
 		return $contenido;
@@ -216,8 +236,25 @@ function dameID($username){
 
 
 
-}*/
+}
 
+function dameFilasUsuarios($search){
 
+	global $BD;	
+
+	$query = "SELECT * 
+				FROM users 
+				WHERE username LIKE '%".$search."%'
+					OR nombre LIKE '%".$search."%'
+					OR apellidos LIKE '%".$search."%'
+					OR email LIKE '%".$search."%'
+					OR descripcion LIKE '%".$search."%'";
+
+	$exito = false;
+
+	$exito = $BD->query($query);
+		  
+	return $exito->num_rows;
+	}
 
 ?>

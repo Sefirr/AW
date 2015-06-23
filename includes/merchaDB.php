@@ -305,38 +305,48 @@ function modifyMerchavaloracion($id_merchandising, $newvaloracion){
 
 }
 
-/*function searchMercha($busqueda){
+function searchMercha($busqueda){
 
 		global $BD;	
 		
 		$query = "SELECT * 
 				FROM merchandising 
-				WHERE nombre LIKE '%$busqueda%'
-					OR descripcion LIKE '%$busqueda%'
-					OR proveedor LIKE '%$busqueda%'";
+				WHERE nombre LIKE '%".$busqueda."%'
+					OR descripcion LIKE '%".$busqueda."%'
+					OR proveedor LIKE '%".$busqueda."%'";
 
 		$exito = false;
 
 		$contenido = array();
 		$i = 0;
 		if($resultado = $BD->query($query)) {
-		while($content = $resultado->fetch_assoc()) {
-			$contenido[$i] = array();
-			$contenido[$i++]= $content;
-			//$resultado->close();	
+			while($content = $resultado->fetch_assoc()) {
+				$contenido[$i] = array();
+				$contenido[$i++]= $content;
+				//$resultado->close();	
+			}
 		}
 
 		return $contenido;
 
+}
 
+function dameFilasMercha($search){
 
+	global $BD;	
 
+	$query = "SELECT * 
+				FROM merchandising 
+				WHERE nombre LIKE '%".$search."%'
+					OR descripcion LIKE '%".$search."%'
+					OR proveedor LIKE '%".$search."%'";
 
+	$exito = false;
 
-
-	
-}*/
-
+	$exito = $BD->query($query);
+		  
+	return $exito->num_rows;
+	}
 
 
 ?>
