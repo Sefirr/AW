@@ -38,7 +38,7 @@
 			<!-- CONTENIDO -->
 			<div id="search-index">
 			<form action="includes/procesaIndex.php" method="post" name="search_form" id="search_form">
-				<input type="text" name="search" id="search">	
+				<input type="text" name="search" id="search" placeholder="Buscar...">	
 			</form>
 			</div>
 			<div id = "contenido"></div>	
