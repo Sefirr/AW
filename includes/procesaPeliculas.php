@@ -69,7 +69,7 @@
 		}
 
 		echo "</div>";
-		echo '<div style="paginacion"><br/>';
+		echo '<div id="paginacion"><br/>';
 		
 		if($page >= 1) {
 			if(empty($ordenado)) {
@@ -93,8 +93,8 @@
 
 		if($page < ($pages-1)) {
 			if(empty($ordenado)) {
-				echo '<a href="peliculas.php?page='.($page+1).'">Siguiente</a>';
-				echo '<a href="peliculas.php?page='.($pages-1).'">Ultimo</a>';
+				echo '<a href="peliculas.php?page='.($page+1).'">  Siguiente  </a>';
+				echo '<a href="peliculas.php?page='.($pages-1).'">   Ultimo  </a>';
 			} else {
 				echo '<a href="peliculas.php?page='.($page+1).'&ordenar='.$ordenado.'">    Siguiente     </a>';
 				echo '<a href="peliculas.php?page='.($pages-1).'&ordenar='.$ordenado.'">    Ultimo   </a>';

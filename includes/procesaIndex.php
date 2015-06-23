@@ -55,8 +55,8 @@
 				echo '<div id="paginacion"><br/>';
 			
 			if($page >= 1) {
-					echo '<a href="index.php?page=0">Primero</a>';
-					echo '<a href="index.php?page='.($page-1).'">Anterior</a>';
+					echo '<a href="index.php?page=0">   Primero   </a>';
+					echo '<a href="index.php?page='.($page-1).'">  Anterior   </a>';
 			}
 			
 			for($i=0;$i<$pages;$i++) {
