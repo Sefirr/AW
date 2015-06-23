@@ -3,6 +3,7 @@
 	float: left;
 	width:21%;
 	clear:both;
+	
 }
 
 #menu-user, #recomendaciones {
@@ -32,6 +33,7 @@
 	list-style: none;
 	margin: 0;
 	padding: 0;
+	font-size: 120%;
 }
 
 #menu-user a, #menu-user > ul > li:first-child, #recomendaciones a, #recomendaciones > ul > li:first-child {
@@ -41,6 +43,13 @@
 	text-decoration: none;
 	text-transform: uppercase;
 	color:white;
+
+}
+#menu-user > ul > li:first-child{
+
+	font-size: 200%;
+	font-weight: bold;
+
 }
 
 #menu-user > ul > li > a, #menu-user > ul > li:first-child {
@@ -63,9 +72,17 @@
 
 }
 
+#recomendaciones > ul > li:first-child{
+
+	font-size: 140%;
+
+
+}
+
  #menu-user > ul > li:first-child > a, #recomendaciones > ul > li:first-child > a {
 	border-top-left-radius:5px;
 	border-top-right-radius:5px;
+
  }
 
 #menu-user > ul > li:last-child > a, #recomendaciones > ul > li:last-child > a {
