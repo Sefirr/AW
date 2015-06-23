@@ -182,6 +182,10 @@ input[type=submit].button {
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
 	border-radius:5px;
 }
+#detalle p{
+	clear:both;
+
+}
 
 #detalle a img{/*etiqueta para los bloques que forman las series, en pequeño*/
 	height: 100px;
@@ -390,18 +394,19 @@ input[type=submit].button {
 }
 
 #menu-ordenar ul{
+	list-style-position: outside;
+	line-height: 1em;
 	list-style: none;
-
 
 }
 
 #menu-ordenar ul li{
 	float:left;
 	text-align:center;
-	display: inline;
+
 	margin-left: 5%;
-	text-transform: uppercase;
-	min-width: 20%;
+	min-height: 10px;
+	min-width: 15%;
 	padding: 12px;
 }
 
@@ -413,9 +418,10 @@ input[type=submit].button {
 
 #menu-ordenar ul li a{
 	text-decoration: none;
-	/*display : block;*/
+	display : block;
 	text-align : center;
 	color : white;
+	text-transform: uppercase;
 
 }
 
