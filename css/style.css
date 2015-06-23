@@ -166,11 +166,13 @@ input[type=submit].button {
 /************UTILIDADES DE MOSTRADO************/
 
 #detalle{/*etiqueta para los bloques que forman las series, en pequeño*/
+
 	border: 1px solid blue;
 	float:left;
 	padding: 3%;
 	text-align:center;
 	width: 12%;
+	min-height: 12%;
 	margin-top: 2%;
 	margin-right: 2%;
 	border-radius: 5px;
@@ -218,6 +220,7 @@ input[type=submit].button {
 
 /***************UTILIDADES DESCRIPCION********************/
 #titulo-serie, #titulo-mercha {
+
 	margin-top: 10px;
 	font-size: 20px;
 	text-align:center;
@@ -388,7 +391,7 @@ input[type=submit].button {
 
 #menu-ordenar ul{
 	list-style: none;
-	display: inline;
+
 
 }
 
@@ -410,7 +413,7 @@ input[type=submit].button {
 
 #menu-ordenar ul li a{
 	text-decoration: none;
-	display : block;
+	/*display : block;*/
 	text-align : center;
 	color : white;
 

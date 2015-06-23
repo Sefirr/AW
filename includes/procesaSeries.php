@@ -70,7 +70,7 @@
 			
 		}
 
-		echo "</div>";
+		
 		echo '<div id="paginacion"><br/>';
 		
 		if($page >= 1) {
