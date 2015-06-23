@@ -56,28 +56,28 @@
 							$imagen .= $content["foto1"];
 						}
 				?>
-				<?php 	$imagen2 = RAIZ_APP;
+				<!--<?php 	$imagen2 = RAIZ_APP;
 						if(empty($content["foto2"])) {
 							$imagen2 .= "img/no_photo_available.png";
 						} else {
 							$imagen2 .= $content["foto2"];
 						}
-				?>
+				?>-->
 				<?php 	$imagen = RAIZ_APP;
 						if(empty($content["foto1"])) {
 							$imagen .= "img/no_photo_available.png";
 						} else {
 							$imagen .= $content["foto1"];
 						}
-						$imagen2 = RAIZ_APP;
-						if(empty($content["foto2"])) {
-							$imagen2 .= "img/no_photo_available.png";
-						} else {
-							$imagen2 .= $content["foto2"];
-						}
+				//	$imagen2 = RAIZ_APP;
+				//		if(empty($content["foto2"])) {
+				//			$imagen2 .= "img/no_photo_available.png";
+				//} else {
+				//			$imagen2 .= $content["foto2"];
+				//		}-->
 				
 				echo '<div id="cartel"><img src="'.$imagen.'" id="caratula"> </div>';
-				echo '<div id="cartel2"><img src="'.$imagen2.'" id="caratula2"> </div>';
+				//echo '<div id="cartel2"><img src="'.$imagen2.'" id="caratula2"> </div>';
 				echo '<div id="descripcion-basica">'.$content["descripcion"].'</div>'; ?>
 				<div id="val-pagina">Valoración de la página:</div>
 				<div id="val-usuario">Valoración de los usuarios:</div>
