@@ -93,11 +93,11 @@
 
 		if($page < ($pages-1)) {
 			if(empty($ordenado)) {
-				echo '<a href="videojuegos.php?page='.($page+1).'">Siguiente</a>';
-				echo '<a href="videojuegos.php?page='.($pages-1).'">Ultimo</a>';
+				echo '<a href="videojuegos.php?page='.($page+1).'">     Siguiente    </a>';
+				echo '<a href="videojuegos.php?page='.($pages-1).'">    Ultimo   </a>';
 			} else {
-				echo '<a href="videojuegos.php?page='.($page+1).'&ordenar='.$ordenado.'">Siguiente</a>';
-				echo '<a href="videojuegos.php?page='.($pages-1).'&ordenar='.$ordenado.'">Ultimo</a>';
+				echo '<a href="videojuegos.php?page='.($page+1).'&ordenar='.$ordenado.'">   Siguiente   </a>';
+				echo '<a href="videojuegos.php?page='.($pages-1).'&ordenar='.$ordenado.'">    Ultimo    </a>';
 			}
 		}
 

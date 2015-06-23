@@ -66,8 +66,8 @@
 				echo '<strong>'.($page+1).' de '.$pages.'</strong>';
 				
 			if($page < ($pages-1)) {
-					echo '<a href="index.php?page='.($page+1).'">Siguiente</a>';
-					echo '<a href="index.php?page='.($pages-1).'">Ultimo</a>';
+					echo '<a href="index.php?page='.($page+1).'">   Siguiente         </a>';
+					echo '<a href="index.php?page='.($pages-1).'">   Ultimo        </a>';
 			}
 
 			echo '</div>';

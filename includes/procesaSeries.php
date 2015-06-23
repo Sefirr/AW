@@ -98,8 +98,8 @@
 				echo '<a href="series.php?page='.($page+1).'">Siguiente</a>';
 				echo '<a href="series.php?page='.($pages-1).'">Ultimo</a>';
 			} else {
-				echo '<a href="series.php?page='.($page+1).'&ordenar='.$ordenado.'">Siguiente</a>';
-				echo '<a href="series.php?page='.($pages-1).'&ordenar='.$ordenado.'">Ultimo</a>';
+				echo '<a href="series.php?page='.($page+1).'&ordenar='.$ordenado.'">     Siguiente     </a>';
+				echo '<a href="series.php?page='.($pages-1).'&ordenar='.$ordenado.'">     Ultimo     </a>';
 			}
 		}
 
